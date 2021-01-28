@@ -3,7 +3,9 @@ local Prologue = Game:addState("Prologue")
 require "../src/json"
 
 function Prologue:enteredState()
-	counter = 0
+	prologue_counter = 0
+	-- j'aimerais charger le fichier assets/txt/prologue.json avec les textes dans un tableau
+	-- et les assets dans un tableau d'assets
 end
 
 function Prologue:update(dt)
@@ -27,13 +29,17 @@ function Prologue:draw()
   local yInst = WINDOW_HEIGHT/2
   local inst = "Appuyez sur n'importe quelle touche pour continuer."
   love.graphics.printf(inst, xInst, yInst, wInst, "center")
+  
+  -- on ecrit text[prologue_counter]
+  -- et on dessine asset[idx] avec idx un truc scripté
 end
 
 function Prologue:keypressed(key, code)
   if key == 'space' then
-	counter = counter+1
+	prologue_counter = prologue_counter+1
   end
   elseif key == 'escape' then
     love.event.quit()
   end
+  -- si counter dépasse la taille du tableau d'asset, on sort de prologue et on rentre dans game
 end
