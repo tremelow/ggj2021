@@ -72,10 +72,10 @@ function love.draw(dt)
 end
 
 
-flag = true
+inDialog = false
 function love.keypressed(key)
-    if flag and key == "space" then
-        flag = false
+    if not inDialog and key == "space" then
+        inDialog = true
         for i, kid in ipairs(PNJs) do
             if kid:isCharacterClose(Hero) then
                 Talkies.say(
@@ -83,16 +83,16 @@ function love.keypressed(key)
                     {"Bonjour Morpion !", "Comment tu vas ?", "Ça te dit de jouer au foot ?"},
                     {
                         options = {{"Yes", function(dialog) end }, {"No", function(dialog) end}},
-                        oncomplete= function(dialog) flag=true end
+                        oncomplete= function(dialog) inDialog = false end
                     }
                 )
             end
         end
-    elseif not flag and key == "space" then Talkies.onAction()
-    elseif not flag and key == "up" then Talkies.prevOption()
-    elseif not flag and key == "down" then Talkies.nextOption()
-    elseif true then
+    elseif inDialog and key == "space" then Talkies.onAction()
+    elseif inDialog and key == "up" then Talkies.prevOption()
+    elseif inDialog and key == "down" then Talkies.nextOption()
+    else
         Talkies.clearMessages()
-        flag = true
+        inDialog = false
     end
 end
