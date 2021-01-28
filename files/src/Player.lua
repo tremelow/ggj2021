@@ -31,5 +31,6 @@ function Player:update(dt)
 
     -- Bound the player movement
     self.x = math.max(                  0, self.x)
-    self.y = math.min(math.max(WINDOW_HEIGHT * 3/5 - self.HEIGHT, self.y), WINDOW_HEIGHT - self.HEIGHT)
+    self.y = math.min(math.max(WINDOW_HEIGHT * 3/5 - self.HEIGHT, self.y), 
+                      WINDOW_HEIGHT - self.HEIGHT)
 end

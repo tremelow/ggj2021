@@ -1,5 +1,8 @@
 debug = true
 
+STATUS = 0
+inDialog = false
+
 function love.load(arg)
     -- Window dimensions
     WINDOW_HEIGHT = love.graphics.getHeight()
@@ -39,7 +42,9 @@ function love.update(dt)
     camera:follow(Hero.x, Hero.y)
 
     -- Move Hero
-    Hero:update(dt)
+    if not inDialog then
+        Hero:update(dt)
+    end
 
     -- Identify if PNJ close to player
     for i, v in ipairs(PNJs) do
@@ -72,7 +77,6 @@ function love.draw(dt)
 end
 
 
-inDialog = false
 function love.keypressed(key)
     if not inDialog and key == "space" then
         inDialog = true
@@ -91,8 +95,5 @@ function love.keypressed(key)
     elseif inDialog and key == "space" then Talkies.onAction()
     elseif inDialog and key == "up" then Talkies.prevOption()
     elseif inDialog and key == "down" then Talkies.nextOption()
-    else
-        Talkies.clearMessages()
-        inDialog = false
     end
 end
