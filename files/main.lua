@@ -8,6 +8,7 @@ function love.load(arg)
     -- Extra libraries
     Object = require(".src.Classic")
     Camera = require(".src.Camera")
+    Talkies = require(".src.Talkies")
     
     -- Background Image
     background = love.graphics.newImage("assets/foot.jpg")
@@ -44,6 +45,9 @@ function love.update(dt)
     for i, v in ipairs(PNJs) do
         v:update(dt, Hero)
     end
+
+    -- Talkies
+    Talkies.update(dt)
 end
 
 function love.draw(dt)
@@ -61,7 +65,19 @@ function love.draw(dt)
     -- Draw Hero last
     Hero:draw()
 
-
     camera:detach()
     --camera:draw() --
+
+    Talkies.draw()
+end
+
+function love.keypressed(key)
+    if key == "space" then
+        for i, kid in ipairs(PNJs) do
+            if kid:isPlayerClose(Hero) then
+                Talkies.say(kid.name, "Bonjour Morpion !")
+            end
+        end
+    elseif true then Talkies.clearMessages()
+    end
 end

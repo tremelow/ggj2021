@@ -32,6 +32,7 @@ function PNJ:draw()
         love.graphics.setColor(0.9,0,0)
         love.graphics.rectangle("fill", self.x - 10, self.y - 10, self.WIDTH + 20, self.HEIGHT + 20)
         love.graphics.setColor(1,1,1)
+
     end
     PNJ.super.draw(self)
 end
