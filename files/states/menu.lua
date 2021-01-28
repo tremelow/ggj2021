@@ -22,7 +22,8 @@ function Menu:draw()
   local wInst = wTitle
   local xInst = (WINDOW_WIDTH - wInst)/2
   local yInst = WINDOW_HEIGHT/2
-  local inst = "Appuyez sur n'importe quelle touche pour continuer."
+  local inst = "Appuyez sur n'importe quelle touche pour continuer." ..
+                "\n\n(Echap pour quitter)"
   love.graphics.printf(inst, xInst, yInst, wInst, "center")
 end
 
