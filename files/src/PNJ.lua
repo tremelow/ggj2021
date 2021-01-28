@@ -11,19 +11,9 @@ function PNJ:new(x,y,name)
     self.highlight = false
 end
 
-function PNJ:isPlayerClose(Hero)
-    -- check whether Hero is close to character
-    -- return boolean
-    dist = PNJ.distTo(self, Hero)
-    if dist < self.WIDTH/2 or dist < self.HEIGHT/2 then
-        return true
-    end
-    return false
-end
-
 function PNJ:update(dt, Hero)
     -- highlight is true if player is close
-    self.highlight = PNJ.isPlayerClose(self,Hero)
+    self.highlight = PNJ.isCharacterClose(self,Hero)
 end
 
 function PNJ:draw()

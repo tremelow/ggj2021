@@ -30,6 +30,15 @@ function Character:draw()
     love.graphics.draw(self.image, self.x, self.y, 0, scalex, scaley)
 end
 
+function Character:isCharacterClose(X)
+    -- check whether Hero is close to character
+    -- return boolean
+    dist = Character.distTo(self, X)
+    if dist < self.WIDTH/2 or dist < self.HEIGHT/2 then
+        return true
+    end
+    return false
+end
 
 function Character:distTo(other)
     -- Euclidian Distance from the character to another character

@@ -108,7 +108,7 @@ local Talkies = {
   thickness               = 0,
   
   textSpeed               = 1 / 60,
-  font                    = love.graphics.newFont(16),
+  font                    = love.graphics.newFont(20),
 
   typedNotTalked          = true,
   pitchValues             = {0.7, 0.8, 1.0, 1.2, 1.3},
