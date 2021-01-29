@@ -2,7 +2,7 @@
 #Main folder must contain a working game build
 
 MAIN_FOLDER="."
-FILES_FOLDER="$MAIN_FOLDER/GGJ_2019_files/"
+FILES_FOLDER="$MAIN_FOLDER/files/"
 TITLE="game"
 
 cd $FILES_FOLDER
