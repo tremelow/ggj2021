@@ -8,6 +8,9 @@ local Player = Object:extend()
 
 local GRAVITY = 800
 
+local SCORE = 0
+local GAME_OVER = false
+
 -----------------------
 -- VECTOR HELPER OBJECT
 -----------------------
@@ -108,6 +111,8 @@ end
 -- Ball
 -----------------
 local BALL_RADIUS = 30
+local isCollision = false
+local computeCollision = true
 
 function Ball:new(x,y)
     -- Position and radius
@@ -129,11 +134,11 @@ function Ball:checkWallCollision(colx, coly)
     return colx, coly
 end
 
-function Ball:UpdatePlayerCollision(playe)
+function Ball:UpdatePlayerCollision(player)
     -- Get Player head position and speed
-    px, py = playe:getHeadCenter()
-    pvx = playe.vx
-    pvy = playe.vy
+    px, py = player:getHeadCenter()
+    pvx = player.vx
+    pvy = player.vy
 
     -- Vector between ball center and head center - VC
     VC = Vector(px - self.x, py - self.y)
@@ -143,6 +148,17 @@ function Ball:UpdatePlayerCollision(playe)
     ballVelocity = Vector(self.vx, self.vy)
     -- If collision detected
     if VC:norm() < BALL_RADIUS + PLAYER_HEAD_RADIUS then
+        isCollision = true
+    else
+        isCollision = false
+    end   
+
+    if isCollision and computeCollision then
+        -- Update score only if the ball is falling
+        if not GAME_OVER then
+            SCORE = SCORE + 1
+        end
+        computeCollision = false
         -- VC -> VC_unit -> VC_unit_conjugate 
         conj = VC:unit():conjugate()
         -- project ball velocity onto VC_unit_conjugate and use this value to scale 
@@ -151,6 +167,11 @@ function Ball:UpdatePlayerCollision(playe)
         ballVelocity = conj:prod(2):add(ballVelocity:prod(-1))
         -- We add the head velocity to the ball velocity
         ballVelocity = ballVelocity:add(headVelocity)
+    end
+
+    if not isCollision and not computeCollision then
+        isCollision = false
+        computeCollision = true
     end
     -- Return the velocity (unchanged if no collision)
     return ballVelocity
@@ -178,6 +199,9 @@ function Ball:update(dt, playe)
     -- self.x = self.x + self.vx * dt
     -- self.y = self.y + self.vy * dt
 
+    if self.y == WINDOW_HEIGHT - BALL_RADIUS then
+        GAME_OVER = true
+    end
 end
 
 function Ball:draw()
@@ -198,18 +222,32 @@ function SoccerGame:reset()
     -- Init ball
     self.ball = Ball(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 30)
     self.player = Player()
+
+    -- Reset Score
+    SCORE = 0
+    GAME_OVER = false
 end
 
 function SoccerGame:update(dt)
     if love.keyboard.isDown("r") then
         self:reset()
     end
-    -- Update ball
+    -- Update player
     self.player:update(dt)
+
+    -- Update ball
     self.ball:update(dt, self.player)
 end
 
 function SoccerGame:draw()
     self.ball:draw()
     self.player:draw()
+    
+    -- SCORE
+    love.graphics.rectangle("line", 20, 20, 140, 50)
+    love.graphics.print("SCORE - ", 21, 20)
+    love.graphics.print(SCORE, 120, 20)
+    if GAME_OVER then
+        love.graphics.print("GAME OVER", 21, 40)
+    end
 end
