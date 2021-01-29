@@ -11,7 +11,7 @@ function Player:new(x,y)
     Player.super.new(self,x,y)
 
     -- Player Sprite
-    self.image = love.graphics.newImage("assets/papyrus.png")
+    self.image = love.graphics.newImage("assets/img/prologue/theodule_2.png")
 end
 
 function Player:update(dt)
