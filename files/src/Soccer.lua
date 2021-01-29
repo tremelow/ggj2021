@@ -108,6 +108,7 @@ end
 -- Ball
 -----------------
 local BALL_RADIUS = 30
+local hasCollided = false
 
 function Ball:new(x,y)
     -- Position and radius
@@ -129,11 +130,11 @@ function Ball:checkWallCollision(colx, coly)
     return colx, coly
 end
 
-function Ball:UpdatePlayerCollision(playe)
+function Ball:UpdatePlayerCollision(player)
     -- Get Player head position and speed
-    px, py = playe:getHeadCenter()
-    pvx = playe.vx
-    pvy = playe.vy
+    px, py = player:getHeadCenter()
+    pvx = player.vx
+    pvy = player.vy
 
     -- Vector between ball center and head center - VC
     VC = Vector(px - self.x, py - self.y)
@@ -142,7 +143,8 @@ function Ball:UpdatePlayerCollision(playe)
     -- Ball velocity before collision
     ballVelocity = Vector(self.vx, self.vy)
     -- If collision detected
-    if VC:norm() < BALL_RADIUS + PLAYER_HEAD_RADIUS then
+    if not hasColided and VC:norm() < BALL_RADIUS + PLAYER_HEAD_RADIUS then
+        hasCollided = true
         -- VC -> VC_unit -> VC_unit_conjugate 
         conj = VC:unit():conjugate()
         -- project ball velocity onto VC_unit_conjugate and use this value to scale 
@@ -151,7 +153,10 @@ function Ball:UpdatePlayerCollision(playe)
         ballVelocity = conj:prod(2):add(ballVelocity:prod(-1))
         -- We add the head velocity to the ball velocity
         ballVelocity = ballVelocity:add(headVelocity)
+    else
+        hasCollided = false
     end
+    print(ballVelocity.x, ballVelocity.y, hasColided)
     -- Return the velocity (unchanged if no collision)
     return ballVelocity
 end
