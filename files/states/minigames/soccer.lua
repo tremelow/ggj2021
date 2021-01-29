@@ -312,7 +312,7 @@ end
 ---------------------
 local minigame = SoccerGame()
 
-function Soccer:enteredState()    
+function Soccer:enteredState()
 end
 
 function Soccer:update(dt)
@@ -330,5 +330,5 @@ function Soccer:keypressed(key, code)
         self:pushState("Pause")
     elseif key == 'r' then
         minigame:reset()
-    end 
+    end
 end

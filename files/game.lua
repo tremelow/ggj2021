@@ -38,21 +38,21 @@ end
 function Game:draw()
   camera:attach()
   -- DRAW GAME HERE
-  
+
   -- Draw background image
   love.graphics.draw(background, 0, 0, 0, 1, WINDOW_HEIGHT/background:getHeight())
-  
+
   -- Draw NPCs
   for i, v in ipairs(PNJs) do
     v:draw()
   end
-  
+
   -- Draw Hero last
   Hero:draw()
-  
+
   camera:detach()
   --camera:draw() --
-  
+
   Talkies.draw()
 end
 
@@ -66,6 +66,7 @@ function Game:keypressed(key, code)
     inDialog = true
     for i, kid in ipairs(PNJs) do
       if kid:isCharacterClose(Hero) then
+        -- self:dialog(kid.dialog)
         Talkies.say(
           kid.name,
           {"Bonjour Morpion !", "Comment tu vas ?", "Ça te dit de jouer au foot ?"},

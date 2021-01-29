@@ -1,3 +1,5 @@
+local Dessin = Game:addState("Dessin")
+
 function loadJeuDessin()
   width, height, flags = love.window.getMode( ) --Taille de la fenetre
   --Taille de l'image background craie
@@ -60,23 +62,23 @@ function drawJeuDessin()
 end
 
 
-function love.load()
+function Dessin:enteredState()
   love.graphics.setBackgroundColor(1,1,1,1)
   loadJeuDessin()
-  timer = 0
+  self.timer = 0
 end
 
-function love.mousepressed(x, y, button, istouch)
+function Dessin:mousepressed(x, y, button, istouch)
   prevx = x - gamex0
   prevy = y - gamey0
 end
 
-function love.update(dt)
+function Dessin:update(dt)
   updateJeuDessin()
-  timer = timer + dt
+  self.timer = self.timer + dt
 end
 
-function love.draw()
+function Dessin:draw()
   love.graphics.setColor(1, 1, 1, 1)
   love.graphics.setBlendMode("alpha", "premultiplied")
   drawJeuDessin()

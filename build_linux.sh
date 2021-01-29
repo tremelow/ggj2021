@@ -2,8 +2,8 @@
 #Main folder must contain a working game build
 
 MAIN_FOLDER="."
-FILES_FOLDER="$MAIN_FOLDER/GGJ_2019_files/"
-TITLE="game"
+FILES_FOLDER="$MAIN_FOLDER/files/"
+TITLE="Kermesse"
 
 cd $FILES_FOLDER
 zip -9 -r $TITLE.love .
