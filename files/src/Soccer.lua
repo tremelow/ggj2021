@@ -8,6 +8,9 @@ local Player = Object:extend()
 
 local GRAVITY = 800
 
+local SCORE = 0
+local GAME_OVER = false
+
 -----------------------
 -- VECTOR HELPER OBJECT
 -----------------------
@@ -108,7 +111,8 @@ end
 -- Ball
 -----------------
 local BALL_RADIUS = 30
-local hasCollided = false
+local isCollision = false
+local computeCollision = true
 
 function Ball:new(x,y)
     -- Position and radius
@@ -143,8 +147,18 @@ function Ball:UpdatePlayerCollision(player)
     -- Ball velocity before collision
     ballVelocity = Vector(self.vx, self.vy)
     -- If collision detected
-    if not hasColided and VC:norm() < BALL_RADIUS + PLAYER_HEAD_RADIUS then
-        hasCollided = true
+    if VC:norm() < BALL_RADIUS + PLAYER_HEAD_RADIUS then
+        isCollision = true
+    else
+        isCollision = false
+    end   
+
+    if isCollision and computeCollision then
+        -- Update score only if the ball is falling
+        if not GAME_OVER then
+            SCORE = SCORE + 1
+        end
+        computeCollision = false
         -- VC -> VC_unit -> VC_unit_conjugate 
         conj = VC:unit():conjugate()
         -- project ball velocity onto VC_unit_conjugate and use this value to scale 
@@ -153,10 +167,12 @@ function Ball:UpdatePlayerCollision(player)
         ballVelocity = conj:prod(2):add(ballVelocity:prod(-1))
         -- We add the head velocity to the ball velocity
         ballVelocity = ballVelocity:add(headVelocity)
-    else
-        hasCollided = false
     end
-    print(ballVelocity.x, ballVelocity.y, hasColided)
+
+    if not isCollision and not computeCollision then
+        isCollision = false
+        computeCollision = true
+    end
     -- Return the velocity (unchanged if no collision)
     return ballVelocity
 end
@@ -183,6 +199,9 @@ function Ball:update(dt, playe)
     -- self.x = self.x + self.vx * dt
     -- self.y = self.y + self.vy * dt
 
+    if self.y == WINDOW_HEIGHT - BALL_RADIUS then
+        GAME_OVER = true
+    end
 end
 
 function Ball:draw()
@@ -203,18 +222,32 @@ function SoccerGame:reset()
     -- Init ball
     self.ball = Ball(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 30)
     self.player = Player()
+
+    -- Reset Score
+    SCORE = 0
+    GAME_OVER = false
 end
 
 function SoccerGame:update(dt)
     if love.keyboard.isDown("r") then
         self:reset()
     end
-    -- Update ball
+    -- Update player
     self.player:update(dt)
+
+    -- Update ball
     self.ball:update(dt, self.player)
 end
 
 function SoccerGame:draw()
     self.ball:draw()
     self.player:draw()
+    
+    -- SCORE
+    love.graphics.rectangle("line", 20, 20, 140, 50)
+    love.graphics.print("SCORE - ", 21, 20)
+    love.graphics.print(SCORE, 120, 20)
+    if GAME_OVER then
+        love.graphics.print("GAME OVER", 21, 40)
+    end
 end
