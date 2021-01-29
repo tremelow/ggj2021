@@ -1,5 +1,5 @@
 --! file: Soccer.lua
-local Soccer = Game:addState("soccer")
+local Soccer = Game:addState("Soccer")
 
 Object = require(".src.Classic")
 
@@ -86,10 +86,10 @@ function Player:update(dt)
 
     colx=1
     -- Update player location
-    if love.keyboard.isDown("d") then
+    if love.keyboard.isDown("d") or love.keyboard.isDown("right") then
         self.x = self.x + PLAYER_SPEED * dt
     end
-    if love.keyboard.isDown("a") then
+    if love.keyboard.isDown("q") or love.keyboard.isDown("left") then
         self.x = self.x - PLAYER_SPEED * dt
     end
 
@@ -98,7 +98,7 @@ function Player:update(dt)
         self.vy = 0
     end
     
-    if (self.y + PLAYER_HEIGHT > WINDOW_HEIGHT - OFFSET - 3) and love.keyboard.isDown("w") then
+    if (self.y + PLAYER_HEIGHT > WINDOW_HEIGHT - OFFSET - 3) and (love.keyboard.isDown("z", "up", "space")) then
         self.vy = - PLAYER_JUMP
     end
 
@@ -174,6 +174,8 @@ function Ball:UpdatePlayerCollision(player)
         conj = conj:prod(conj:dot(ballVelocity))
         -- New ball velocity is twice the previous vector minus the ball velocity
         ballVelocity = conj:prod(2):add(ballVelocity:prod(-1))
+        -- Damping
+        ballVelocity = ballVelocity:prod(0.8)
         -- We add the head velocity to the ball velocity
         ballVelocity = ballVelocity:add(headVelocity)
     end
@@ -295,9 +297,10 @@ end
 
 function Soccer:keypressed(key, code)
     if key == 'escape' then
-        self:popState("soccer")
-    end
-    if key == 'r' then
+        self:popState("Soccer")
+    elseif key == 'p' then
+        self:pushState("Pause")
+    elseif key == 'r' then
         minigame:reset()
     end 
 end

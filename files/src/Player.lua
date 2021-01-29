@@ -16,16 +16,16 @@ end
 
 function Player:update(dt)
     -- Update player location
-    if love.keyboard.isDown("d") then
+    if love.keyboard.isDown("d", "right") then
         self.x = self.x + self.v * dt
     end
-    if love.keyboard.isDown("a") then
+    if love.keyboard.isDown("q", "left") then
         self.x = self.x - self.v * dt
     end
-    if love.keyboard.isDown("w") then
+    if love.keyboard.isDown("z", "up") then
         self.y = self.y - self.v * dt
     end
-    if love.keyboard.isDown("s") then
+    if love.keyboard.isDown("s", "down") then
         self.y = self.y + self.v * dt
     end
 

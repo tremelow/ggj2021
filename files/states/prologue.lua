@@ -36,8 +36,7 @@ end
 
 function Prologue:keypressed(key, code)
   if key == 'space' then
-	prologue_counter = prologue_counter+1
-  end
+	  prologue_counter = prologue_counter+1
   elseif key == 'escape' then
     love.event.quit()
   end
