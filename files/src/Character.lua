@@ -5,8 +5,8 @@ Character = Object:extend()
 
 function Character:new(x,y)
     -- Width and Height of characters (in pixels)
-    self.WIDTH = 60
-    self.HEIGHT = 120
+    self.WIDTH = 90
+    self.HEIGHT = 180
 
     -- Speed of character
     self.v = 500
