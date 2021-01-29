@@ -56,18 +56,20 @@ end
 ---------------------
 -- PLAYER
 -----------------
-local PLAYER_WIDTH = 130
-local PLAYER_HEIGHT = 180
+local PLAYER_WIDTH = 140
+local PLAYER_HEIGHT = 150
 local PLAYER_JUMP = 200
 local PLAYER_SPEED = 800
-local PLAYER_HEAD_RADIUS = 40
+local PLAYER_HEAD_RADIUS = PLAYER_WIDTH / 2
+local OFFSET = 10
 -- Player Sprite
-local PLAYER_SPRITE = love.graphics.newImage("assets/papyrus.png")
+local PLAYER_SPRITE = love.graphics.newImage("/assets/img/football/theodule_head.png")
+
 
 function Player:new()
-    -- Position and radius
+    -- Position
     self.x = WINDOW_WIDTH / 2
-    self.y = WINDOW_HEIGHT - PLAYER_HEIGHT
+    self.y = WINDOW_HEIGHT - PLAYER_HEIGHT - OFFSET
 
     -- Velocity
     self.vx = 0
@@ -76,7 +78,7 @@ end
 
 function Player:getHeadCenter()
     xr = self.x + PLAYER_WIDTH / 2
-    yr = self.y + PLAYER_HEAD_RADIUS
+    yr = self.y + PLAYER_HEIGHT / 2
     return xr, yr
 end
 
@@ -92,16 +94,16 @@ function Player:update(dt)
     end
 
     self.vy = self.vy + GRAVITY * dt
-    if (self.y + PLAYER_HEIGHT == WINDOW_HEIGHT) then
+    if (self.y + PLAYER_HEIGHT == WINDOW_HEIGHT - OFFSET ) then
         self.vy = 0
     end
     
-    if (self.y + PLAYER_HEIGHT > WINDOW_HEIGHT - 3) and love.keyboard.isDown("w") then
+    if (self.y + PLAYER_HEIGHT > WINDOW_HEIGHT - OFFSET - 3) and love.keyboard.isDown("w") then
         self.vy = - PLAYER_JUMP
     end
 
     self.x = math.min(math.max(0, self.x), WINDOW_WIDTH  - PLAYER_WIDTH)
-    self.y = math.min(WINDOW_HEIGHT - PLAYER_HEIGHT, self.y + self.vy * dt)
+    self.y = math.min(WINDOW_HEIGHT - PLAYER_HEIGHT - OFFSET, self.y + self.vy * dt)
 
 end
 
@@ -117,12 +119,15 @@ end
 ---------------------
 -- Ball
 -----------------
-local BALL_RADIUS = 30
+local BALL_RADIUS = 50
+local BALL_SPRITE = love.graphics.newImage("assets/img/football/football.svg")
+
 local isCollision = false
 local computeCollision = true
+ 
 
 function Ball:new(x,y)
-    -- Position and radius
+    -- Position of the ball center
     self.x = x
     self.y = y
 
@@ -131,14 +136,11 @@ function Ball:new(x,y)
     self.vy = - 500
 end
 
-function Ball:checkWallCollision(colx, coly)
+function Ball:checkWallCollision(colx)
     if self.x <= BALL_RADIUS or self.x + BALL_RADIUS >= WINDOW_WIDTH then
         colx = - 0.9 * colx
     end
-    if self.y + BALL_RADIUS >= WINDOW_HEIGHT then
-        coly = - 0.9 * coly
-    end
-    return colx, coly
+    return colx
 end
 
 function Ball:UpdatePlayerCollision(player)
@@ -191,9 +193,8 @@ function Ball:update(dt, playe)
 
     self.vy = self.vy + GRAVITY * dt
 
-    colx, coly = self:checkWallCollision(colx, coly)
+    colx = self:checkWallCollision(colx)
     self.vx = colx * self.vx
-    self.vy = coly * self.vy
 
     newVelocity = self:UpdatePlayerCollision(playe)
     self.vx = newVelocity.x
@@ -202,24 +203,30 @@ function Ball:update(dt, playe)
     self.x = math.min(
                 math.max(BALL_RADIUS, self.x + self.vx * dt),
                 WINDOW_WIDTH - BALL_RADIUS)
-    self.y = math.min(WINDOW_HEIGHT - BALL_RADIUS, self.y + self.vy * dt)
+    self.y = self.y + self.vy * dt
     -- self.x = self.x + self.vx * dt
     -- self.y = self.y + self.vy * dt
 
-    if self.y == WINDOW_HEIGHT - BALL_RADIUS then
+    if self.y > WINDOW_HEIGHT + BALL_RADIUS then
         GAME_OVER = true
     end
 end
 
 function Ball:draw()
-    love.graphics.circle('fill', self.x, self.y, BALL_RADIUS)
+    -- Scaling parameters to fit image in a WIDTH x HEIGHT box
+    scalex = BALL_RADIUS * 2 / BALL_SPRITE:getWidth()
+    scaley = BALL_RADIUS * 2 / BALL_SPRITE:getHeight()
+
+    -- Draw image to scale
+    love.graphics.draw(BALL_SPRITE, self.x - BALL_RADIUS, self.y - BALL_RADIUS, 0, scalex, scaley)
 end
 
 
 ---------------------
 -- SOCCER GAME
 -----------------
-
+local background_img = love.graphics.newImage("assets/img/football/gymnase.jpg")
+ 
 function SoccerGame:new()
     -- Init ball
     self.ball = Ball(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 30)
@@ -243,11 +250,21 @@ function SoccerGame:update(dt)
     -- Update player
     self.player:update(dt)
 
-    -- Update ball
-    self.ball:update(dt, self.player)
+    -- Update ball if not game over
+    if not GAME_OVER then
+        self.ball:update(dt, self.player)
+    end
 end
 
 function SoccerGame:draw()
+    -- Scaling parameters to fit image in a WIDTH x HEIGHT box
+    scalex = WINDOW_WIDTH / background_img:getWidth()
+    scaley = WINDOW_HEIGHT / background_img:getHeight()
+
+    -- Draw image to scale
+    love.graphics.draw(background_img, 0, 0, 0, scalex, scaley)
+
+    --Draw Ball and player
     self.ball:draw()
     self.player:draw()
     
