@@ -5,6 +5,7 @@ Game = class("Game"):include(Stateful)
 require "states/menu"
 -- require "states/intro"
 require "states/pause"
+require "states/soccer"
 
 inDialog = false -- TODO: add Dialog state
 
@@ -69,7 +70,9 @@ function Game:keypressed(key, code)
           kid.name,
           {"Bonjour Morpion !", "Comment tu vas ?", "Ça te dit de jouer au foot ?"},
           {
-            options = {{"Yes", function(dialog) end }, {"No", function(dialog) end}},
+            options = {
+              {"Yes", function(dialog) self:pushState("soccer") end },
+              {"No", function(dialog) end}},
             oncomplete= function(dialog) inDialog = false end
           }
         )

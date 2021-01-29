@@ -1,10 +1,17 @@
 --! file: Soccer.lua
+local Soccer = Game:addState("soccer")
 
-SoccerGame = Object:extend()
-local Ball = Object:extend()
+Object = require(".src.Classic")
+
 -- THIS IS NOT THE SAME PLAYER CLASS AS IN MAIN GAME
 -- THIS CLASS IS LOCAL ONLY TO THIS MINIGAME
+local SoccerGame = Object:extend()
+local Ball = Object:extend()
 local Player = Object:extend()
+
+-- Window dimensions
+local WINDOW_HEIGHT = love.graphics.getHeight()
+local WINDOW_WIDTH = love.graphics.getWidth()
 
 local GRAVITY = 800
 
@@ -212,6 +219,7 @@ end
 ---------------------
 -- SOCCER GAME
 -----------------
+
 function SoccerGame:new()
     -- Init ball
     self.ball = Ball(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 30)
@@ -250,4 +258,29 @@ function SoccerGame:draw()
     if GAME_OVER then
         love.graphics.print("GAME OVER", 21, 40)
     end
+end
+
+---------------------
+-- STATE MANAGEMENT
+---------------------
+local minigame = SoccerGame()
+
+function Soccer:enteredState()    
+end
+
+function Soccer:update(dt)
+    minigame:update(dt)
+end
+
+function Soccer:draw()
+    minigame:draw()
+end
+
+function Soccer:keypressed(key, code)
+    if key == 'escape' then
+        self:popState("soccer")
+    end
+    if key == 'r' then
+        minigame:reset()
+    end 
 end
