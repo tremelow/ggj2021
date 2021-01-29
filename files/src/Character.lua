@@ -4,10 +4,6 @@ Character = Object:extend()
 
 
 function Character:new(x,y)
-    -- Position
-    self.x = x
-    self.y = y
-
     -- Width and Height of characters (in pixels)
     self.WIDTH = 60
     self.HEIGHT = 120
@@ -17,6 +13,10 @@ function Character:new(x,y)
 
     -- Sprite of character
     self.image = love.graphics.newImage("assets/sheep.png")
+
+    -- Position
+    self.x = x 
+    self.y = y
 end
 
 
