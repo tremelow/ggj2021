@@ -3,7 +3,7 @@
 
 MAIN_FOLDER="."
 FILES_FOLDER="$MAIN_FOLDER/files/"
-TITLE="game"
+TITLE="Kermesse"
 
 cd $FILES_FOLDER
 zip -9 -r $TITLE.love .
