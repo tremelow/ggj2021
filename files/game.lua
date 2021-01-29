@@ -6,6 +6,7 @@ require "states/menu"
 -- require "states/intro"
 require "states/pause"
 require "states/minigames/soccer"
+require "states/minigames/jeudessin"
 
 inDialog = false -- TODO: add Dialog state
 
@@ -72,7 +73,7 @@ function Game:keypressed(key, code)
           {"Bonjour Morpion !", "Comment tu vas ?", "Ça te dit de jouer au foot ?"},
           {
             options = {
-              {"Yes", function(dialog) self:pushState("Soccer") end },
+              {"Yes", function(dialog) self:pushState("Dessin") end },
               {"No", function(dialog) end}},
             oncomplete= function(dialog) inDialog = false end
           }
