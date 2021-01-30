@@ -5,6 +5,7 @@ require "math"
 
 local prologue_counter = 1
 local frame_counter = 0
+local prologue_text = {}
 
 function Prologue:enteredState()
   prologue_images = {love.graphics.newImage("assets/img/prologue/theodule_1.png"), love.graphics.newImage("assets/img/prologue/theodule_2.png"),
@@ -14,7 +15,13 @@ function Prologue:enteredState()
   love.graphics.newImage("assets/img/prologue/star2_1.png"), love.graphics.newImage("assets/img/prologue/star2_2.png"),
   love.graphics.newImage("assets/img/prologue/star3_1.png"), love.graphics.newImage("assets/img/prologue/star3_2.png"),
   love.graphics.newImage("assets/img/prologue/doudou_1.png"), love.graphics.newImage("assets/img/prologue/doudou_2.png")}
-  assets_idx = {1, 1, 3, 3}
+  assets_idx = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 13, 13, 13, 13, 13, 13, 13}
+  
+  local content = ""
+  for line in love.filesystem.lines("assets/txt/prologue.json") do
+    content = content .. line
+  end
+  prologue_text = json.decode(content)
 end
 
 function Prologue:update(dt)
@@ -24,16 +31,16 @@ end
 function Prologue:draw()
   love.graphics.setBackgroundColor(0,0,0)
   if frame_counter < 6 then
-    love.graphics.draw(prologue_images[prologue_counter])
+    love.graphics.draw(prologue_images[assets_idx[prologue_counter]], (WINDOW_WIDTH-prologue_images[assets_idx[prologue_counter]]:getWidth())/2, 0)
   else
-    love.graphics.draw(prologue_images[prologue_counter+1])
+    love.graphics.draw(prologue_images[assets_idx[prologue_counter]+1], (WINDOW_WIDTH-prologue_images[assets_idx[prologue_counter]+1]:getWidth())/2, 0)
   end
   love.graphics.setColor(255,255,255)
 
-  local wTitle = math.floor(WINDOW_WIDTH/3)
+  local wTitle = math.floor(WINDOW_WIDTH/2)
   local xTitle = math.floor((WINDOW_WIDTH - wTitle)/2)
-  local yTitle = math.floor(WINDOW_HEIGHT/3)
-  local title = "moi c'est théodule"
+  local yTitle = math.floor(8*WINDOW_HEIGHT/9)
+  local title = prologue_text[prologue_counter]
   love.graphics.printf(title, xTitle, yTitle, wTitle, "center")
   
   -- on ecrit text[prologue_counter]
@@ -46,7 +53,7 @@ function Prologue:keypressed(key, code)
   elseif key == 'escape' then
     love.event.quit()
   end
-  if prologue_counter >= 3 then
+  if prologue_counter >= 29 then
 	self:popState("Prologue")
   end
 end
