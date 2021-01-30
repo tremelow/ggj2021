@@ -85,7 +85,7 @@
         ["Olga", "Prêt à combattre ?", ["D'accord", "Pas tout de suite"], ["minigame","no_minigame"]]
     ],
     "minigame":[
-        ["Olga", "Je vais te battre à plat de couture !"],
+        ["Olga", "Je vais te battre à plate couture !"],
         ["Olga", "Pierre... Feuille... Ciseaux !"],
         ["Minigame","Ref"]
     ],
