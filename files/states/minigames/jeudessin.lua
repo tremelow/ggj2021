@@ -1,6 +1,6 @@
 local Dessin = Game:addState("Dessin")
 
-local JeuDessin = Object:extend()
+local JeuDessin = class("JeuDessin")
 
 function JeuDessin:drawExample()
   --Dessin de l'exemple à reproduire
@@ -264,7 +264,6 @@ end
 -- STATE MANAGEMENT
 ---------------------
 local minigame = JeuDessin()
-
 
 function Dessin:enteredState()
   love.graphics.setBackgroundColor(0,0,0,1)
