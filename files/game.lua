@@ -86,14 +86,25 @@ function Game:draw()
   love.graphics.draw(tente, 700,230)
   love.graphics.draw(tableau, 90, 280)
 
+  local hero_drawn = false
   -- Draw NPCs
   for i, v in pairs(PNJs) do
-    v:draw()
+	if (Hero.y<v.y and math.abs((Hero.x-v.x))<50) then
+		if not hero_drawn then
+			Hero:draw()
+			hero_drawn = true
+		end
+		v:draw()
+	else
+		v:draw()
+	end
   end
 
   -- Draw Hero last
-  Hero:draw()
-
+  if not hero_drawn then
+    Hero:draw()
+  end
+  
   camera:detach()
   --camera:draw() --
 
