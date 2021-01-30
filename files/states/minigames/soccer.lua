@@ -220,7 +220,7 @@ end
 ---------------------
 
 function MiniGame:enteredState()
-    self.background_img = love.graphics.newImage("assets/img/football/gymnase.jpg")
+    self.background_img = love.graphics.newImage("assets/img/football/foot.png")
     self:reset()
 end
 
