@@ -117,7 +117,8 @@ end
 
 function MiniGame:nextSelect()
     self.MI = false
-    self.select = (self.select - 1 ) % 3 + 1
+    self.select = (self.select + 1 ) % 3 + 1
+    self.select = (self.select + 1 ) % 3 + 1
 end
 
 function MiniGame:prevSelect()
@@ -152,9 +153,7 @@ function MiniGame:draw()
     end
 
     -- Draw Score
-    love.graphics.rectangle("line", 20, 20, 140, 50)
     love.graphics.print("Theodule - " .. PLAYER_SCORE, 22, 30)
-    love.graphics.rectangle("line", WINDOW_WIDTH - 140, 20, 140, 50)
     love.graphics.print("Olga - " .. OPPONENT_SCORE, WINDOW_WIDTH - 138, 30)
 end
 
