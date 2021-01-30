@@ -1,6 +1,6 @@
 [
   {
-    "name": "Robeeeeert",
+    "name": "Bobby",
     "xpos": 200,
     "ypos": 200,
     "game": "Soccer",
@@ -12,14 +12,14 @@
             "Ça te dit de jouer au foot ?"
           ],
           "options": {"1": "Oui", "0": "Non"},
-          "yes": "Prépares-toi à crever !",
+          "yes": "Prépare-toi à crever !",
           "no": "Je le savais bien que t'étais une poule mouillée !"
         }
     }
   },
 
   {
-    "name": "Giseeeeeeeeeele",
+    "name": "Léon",
     "xpos": 400,
     "ypos": 300,
     "game": "Dessin",
@@ -31,7 +31,7 @@
             "Ça te dit de faire un dessin ?"
           ],
           "options": {"1": "Oui", "0": "Non"},
-          "yes": "Prépares-toi à crever !",
+          "yes": "Prépare-toi à crever !",
           "no": "Je le savais bien que t'étais une poule mouillée !"
         }
     }
@@ -50,7 +50,7 @@
             "Ça te dit de faire un dessin ?"
           ],
           "options": {"1": "Oui", "0": "Non"},
-          "yes": "Prépares-toi à crever !",
+          "yes": "Prépare-toi à crever !",
           "no": "Je le savais bien que t'étais une poule mouillée !"
         }
     }
