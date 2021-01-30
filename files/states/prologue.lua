@@ -52,8 +52,10 @@ function Prologue:keypressed(key, code)
 	  prologue_counter = prologue_counter+1
   elseif key == 'escape' then
     love.event.quit()
+  elseif key == 'p' then
+    self:popState("Prologue")
   end
   if prologue_counter >= 29 then
-	self:popState("Prologue")
+	  self:popState("Prologue")
   end
 end

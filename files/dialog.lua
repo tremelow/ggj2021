@@ -1,6 +1,7 @@
 local Dialog = Interact:addState("Dialog")
 
 function Dialog:enteredState(pnj)
+  -- ugly copies
   self.title = pnj.name
   self.msg = pnj.dialog.messages
   self.outcome = 0
