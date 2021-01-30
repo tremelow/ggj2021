@@ -64,7 +64,37 @@ function JeuDessin:drawExample()
   love.graphics.ellipse("fill", 1/2*self.gameWidth, 0.85*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
 
   love.graphics.setCanvas()
-  
+end
+
+function JeuDessin:resetDessin()
+  --Dessin des points pour indiquer
+  love.graphics.setCanvas(self.drawingCanvas)
+  love.graphics.setBlendMode("alpha", "premultiplied")
+  love.graphics.setColor(1, 1, 1, 1)
+  -- love.graphics.rectangle("fill", 0,0,gameWidth,gameHeight) --On met le rectangle noir
+  love.graphics.draw(tableau, 0,0)
+  love.graphics.setBlendMode("multiply", "premultiplied")
+  love.graphics.setColor(0, 0, 0, 0)
+  love.graphics.ellipse("fill", 0.4*self.gameWidth, 0.35*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+  love.graphics.ellipse("fill", 1/2*self.gameWidth, 0.35*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+  love.graphics.ellipse("fill", 0.6*self.gameWidth, 0.35*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+
+  love.graphics.ellipse("fill", 0.4*self.gameWidth, 0.45*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+  love.graphics.ellipse("fill", 1/2*self.gameWidth, 0.45*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+  love.graphics.ellipse("fill", 0.6*self.gameWidth, 0.45*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+
+  love.graphics.ellipse("fill", 0.4*self.gameWidth, 0.55*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+  love.graphics.ellipse("fill", 1/2*self.gameWidth, 0.55*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+  love.graphics.ellipse("fill", 0.6*self.gameWidth, 0.55*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+
+  love.graphics.ellipse("fill", 0.4*self.gameWidth, 0.65*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+  love.graphics.ellipse("fill", 1/2*self.gameWidth, 0.65*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+  love.graphics.ellipse("fill", 0.6*self.gameWidth, 0.65*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+
+  love.graphics.ellipse("fill", 1/2*self.gameWidth, 0.15*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+  love.graphics.ellipse("fill", 1/2*self.gameWidth, 0.85*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+
+  love.graphics.setCanvas()
 end
 
 function JeuDessin:drawButton()
@@ -80,6 +110,7 @@ end
 function JeuDessin:loadJeuDessin()
   self.timer = 0
   self.scoreComputed = false
+  self.seuilScore = 11000
 
   self.width, self.height, flags = love.window.getMode( ) --Taille de la fenetre
   --Taille de l'image background craie
@@ -153,7 +184,7 @@ function JeuDessin:drawJeuDessin()
   if not self.scoreComputed then
     textDialogue = "Montre moi que tu sais dessiner le S de Superman"
   else
-    if self.scoreGame > 15000 then
+    if self.scoreGame > self.seuilScore then
       textDialogue = "Perdu. T'es nul !"
     else
       textDialogue = "Bravo. Tu dessines trop bien !"
@@ -196,6 +227,18 @@ function JeuDessin:drawJeuDessin()
     fontWidth = font:getWidth("Valider")
     fontHeight = font:getWidth("Valider")
     love.graphics.print("Valider", self.gamex0+26 + (100-fontWidth)/2, self.gamey0+497 + 10 )
+    --Bouton Effacer
+    love.graphics.setBlendMode("alpha", "premultiplied")
+    love.graphics.setColor(0,0,0,1)
+    love.graphics.rectangle("fill", self.gamex0+26,self.gamey0+447, 100,50)
+    love.graphics.setColor(1,1,1,1)
+    love.graphics.setLineWidth(5)
+    love.graphics.rectangle("line", self.gamex0+26+2.5, self.gamey0+447+2.5 , 100,50-5)
+    love.graphics.setLineWidth(1)
+    love.graphics.setBlendMode("alpha", "alphamultiply")
+    fontWidth = font:getWidth("Effacer")
+    fontHeight = font:getWidth("Effacer")
+    love.graphics.print("Effacer", self.gamex0+26 + (100-fontWidth)/2, self.gamey0+447 + 10 )
   
 
     -- Quand on appuie sur la souris on dessine
@@ -238,6 +281,9 @@ function Dessin:mousepressed(x, y, button, istouch)
   if x > minigame.gamex0+26+2.5 and x < minigame.gamex0+100+2.5 and y > minigame.gamey0+497+2.5 and y < minigame.gamey0+497+45+2.5 then
     score = minigame:compareCanvases()
     print(score)
+  end
+  if x > minigame.gamex0+26+2.5 and x < minigame.gamex0+100+2.5 and y > minigame.gamey0+447+2.5 and y < minigame.gamey0+447+45+2.5 then
+    minigame:resetDessin()
   end
 end
 
