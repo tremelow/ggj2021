@@ -1,11 +1,11 @@
-{"leon":
-    {"first":[
+{"leon":{
+    "first":[
         ["Théodule", "C'est Léon."],
         ["Théodule", "Il est un peu comme moi, il ne parle pas beaucoup."],
         ["Théodule", "Il passe son temps à dessiner dans ses cahiers en rêvassant."],
         ["Théodule", "C'est le dernier à être sorti de la salle de classe... Peut-être qu'il a vu quelqu'un emporter Doudou ?"]
-      ],
-     "pres_minigame":[
+    ],
+    "pres_minigame":[
         ["Léon", "Hmmm ?"],
         ["Léon", "Oh, c'est toi, heu..."],
         ["Théodule", "Théodule"],
@@ -19,16 +19,16 @@
         ["Théodule", "Je ne sais pas dessiner, moi..."],
         ["Léon", "Mais c'est facile ! Je vais t'apprendre."],
         ["Léon", "Tu veux bien dessiner avec moi ?", ["D'accord", "Pas tout de suite"], ["minigame","no_minigame"]]
-      ],
-     "minigame":[
+    ],
+    "minigame":[
         ["Léon", "..."],
         ["Léon", "Voilà ! Il suffit de relier les points !"],
         ["Minigame","Ref"]
-      ],
-     "no_minigame":[
+    ],
+    "no_minigame":[
         ["Léon", "Dommage... Reviens quand tu veux !"]
-      ],
-     "victory_first":[
+    ],
+    "victory_first":[
         ["Léon", "Oh ! Mais tu dessines super bien, finalement !"],
         ["Léon", "Mais c'est pas la peine de dessiner ta grenouille, si je l'avais vue je m'en souviendrais."],
         ["Théodule", "Oh..."],
@@ -40,20 +40,104 @@
         ["Léon", "De rien ! C'était marrant de dessiner avec toi. Tu as beaucoup de potentiel !"],
         ["Théodule", "C'est gentil. Et... Tu peux m'appeler Théo."],
         ["Léon", "Hmmm ? À plus, Théodule."]
-      ],
-     "victory_not_first":[
+    ],
+    "victory_not_first":[
         ["Léon", "Bravo !"],
         ["Léon", "Tu veux dessiner encore ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
-      ],
-     "defeat":[
+    ],
+    "defeat":[
         ["Léon", "Hmmm... C'est pas terrible."],
         ["Léon", "Tu veux réessayer ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
-      ],
-     "minigame_known_never_won":[
+    ],
+    "minigame_known_never_won":[
         ["Léon", "Alors, tu veux que je t'apprenne à dessiner ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
       ],
-     "minigame_won":[
+    "minigame_won":[
         ["Léon", "Tu es revenu ! Tu veux dessiner encore ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
-     ],
-    }
+    ],
+    },
+
+"olga":{
+    "first":[
+        ["Théodule", "C'est Olga."],
+        ["Théodule", "Elle tient le stand de voyance, mais elle est déguisée en sorcière."],
+        ["Théodule", "Elle me fait un peu peur..."],
+        ["Théodule", "Je ne serais pas étonnée qu'elle ait des vrais pouvoirs magiques."]
+    ],
+    "vtff":[
+        ["Olga", "Salut Dudule !"],
+        ["Olga", "Pour deux euros je lis l'avenir et le passé."],
+        ["Théodule", "Je les garde pour la tombola..."],
+        ["Olga", "Alors fiche le camp, rapiat !"]
+    ],
+    "pres_minigame":[
+        ["Olga", "Salut Dudule !"],
+        ["Olga", "Pour deux euros je lis l'avenir et le passé."],
+        ["Théodule", "Heu... C'est Léon qui m'envoie."],
+        ["Olga", "..."],
+        ["Olga", "V-vraiment ?"],
+        ["Olga", "Je ne savais pas que vous étiez amis."],
+        ["Théodule", "Il a dit que si tu utilisais tes pouvoirs pour m'aider à retrouver Doudou, il ferait ton portrait."],
+        ["Olga", "Oh !"],
+        ["Olga", "D'accord... À une condition."],
+        ["Olga", "Je ne lis pas l'avenir des gens malchanceux, ça me déprime."],
+        ["Olga", "Alors si tu veux connaître les secrets du temps, il va falloir que tu me battes à pierre feuille ciseaux !"],
+        ["Olga", "Prêt à combattre ?", ["D'accord", "Pas tout de suite"], ["minigame","no_minigame"]]
+    ],
+    "minigame":[
+        ["Olga", "Je vais te battre à plat de couture !"],
+        ["Olga", "Pierre... Feuille... Ciseaux !"],
+        ["Minigame","Ref"]
+    ],
+    "no_minigame":[
+        ["Olga", "Ahah ! Tu as peur de ma puissance ?"]
+    ],
+    "victory_first":[
+        ["Olga", "Hmph ! Un humain ordinaire, me battre à pierre feuille ciseaux ?"],
+        ["Olga", "Tu dois avoir un sacré pot !"],
+        ["Olga", "Très bien ! Que veux-tu savoir, le passé ou l'avenir ?"],
+        ["Théodule", "Je veux savoir où est passé Doudou. C'est ma peluche porte-bonheur. Elle a disparu de mon sac."],
+        ["Olga", "Tu t'en sors très bien sans Doudou, pourtant."],
+        ["Olga", "Mais c'est d'accord, je vais lire ton passé pour découvrir la vérité."],
+        ["Olga", "..."],
+        ["Olga", "......"],
+        ["Olga", "........."],
+        ["Olga", "Je vois, je vois..."],
+        ["Olga", "Oui, je vois un petit garçon tout maigre qui arrive à l'école..."],
+        ["Olga", "Son sac est entrouvert..."],
+        ["Olga", "Oh !"],
+        ["Théodule", "Quoi ?"],
+        ["Olga", "Quelque chose est tombé de son sac !"],
+        ["Olga", "C'est une grenouille en peluche..."],
+        ["Théodule", "Doudou !"],
+        ["Olga", "Quelqu'un se penche pour le ramasser..."],
+        ["Théodule", "Qui ? Qui ça ?"],
+        ["Olga", "Mais tais-toi donc !"],
+        ["Olga", "Zut, j'ai perdu ma concentration ! Je ne vois plus rien..."],
+        ["Olga", "Je n'ai pas vu son visage, mais c'était un garçon..."],
+        ["Olga", "Tu sais qui je pense que c'était ?"],
+        ["Olga", "Kevin. Ça lui ressemblerait bien de faire ce genre de crasses..."],
+        ["Théodule", "Kevin ? Oh non..."],
+        ["Olga", "En tout cas, si c'est lui, ça va être difficile de récupérer Doudou..."],
+        ["Olga", "Bonne chance Dudule !"],
+        ["Théodule", "Merci... Et moi c'est Théo..."],
+        ["Olga", "Hahaha !"]        
+    ],
+    "victory_not_first":[
+        ["Olga", "Grrr ! C'est pas possible !"],
+        ["Olga", "Mais j'aurai ma revanche !", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+    ],
+    "defeat":[
+        ["Olga", "Hahahaha ! Je suis la meilleure !"],
+        ["Olga", "On recommence !", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+    ],
+    "minigame_known_never_won":[
+        ["Olga", "Alors, tu es prêt à m'affronter ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+      ],
+    "minigame_won":[
+        ["Olga", "Tu veux mesurer ta chance à la mienne une nouvelle fois ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+    ],
+    },
+
+
 }
