@@ -6,6 +6,7 @@ require "math"
 local prologue_counter = 1
 local frame_counter = 0
 local prologue_text = {}
+local anim_counter = 1
 
 function Prologue:enteredState()
   prologue_images = {love.graphics.newImage("assets/img/prologue/theodule_1.png"), love.graphics.newImage("assets/img/prologue/theodule_2.png"),
@@ -47,8 +48,23 @@ function Prologue:draw()
 	  love.graphics.draw(prologue_images[assets_idx[prologue_counter]][6], 6*(WINDOW_WIDTH)/8, WINDOW_HEIGHT/6)
 	  love.graphics.draw(prologue_images[assets_idx[prologue_counter]][8], 2*(WINDOW_WIDTH)/8, WINDOW_HEIGHT/3)
 	end
-  elseif prologue_counter>24 then
-	--love.graphics.draw(prologue_images[8][math.min(frame_counter, 9)])
+  elseif prologue_counter==25 then
+	if (frame_counter==6) then
+		anim_counter = anim_counter+1
+	end
+	if (anim_counter>7 and frame_counter>6) then
+		anim_counter = 9
+	elseif(anim_counter>7) then
+		anim_counter = 8
+	end
+	local anim_image = prologue_images[8][anim_counter]
+	love.graphics.draw(anim_image, (WINDOW_WIDTH-anim_image:getWidth())/2, 0)
+  elseif prologue_counter>25 then
+    if frame_counter < 6 then
+      love.graphics.draw(prologue_images[assets_idx[prologue_counter]][8], (WINDOW_WIDTH-prologue_images[assets_idx[prologue_counter]][8]:getWidth())/2, 0)
+	else
+	  love.graphics.draw(prologue_images[assets_idx[prologue_counter]][9], (WINDOW_WIDTH-prologue_images[assets_idx[prologue_counter]][9]:getWidth())/2, 0)
+	end
   else
 	if frame_counter < 6 then
       love.graphics.draw(prologue_images[assets_idx[prologue_counter]], (WINDOW_WIDTH-prologue_images[assets_idx[prologue_counter]]:getWidth())/2, 0)
