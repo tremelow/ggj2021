@@ -21,9 +21,7 @@ end
 function PNJ:initAnimation(sprite)
     local width  = math.floor(sprite:getWidth() / 2)
     local height = sprite:getHeight()
-    os.execute("echo " .. width .. " " .. height)
     self.animation = Animation:new(sprite, width, height, 0.25)
-    os.execute("echo " .. self.animation.currentTime)
 end
 
 function PNJ:update(dt, Hero)

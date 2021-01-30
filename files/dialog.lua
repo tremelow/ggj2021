@@ -21,11 +21,13 @@ end
 
 function Dialog:exit()
   local finalLine = self.no
-  if self.outcome then finalLine = self.yes end
+  if self.outcome == 1 then finalLine = self.yes end
 
-  Talkies.say(self.title, self.yes, {
+  Talkies.say(self.title, finalLine, {
       oncomplete = function (dialog)
-        self.game:pushState(self.minigame)
+        if self.outcome == 1 then
+          self.game:pushState(self.minigame)
+        end
         self:popState("Dialog")
       end
     })
