@@ -2,6 +2,7 @@ debug = true
 
 class = require("lib/middleclass/middleclass")
 Stateful = require("lib/stateful/stateful")
+json = require("lib/json")
 
 require "game"
 
@@ -34,12 +35,18 @@ function love.load(arg)
   require(".src.Player")
   require(".src.PNJ")
   
-  -- Init Players and three PNJs
+  -- Init Players and PNJs
   Hero = Player(0,0)
-  PNJs = {PNJ(200,200, "Robeeeert"),
-  PNJ(400,300, "Giseeeeeele"),
-  PNJ(600,300, "Eeeeeetienne")}
-  
+
+  PNJs = {}
+  local content = ""
+  for line in love.filesystem.lines("assets/txt/pnjs.json") do
+    content = content .. line
+  end
+  local pnjData = json.decode(content)
+  for index, kid in ipairs(pnjData) do
+    table.insert(PNJs, PNJ(kid.xpos, kid.ypos, kid.name, kid.game, kid.dialog))
+  end
 end
 
 function love.update(dt)

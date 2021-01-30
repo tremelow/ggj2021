@@ -1,39 +1,62 @@
 -- [tutorial](https://aalvarez.me/posts/an-introduction-to-game-states-in-love2d/)
 
 Game = class("Game"):include(Stateful)
+Interact = class("Interact"):include(Stateful)
+
+local interact
 
 require "states/menu"
--- require "states/intro"
 require "states/pause"
+
+require "dialog"
+
 require "states/minigames/soccer"
 require "states/minigames/jeudessin"
 
-inDialog = false -- TODO: add Dialog state
+
+
+
+function Interact:initialize()
+end
+
+function Interact:update(dt)
+  -- Update Camera
+  camera:update(dt)
+  camera:follow(Hero.x, Hero.y)
+  
+  -- Move Hero
+  Hero:update(dt)
+  
+  -- Identify if PNJ close to player
+  for i, v in ipairs(PNJs) do
+    v:update(dt, Hero)
+  end
+end
+
+function Interact:draw()
+end
+
+function Interact:keypressed(key, code)
+  if key == "space" then
+    for i, kid in ipairs(PNJs) do
+      if kid:isCharacterClose(Hero) then
+        self:pushState("Dialog", kid)
+      end
+    end
+  end
+end
+
 
 function Game:initialize()
   self:gotoState("Menu")
+  interact = Interact:new()
 end
 
 function Game:exit()
 end
 
 function Game:update(dt)
-  -- Update Camera
-  camera:update(dt)
-  camera:follow(Hero.x, Hero.y)
-  
-  -- Move Hero
-  if not inDialog then
-    Hero:update(dt)
-  end
-  
-  -- Identify if PNJ close to player
-  for i, v in ipairs(PNJs) do
-    v:update(dt, Hero)
-  end
-  
-  -- Talkies
-  Talkies.update(dt)
+  interact:update(dt)
 end
 
 function Game:draw()
@@ -54,7 +77,7 @@ function Game:draw()
   camera:detach()
   --camera:draw() --
 
-  Talkies.draw()
+  interact:draw()
 end
 
 
@@ -63,27 +86,7 @@ function Game:keypressed(key, code)
     self:pushState("Pause") -- the topmost state has priority
   end
 
-  if not inDialog and key == "space" then
-    inDialog = true
-    for i, kid in ipairs(PNJs) do
-      if kid:isCharacterClose(Hero) then
-        -- self:dialog(kid.dialog)
-        Talkies.say(
-          kid.name,
-          {"Bonjour Morpion !", "Comment tu vas ?", "Ça te dit de jouer au foot ?"},
-          {
-            options = {
-              {"Yes", function(dialog) self:pushState("Dessin") end },
-              {"No", function(dialog) end}},
-            oncomplete= function(dialog) inDialog = false end
-          }
-        )
-      end
-    end
-  elseif inDialog and key == "space" then Talkies.onAction()
-  elseif inDialog and key == "up" then Talkies.prevOption()
-  elseif inDialog and key == "down" then Talkies.nextOption()
-  end
+  interact:keypressed(key, code)
 end
 
 function Game:mousepressed(x, y, button, isTouch)

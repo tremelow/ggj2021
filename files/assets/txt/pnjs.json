@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Robeeeeert",
+    "xpos": 200,
+    "ypos": 200,
+    "game": "Soccer",
+    "dialog": {
+      "ready": {
+          "messages": [
+            "Salut Morpion !",
+            "Comment tu vas ?",
+            "Ça te dit de jouer au foot ?"
+          ],
+          "options": {"1": "Oui", "0": "Non"},
+          "yes": "Prépares-toi à crever !",
+          "no": "Je le savais bien que t'étais une poule mouillée !"
+        }
+    }
+  },
+
+  {
+    "name": "Giseeeeeeeeeele",
+    "xpos": 400,
+    "ypos": 300,
+    "game": "Dessin",
+    "dialog": {
+      "ready": {
+          "messages": [
+            "Salut Morpion !",
+            "Comment tu vas ?",
+            "Ça te dit de faire un dessin ?"
+          ],
+          "options": {"1": "Oui", "0": "Non"},
+          "yes": "Prépares-toi à crever !",
+          "no": "Je le savais bien que t'étais une poule mouillée !"
+        }
+    }
+  },
+
+  {
+    "name": "Eeettieeeeeeenne",
+    "xpos": 600,
+    "ypos": 300,
+    "game": "Dessin",
+    "dialog": {
+      "ready": {
+          "messages": [
+            "Salut Morpion !",
+            "Comment tu vas ?",
+            "Ça te dit de faire un dessin ?"
+          ],
+          "options": {"1": "Oui", "0": "Non"},
+          "yes": "Prépares-toi à crever !",
+          "no": "Je le savais bien que t'étais une poule mouillée !"
+        }
+    }
+  }
+]

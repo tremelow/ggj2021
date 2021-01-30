@@ -1,14 +1,17 @@
 PNJ = Character:extend()
 
 
-function PNJ:new(x,y,name)
+function PNJ:new(x,y,name,minigame, dialog)
     -- initialize PNJ
     Player.super.new(self,x,y)
     -- give name to the character
     self.name = name
-
+    self.minigame = minigame
     -- flag for interaction
     self.highlight = false
+    -- messages (sous-bloc "ready" au cas où on voudrait distinguer des
+    -- phases de l'histoire)
+    self.dialog = dialog.ready
 end
 
 function PNJ:update(dt, Hero)
