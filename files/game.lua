@@ -27,7 +27,9 @@ function Game:initialize()
   FIELD_SIZE = background:getWidth()
   tente = love.graphics.newImage("assets/img/world/tente.png")
   tableau = love.graphics.newImage("assets/img/world/tableau.png")
-
+  cage = love.graphics.newImage("assets/img/world/cage.png")
+  punchingball = love.graphics.newImage("assets/img/world/punchingball.png")
+  
   -- Initialize Camera, left-right scrolling
   camera = Camera()
   camera:setFollowStyle('PLATFORMER')
@@ -85,6 +87,8 @@ function Game:draw()
   love.graphics.draw(background, 0, 0, 0, 1, WINDOW_HEIGHT/background:getHeight())
   love.graphics.draw(tente, 700,230)
   love.graphics.draw(tableau, 90, 280)
+  love.graphics.draw(cage, 2000, 400)
+  love.graphics.draw(punchingball, 1400, 150)
 
   local hero_drawn = false
   -- Draw NPCs
