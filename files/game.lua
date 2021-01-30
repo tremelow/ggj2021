@@ -88,7 +88,7 @@ function Game:draw()
   love.graphics.draw(tente, 700,230)
   love.graphics.draw(tableau, 90, 280)
   love.graphics.draw(cage, 2000, 400)
-  love.graphics.draw(punchingball, 1400, 150)
+  love.graphics.draw(punchingball, 1600, 150)
 
   local hero_drawn = false
   -- Draw NPCs
