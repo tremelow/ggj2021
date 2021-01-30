@@ -1,11 +1,10 @@
 --! file: Soccer.lua
-local Soccer = Game:addState("Soccer")
+local MiniGame = Game:addState("Soccer")
 
 Vector = require("src.utils.vector")
 
 -- THIS IS NOT THE SAME PLAYER CLASS AS IN MAIN GAME
 -- THIS CLASS IS LOCAL ONLY TO THIS MINIGAME
-local SoccerGame = class("SoccerGame")
 local Ball = class("Ball")
 local Player = class("Player")
 
@@ -216,19 +215,16 @@ function Ball:draw()
     )
 end
 
-
 ---------------------
--- SOCCER GAME
------------------
-local background_img = love.graphics.newImage("assets/img/football/gymnase.jpg")
- 
-function SoccerGame:initialize()
-    -- Init ball
-    self.ball = Ball(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 30)
-    self.player = Player()
+-- GAME MANAGEMENT
+---------------------
+
+function MiniGame:enteredState()
+    self.background_img = love.graphics.newImage("assets/img/football/gymnase.jpg")
+    self:reset()
 end
 
-function SoccerGame:reset()
+function MiniGame:reset()
     -- Init ball
     self.ball = Ball(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 30)
     self.player = Player()
@@ -238,7 +234,7 @@ function SoccerGame:reset()
     GAME_OVER = false
 end
 
-function SoccerGame:update(dt)
+function MiniGame:update(dt)
     if love.keyboard.isDown("r") then
         self:reset()
     end
@@ -251,13 +247,13 @@ function SoccerGame:update(dt)
     end
 end
 
-function SoccerGame:draw()
+function MiniGame:draw()
     -- Scaling parameters to fit image in a WIDTH x HEIGHT box
-    scalex = WINDOW_WIDTH / background_img:getWidth()
-    scaley = WINDOW_HEIGHT / background_img:getHeight()
+    scalex = WINDOW_WIDTH / self.background_img:getWidth()
+    scaley = WINDOW_HEIGHT / self.background_img:getHeight()
 
     -- Draw image to scale
-    love.graphics.draw(background_img, 0, 0, 0, scalex, scaley)
+    love.graphics.draw(self.background_img, 0, 0, 0, scalex, scaley)
 
     --Draw Ball and player
     self.ball:draw()
@@ -272,28 +268,12 @@ function SoccerGame:draw()
     end
 end
 
----------------------
--- STATE MANAGEMENT
----------------------
-local minigame = SoccerGame()
-
-function Soccer:enteredState()
-end
-
-function Soccer:update(dt)
-    minigame:update(dt)
-end
-
-function Soccer:draw()
-    minigame:draw()
-end
-
-function Soccer:keypressed(key, code)
+function MiniGame:keypressed(key, code)
     if key == 'escape' then
         self:popState("Soccer")
     elseif key == 'p' then
         self:pushState("Pause")
     elseif key == 'r' then
-        minigame:reset()
+        self:reset()
     end
 end
