@@ -1,0 +1,59 @@
+{"leon":
+    {"first":[
+        ["Théodule", "C'est Léon."],
+        ["Théodule", "Il est un peu comme moi, il ne parle pas beaucoup."],
+        ["Théodule", "Il passe son temps à dessiner dans ses cahiers en rêvassant."],
+        ["Théodule", "C'est le dernier à être sorti de la salle de classe... Peut-être qu'il a vu quelqu'un emporter Doudou ?"]
+      ],
+     "pres_minigame":[
+        ["Léon", "Hmmm ?"],
+        ["Léon", "Oh, c'est toi, heu..."],
+        ["Théodule", "Théodule"],
+        ["Théodule", "Désolé de t'embêter..."],
+        ["Théodule", "Est-ce que tu as vu une grenouille grande comme ça ?"],
+        ["Léon", "Je ne savais pas qu'il y avait des grenouilles si grandes. Peut-être en Amazonie ?"],
+        ["Théodule", "Heu, non... C'est ma peluche, Doudou."],
+        ["Théodule", "Je l'ai perdue."],
+        ["Léon", "Ah."],
+        ["Léon", "Ça ne me dit rien... Peut-être que tu peux me la dessiner ?"],
+        ["Théodule", "Je ne sais pas dessiner, moi..."],
+        ["Léon", "Mais c'est facile ! Je vais t'apprendre."],
+        ["Léon", "Tu veux bien dessiner avec moi ?", ["D'accord", "Pas tout de suite"], ["minigame","no_minigame"]]
+      ],
+     "minigame":[
+        ["Léon", "..."],
+        ["Léon", "Voilà ! Il suffit de relier les points !"],
+        ["Minigame","Ref"]
+      ],
+     "no_minigame":[
+        ["Léon", "Dommage... Reviens quand tu veux !"]
+      ],
+     "victory_first":[
+        ["Léon", "Oh ! Mais tu dessines super bien, finalement !"],
+        ["Léon", "Mais c'est pas la peine de dessiner ta grenouille, si je l'avais vue je m'en souviendrais."],
+        ["Théodule", "Oh..."],
+        ["Léon", "Mais tu peux aller au stand de voyance !"],
+        ["Léon", "Peut-être qu'Olga pourra lire ton futur et te dire où trouver Doudou."],
+        ["Léon", "Dis-lui que si elle te le fait gratis, je dessinerai son portrait !"],
+        ["Théodule", "C'est une bonne idée, ça !"],
+        ["Théodule", "Merci beaucoup, Léon !"],
+        ["Léon", "De rien ! C'était marrant de dessiner avec toi. Tu as beaucoup de potentiel !"],
+        ["Théodule", "C'est gentil. Et... Tu peux m'appeler Théo."],
+        ["Léon", "Hmmm ? À plus, Théodule."]
+      ],
+     "victory_not_first":[
+        ["Léon", "Bravo !"],
+        ["Léon", "Tu veux dessiner encore ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+      ],
+     "defeat":[
+        ["Léon", "Hmmm... C'est pas terrible."],
+        ["Léon", "Tu veux réessayer ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+      ],
+     "minigame_known_never_won":[
+        ["Léon", "Alors, tu veux que je t'apprenne à dessiner ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+      ],
+     "minigame_won":[
+        ["Léon", "Tu es revenu ! Tu veux dessiner encore ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+     ],
+    }
+}
