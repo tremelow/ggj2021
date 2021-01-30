@@ -204,6 +204,10 @@ end
 
 function MiniGame:enteredState()
     self:reset() 
+     --music 
+    self.source = love.audio.newSource("assets/audio/minigame.wav", "stream")
+    self.source:isLooping(true)
+    love.audio.play(self.source)
 end
 
 
@@ -261,6 +265,7 @@ end
 function MiniGame:keypressed(key, code)
     if key == 'escape' then
         self:popState("Billes")
+        self.source:stop()
     elseif key == 'p' then
         self:pushState("Pause")
     elseif key == 'r' then

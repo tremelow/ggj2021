@@ -221,6 +221,10 @@ end
 
 function MiniGame:enteredState()
     self.background_img = love.graphics.newImage("assets/img/football/foot.png")
+     --music 
+    self.source = love.audio.newSource("assets/audio/minigame.wav", "stream")
+    self.source:isLooping(true)
+    love.audio.play(self.source)
     self:reset()
 end
 
@@ -270,6 +274,7 @@ end
 
 function MiniGame:keypressed(key, code)
     if key == 'escape' then
+        self.source:stop()
         self:popState("Soccer")
     elseif key == 'p' then
         self:pushState("Pause")

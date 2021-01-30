@@ -8,7 +8,7 @@ function JeuDessin:drawExample()
   love.graphics.setBlendMode("alpha", "premultiplied")
   love.graphics.setColor(1, 1, 1, 1)
   -- love.graphics.rectangle("fill", 0,0,gameWidth,gameHeight) --On met le rectangle noir
-  love.graphics.draw(tableau, 0,0)
+  love.graphics.draw(self.tableau, 0,0)
   love.graphics.setBlendMode("multiply", "premultiplied")
   love.graphics.setColor(0, 0, 0, 0)
   love.graphics.setLineWidth( 2*self.tailleCrayon ) 
@@ -41,7 +41,7 @@ function JeuDessin:drawExample()
   love.graphics.setBlendMode("alpha", "premultiplied")
   love.graphics.setColor(1, 1, 1, 1)
   -- love.graphics.rectangle("fill", 0,0,gameWidth,gameHeight) --On met le rectangle noir
-  love.graphics.draw(tableau, 0,0)
+  love.graphics.draw(self.tableau, 0,0)
   love.graphics.setBlendMode("multiply", "premultiplied")
   love.graphics.setColor(0, 0, 0, 0)
   love.graphics.ellipse("fill", 0.4*self.gameWidth, 0.35*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
@@ -72,7 +72,7 @@ function JeuDessin:resetDessin()
   love.graphics.setBlendMode("alpha", "premultiplied")
   love.graphics.setColor(1, 1, 1, 1)
   -- love.graphics.rectangle("fill", 0,0,gameWidth,gameHeight) --On met le rectangle noir
-  love.graphics.draw(tableau, 0,0)
+  love.graphics.draw(self.tableau, 0,0)
   love.graphics.setBlendMode("multiply", "premultiplied")
   love.graphics.setColor(0, 0, 0, 0)
   love.graphics.ellipse("fill", 0.4*self.gameWidth, 0.35*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
@@ -129,7 +129,7 @@ function JeuDessin:loadJeuDessin()
   self.drawingCanvas = love.graphics.newCanvas(self.gameWidth,self.gameHeight)
   self.exampleCanvas = love.graphics.newCanvas(self.gameWidth,self.gameHeight)
   craieBackground = love.graphics.newImage("assets/craieback.png")
-  tableau = love.graphics.newImage("assets/tableau.png")
+  self.tableau = love.graphics.newImage("assets/tableau.png")
 
   self.tailleCrayon = 5
 
@@ -138,13 +138,19 @@ function JeuDessin:loadJeuDessin()
   love.graphics.setCanvas(drawingCanvas)
   love.graphics.setColor(0, 0, 0, 1)
   -- love.graphics.rectangle("fill", 0,0,gameWidth,gameHeight) --On met le rectangle noir
-  love.graphics.draw(tableau, 0,0)
+  love.graphics.draw(self.tableau, 0,0)
 
   self:drawExample()
 
   self:drawButton()
 
   love.graphics.setCanvas()
+
+  --music 
+  self.source = love.audio.newSource("assets/audio/minigame.wav", "stream")
+  self.source:isLooping(true)
+  love.audio.play(self.source)
+
 end
 
 function JeuDessin:compareCanvases ()
@@ -299,6 +305,7 @@ end
 function Dessin:keypressed(key, code)
   if key == 'escape' then
       love.mouse.setCursor()
+      minigame.source:stop()
       self:popState("Dessin")
   elseif key == 'p' then
       self:pushState("Pause")
