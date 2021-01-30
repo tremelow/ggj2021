@@ -17,6 +17,7 @@ require "states/minigames/soccer"
 require "states/minigames/jeudessin"
 require "states/minigames/billes"
 require "states/minigames/shifumi"
+require "states/minigames/punch"
 
 
 function Interact:initialize(game)
