@@ -106,13 +106,16 @@ function Game:draw()
 
   local hero_drawn = false
   -- Draw NPCs
+  love.graphics.circle("fill", Hero.x, Hero.y, 10)
   for i, v in ipairs(PNJs) do
-	if (Hero.y<v.y) then
+	
+	love.graphics.circle("fill", v.x, v.y, 10)
+	if (Hero.y<v.y and math.abs((Hero.x-v.x))<50) then
 		if not hero_drawn then
 			Hero:draw()
+			hero_drawn = true
 		end
 		v:draw()
-		hero_drawn = true
 	else
 		v:draw()
 	end
