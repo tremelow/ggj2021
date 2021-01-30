@@ -10,12 +10,12 @@ local prologue_text = {}
 function Prologue:enteredState()
   prologue_images = {love.graphics.newImage("assets/img/prologue/theodule_1.png"), love.graphics.newImage("assets/img/prologue/theodule_2.png"),
   love.graphics.newImage("assets/img/prologue/emilie_1.png"), love.graphics.newImage("assets/img/prologue/emilie_2.png"), 
-  love.graphics.newImage("assets/img/prologue/telescope_1.png"), love.graphics.newImage("assets/img/prologue/telescope_2.png"),
+  {love.graphics.newImage("assets/img/prologue/telescope_1.png"), love.graphics.newImage("assets/img/prologue/telescope_2.png"),
   love.graphics.newImage("assets/img/prologue/star1_1.png"), love.graphics.newImage("assets/img/prologue/star1_2.png"),
   love.graphics.newImage("assets/img/prologue/star2_1.png"), love.graphics.newImage("assets/img/prologue/star2_2.png"),
-  love.graphics.newImage("assets/img/prologue/star3_1.png"), love.graphics.newImage("assets/img/prologue/star3_2.png"),
+  love.graphics.newImage("assets/img/prologue/star3_1.png"), love.graphics.newImage("assets/img/prologue/star3_2.png")},
   love.graphics.newImage("assets/img/prologue/doudou_1.png"), love.graphics.newImage("assets/img/prologue/doudou_2.png")}
-  assets_idx = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 13, 13, 13, 13, 13, 13, 13}
+  assets_idx = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6}
   
   local content = ""
   for line in love.filesystem.lines("assets/txt/prologue.json") do
@@ -30,11 +30,28 @@ end
 
 function Prologue:draw()
   love.graphics.setBackgroundColor(0,0,0)
-  if frame_counter < 6 then
-    love.graphics.draw(prologue_images[assets_idx[prologue_counter]], (WINDOW_WIDTH-prologue_images[assets_idx[prologue_counter]]:getWidth())/2, 0)
+  if (prologue_counter>16 and prologue_counter<22) then
+	if frame_counter < 6 then
+      love.graphics.draw(prologue_images[assets_idx[prologue_counter]][1], (WINDOW_WIDTH-prologue_images[assets_idx[prologue_counter]][1]:getWidth())/2, 0)
+	  love.graphics.draw(prologue_images[assets_idx[prologue_counter]][3], (WINDOW_WIDTH)/8, 0)
+	  love.graphics.draw(prologue_images[assets_idx[prologue_counter]][5], 6*(WINDOW_WIDTH)/8, WINDOW_HEIGHT/6)
+	  love.graphics.draw(prologue_images[assets_idx[prologue_counter]][7], 2*(WINDOW_WIDTH)/8, WINDOW_HEIGHT/3)
+	else
+	  love.graphics.draw(prologue_images[assets_idx[prologue_counter]][2], (WINDOW_WIDTH-prologue_images[assets_idx[prologue_counter]][2]:getWidth())/2, 0)
+	  love.graphics.draw(prologue_images[assets_idx[prologue_counter]][4], (WINDOW_WIDTH)/8, 0)
+	  love.graphics.draw(prologue_images[assets_idx[prologue_counter]][6], 6*(WINDOW_WIDTH)/8, WINDOW_HEIGHT/6)
+	  love.graphics.draw(prologue_images[assets_idx[prologue_counter]][8], 2*(WINDOW_WIDTH)/8, WINDOW_HEIGHT/3)
+	end
   else
-    love.graphics.draw(prologue_images[assets_idx[prologue_counter]+1], (WINDOW_WIDTH-prologue_images[assets_idx[prologue_counter]+1]:getWidth())/2, 0)
+	if frame_counter < 6 then
+      love.graphics.draw(prologue_images[assets_idx[prologue_counter]], (WINDOW_WIDTH-prologue_images[assets_idx[prologue_counter]]:getWidth())/2, 0)
+	else
+	  love.graphics.draw(prologue_images[assets_idx[prologue_counter]+1], (WINDOW_WIDTH-prologue_images[assets_idx[prologue_counter]+1]:getWidth())/2, 0)
+	end
   end
+  
+  
+  
   love.graphics.setColor(255,255,255)
 
   local wTitle = math.floor(WINDOW_WIDTH/2)
