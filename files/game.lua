@@ -12,8 +12,7 @@ require "dialog"
 
 require "states/minigames/soccer"
 require "states/minigames/jeudessin"
-
-
+require "states/minigames/billes"
 
 
 function Interact:initialize(game)

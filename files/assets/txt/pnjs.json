@@ -41,16 +41,16 @@
     "name": "Eeettieeeeeeenne",
     "xpos": 600,
     "ypos": 300,
-    "game": "Dessin",
+    "game": "Billes",
     "dialog": {
       "ready": {
           "messages": [
             "Salut Morpion !",
             "Comment tu vas ?",
-            "Ça te dit de faire un dessin ?"
+            "Ça te dit de jouer aux billes ?"
           ],
           "options": {"1": "Oui", "0": "Non"},
-          "yes": "Prépare-toi à crever !",
+          "yes": "Que le meilleur gagne !",
           "no": "Je le savais bien que t'étais une poule mouillée !"
         }
     }
