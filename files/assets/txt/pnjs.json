@@ -4,6 +4,7 @@
     "xpos": 200,
     "ypos": 200,
     "sprite": "bobby.png",
+	"shadow": "bobby_s.png",
     "game": "Soccer",
     "dialog": {
       "ready": {
@@ -24,6 +25,7 @@
     "xpos": 400,
     "ypos": 300,
     "sprite": "leon.png",
+	"shadow": "leon_s.png",
     "game": "Dessin",
     "dialog": {
       "ready": {
@@ -43,6 +45,7 @@
     "xpos": 600,
     "ypos": 300,
     "sprite": "emilie.png",
+	"shadow": "emilie_s.png",
     "game": "Billes",
     "dialog": {
       "ready": {
@@ -63,6 +66,7 @@
     "xpos": 900,
     "ypos": 500,
 	"sprite": "olga.png",
+	"shadow": "olga_s.png",
     "game": "Shifumi",
     "dialog": {
       "ready": {

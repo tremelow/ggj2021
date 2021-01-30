@@ -16,6 +16,9 @@ function PNJ:new(params)
     local spritePath = "assets/img/characters/" .. params.sprite
     self.sprite = love.graphics.newImage(spritePath)
     self:initAnimation(self.sprite)
+	
+	self.shadow = love.graphics.newImage("assets/img/characters/" .. params.shadow)
+	self.shadow_quad = love.graphics.newQuad(0, 0, self.shadow:getWidth()/2, self.shadow:getHeight(), self.shadow:getDimensions())
 end
 
 function PNJ:initAnimation(sprite)
@@ -33,9 +36,10 @@ end
 function PNJ:draw()
     -- if highlight draw a box around
     if self.highlight then
-        love.graphics.setColor(0.9,0,0)
-        love.graphics.rectangle("fill", self.x - 10, self.y - 10, self.WIDTH + 20, self.HEIGHT + 20)
-        love.graphics.setColor(1,1,1)
+        -- love.graphics.setColor(0.9,0,0)
+        -- love.graphics.rectangle("fill", self.x - 10, self.y - 10, self.WIDTH + 20, self.HEIGHT + 20)
+        -- love.graphics.setColor(1,1,1)
+		love.graphics.draw(self.shadow, self.shadow_quad, self.x, self.y)
 
     end
 
