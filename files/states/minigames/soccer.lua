@@ -1,13 +1,13 @@
 --! file: Soccer.lua
 local Soccer = Game:addState("Soccer")
 
-Object = require(".src.Classic")
+Vector = require("src.utils.vector")
 
 -- THIS IS NOT THE SAME PLAYER CLASS AS IN MAIN GAME
 -- THIS CLASS IS LOCAL ONLY TO THIS MINIGAME
-local SoccerGame = Object:extend()
-local Ball = Object:extend()
-local Player = Object:extend()
+local SoccerGame = class("SoccerGame")
+local Ball = class("Ball")
+local Player = class("Player")
 
 -- Window dimensions
 local WINDOW_HEIGHT = love.graphics.getHeight()
@@ -17,41 +17,6 @@ local GRAVITY = 800
 
 local SCORE = 0
 local GAME_OVER = false
-
------------------------
--- VECTOR HELPER OBJECT
------------------------
-local Vector = Object:extend()
-
-function Vector:new(x,y)
-    self.x = x
-    self.y = y
-end
-
-function Vector:add(U)
-    return Vector(self.x + U.x, self.y + U.y)
-end
-
-function Vector:prod(s)
-    return Vector(s * self.x, s * self.y)
-end
-
-function Vector:dot(U)
-    return self.x * U.x + self.y * U.y
-end
-
-function Vector:norm()
-    return math.sqrt(self:dot(self))
-end
-
-function Vector:unit()
-    norm = self:norm()
-    return Vector(self.x/norm, self.y/norm)
-end
-
-function Vector:perp()
-    return Vector(- self.y, self.x)
-end
 
 ---------------------
 -- PLAYER
@@ -66,7 +31,7 @@ local OFFSET = 10
 local PLAYER_SPRITE = love.graphics.newImage("/assets/img/football/theodule_head.png")
 
 
-function Player:new()
+function Player:initialize()
     -- Position
     self.x = WINDOW_WIDTH / 2
     self.y = WINDOW_HEIGHT - PLAYER_HEIGHT - OFFSET
@@ -138,7 +103,7 @@ local isCollision = false
 local computeCollision = true
  
 
-function Ball:new(x,y)
+function Ball:initialize(x,y)
     -- Position of the ball center
     self.x = x
     self.y = y
@@ -257,7 +222,7 @@ end
 -----------------
 local background_img = love.graphics.newImage("assets/img/football/gymnase.jpg")
  
-function SoccerGame:new()
+function SoccerGame:initialize()
     -- Init ball
     self.ball = Ball(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 30)
     self.player = Player()
