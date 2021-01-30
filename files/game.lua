@@ -6,14 +6,14 @@ Interact = class("Interact"):include(Stateful)
 local interact
 
 require "states/menu"
+require "states/prologue"
 require "states/pause"
 
 require "dialog"
 
 require "states/minigames/soccer"
 require "states/minigames/jeudessin"
-
-
+require "states/minigames/billes"
 
 
 function Interact:initialize(game)

@@ -1,13 +1,12 @@
 --! file: Soccer.lua
-local Soccer = Game:addState("Soccer")
+local MiniGame = Game:addState("Soccer")
 
-Object = require(".src.Classic")
+Vector = require("src.utils.vector")
 
 -- THIS IS NOT THE SAME PLAYER CLASS AS IN MAIN GAME
 -- THIS CLASS IS LOCAL ONLY TO THIS MINIGAME
-local SoccerGame = Object:extend()
-local Ball = Object:extend()
-local Player = Object:extend()
+local Ball = class("Ball")
+local Player = class("Player")
 
 -- Window dimensions
 local WINDOW_HEIGHT = love.graphics.getHeight()
@@ -17,41 +16,6 @@ local GRAVITY = 800
 
 local SCORE = 0
 local GAME_OVER = false
-
------------------------
--- VECTOR HELPER OBJECT
------------------------
-local Vector = Object:extend()
-
-function Vector:new(x,y)
-    self.x = x
-    self.y = y
-end
-
-function Vector:add(U)
-    return Vector(self.x + U.x, self.y + U.y)
-end
-
-function Vector:prod(s)
-    return Vector(s * self.x, s * self.y)
-end
-
-function Vector:dot(U)
-    return self.x * U.x + self.y * U.y
-end
-
-function Vector:norm()
-    return math.sqrt(self:dot(self))
-end
-
-function Vector:unit()
-    norm = self:norm()
-    return Vector(self.x/norm, self.y/norm)
-end
-
-function Vector:perp()
-    return Vector(- self.y, self.x)
-end
 
 ---------------------
 -- PLAYER
@@ -66,7 +30,7 @@ local OFFSET = 10
 local PLAYER_SPRITE = love.graphics.newImage("/assets/img/football/theodule_head.png")
 
 
-function Player:new()
+function Player:initialize()
     -- Position
     self.x = WINDOW_WIDTH / 2
     self.y = WINDOW_HEIGHT - PLAYER_HEIGHT - OFFSET
@@ -138,7 +102,7 @@ local isCollision = false
 local computeCollision = true
  
 
-function Ball:new(x,y)
+function Ball:initialize(x,y)
     -- Position of the ball center
     self.x = x
     self.y = y
@@ -251,19 +215,16 @@ function Ball:draw()
     )
 end
 
-
 ---------------------
--- SOCCER GAME
------------------
-local background_img = love.graphics.newImage("assets/img/football/gymnase.jpg")
- 
-function SoccerGame:new()
-    -- Init ball
-    self.ball = Ball(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 30)
-    self.player = Player()
+-- GAME MANAGEMENT
+---------------------
+
+function MiniGame:enteredState()
+    self.background_img = love.graphics.newImage("assets/img/football/gymnase.jpg")
+    self:reset()
 end
 
-function SoccerGame:reset()
+function MiniGame:reset()
     -- Init ball
     self.ball = Ball(WINDOW_WIDTH/2, WINDOW_HEIGHT/2, 30)
     self.player = Player()
@@ -273,7 +234,7 @@ function SoccerGame:reset()
     GAME_OVER = false
 end
 
-function SoccerGame:update(dt)
+function MiniGame:update(dt)
     if love.keyboard.isDown("r") then
         self:reset()
     end
@@ -286,13 +247,13 @@ function SoccerGame:update(dt)
     end
 end
 
-function SoccerGame:draw()
+function MiniGame:draw()
     -- Scaling parameters to fit image in a WIDTH x HEIGHT box
-    scalex = WINDOW_WIDTH / background_img:getWidth()
-    scaley = WINDOW_HEIGHT / background_img:getHeight()
+    scalex = WINDOW_WIDTH / self.background_img:getWidth()
+    scaley = WINDOW_HEIGHT / self.background_img:getHeight()
 
     -- Draw image to scale
-    love.graphics.draw(background_img, 0, 0, 0, scalex, scaley)
+    love.graphics.draw(self.background_img, 0, 0, 0, scalex, scaley)
 
     --Draw Ball and player
     self.ball:draw()
@@ -307,28 +268,12 @@ function SoccerGame:draw()
     end
 end
 
----------------------
--- STATE MANAGEMENT
----------------------
-local minigame = SoccerGame()
-
-function Soccer:enteredState()
-end
-
-function Soccer:update(dt)
-    minigame:update(dt)
-end
-
-function Soccer:draw()
-    minigame:draw()
-end
-
-function Soccer:keypressed(key, code)
+function MiniGame:keypressed(key, code)
     if key == 'escape' then
         self:popState("Soccer")
     elseif key == 'p' then
         self:pushState("Pause")
     elseif key == 'r' then
-        minigame:reset()
+        self:reset()
     end
 end

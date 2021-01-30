@@ -32,5 +32,6 @@ function Menu:keypressed(key, code)
     love.event.quit()
   end
 
-  self:popState("Menu")
+  self:gotoState("Prologue")
+  --self:popState("Menu")
 end
