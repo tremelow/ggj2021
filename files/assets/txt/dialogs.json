@@ -85,7 +85,7 @@
         ["Olga", "Prêt à combattre ?", ["D'accord", "Pas tout de suite"], ["minigame","no_minigame"]]
     ],
     "minigame":[
-        ["Olga", "Je vais te battre à plat de couture !"],
+        ["Olga", "Je vais te battre à plate couture !"],
         ["Olga", "Pierre... Feuille... Ciseaux !"],
         ["Minigame","Ref"]
     ],
@@ -359,6 +359,42 @@
     "minigame_known_never_won":[
         ["Émilie", "Salut, Théodule. Ça me fait plaisir de te revoir."],
         ["Émilie", "Prêt à me ravir Altaïr ?"]
+    ]
+},
+"mr-tombola":{
+    "no_doudou":[
+        ["Théodule", "C'est le stand de tombola..."],
+        ["Théodule", "Il faut vite que je retrouve Doudou pour participer !"]
+    ],
+    "has_doudou":[
+        ["Théodule", "Bonjour ! Est-ce que je pourrais avoir un ticket pour la tombola ?"],
+        ["Monsieur Tombola", "Pas de problème, fiston !"],
+        ["Monsieur Tombola", "Le premier prix est un téléscope junior, le deuxième un repas pour 2 dans l’auberge du Pont du Diable, et le troisième une photo dédicacée de Charles Aznavour."],
+        ["Monsieur Tombola", "Bien sûr, il y a aussi des lots de consolation…"],
+        ["Théodule", "Pas de problème. Je gagnerai le premier prix grâce à Doudou !"],
+        ["Monsieur Tombola", "Bien sûr, jeune homme. Voilà votre ticket : le numéro 33 !"],
+        ["Monsieur Tombola", "Il semblerait que la pause soit sur le point de se terminer… Nous allons procéder au tirage au sort !"],
+        ["Monsieur Tombola", "Que tous les participants se rassemblent !"],
+        ["Monsieur Tombola", "L’heureux gagnant du troisième prix, la photo dédicacée de Charles Aznavour, est… le numéro 15 !"],
+        ["Monsieur Tombola", "Le deuxième prix, le repas à l’auberge du Pont du Diable, est remporté par… le numéro 4 !"],
+        ["Monsieur Tombola", "Et le nouveau propriétaire du premier prix, le téléscope junior, est… le numéro 32 !"],
+        ["Monsieur Tombola", "Félicitations à nos gagnants !"],
+        ["Théodule", "... Quoi ?"],
+        ["Théodule", "Comment est-ce possible..."],
+        ["Théodule", "Doudou ! Après tout ce temps ! Tu m'abandonnes, toi aussi ?"],
+        ["Émilie", "Théo !"],
+        ["Émilie", "Altaïr m'a porté chance, finalement !"],
+        ["Émilie", "J’ai remporté le téléscope !"],
+        ["Émilie", "Je vais devenir la première élève de CM1 à découvrir une étoile !"],
+        ["Émilie", "C’est grâce à toi ! Merci !"],
+        ["Émilie", "Oh, et tu as gagné tous ces bonbons ? C'est incroyable !"],
+        ["Émilie", "Qu'est-ce que tu vas en faire ?"],
+        ["Théodule", "Les partager, je suppose. Tu en veux ?"],
+        ["Olga", "Halte là ! J’exige ma part des bonbons !"],
+        ["Olga", "C'est évidemment ma chance de sorcière qui a rejailli sur vous, puisque je n'ai pas acheté de ticket..."],
+        ["Bobby", "J'ai aussi fait ma part. Sans moi, Doudou n'aurait jamais été retrouvé."],
+        ["Kevin", "Mais c'est toi qui l'avais pris au départ..."],
+        ["Léon", "L'important, c'est quand même que tout finisse bien, non ?"]
     ]
 }
 }
