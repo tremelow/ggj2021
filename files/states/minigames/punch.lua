@@ -124,6 +124,7 @@ function MiniGame:draw()
     love.graphics.print("TIME LEFT - " .. string.format("%.1f",self.timer), 22, 30)
 
     self.punching_ball:draw()
+    love.graphics.setColor(1, 1, 1)
 end
 
 function MiniGame:keypressed(key, code)
