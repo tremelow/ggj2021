@@ -1,6 +1,7 @@
 local Dialog = Interact:addState("Dialog")
 
 function Dialog:enteredState(pnj)
+  -- ugly copies
   self.title = pnj.name
   self.msg = pnj.dialog.messages
   self.outcome = 0
@@ -20,11 +21,13 @@ end
 
 function Dialog:exit()
   local finalLine = self.no
-  if self.outcome then finalLine = self.yes end
+  if self.outcome == 1 then finalLine = self.yes end
 
-  Talkies.say(self.title, self.yes, {
+  Talkies.say(self.title, finalLine, {
       oncomplete = function (dialog)
-        self.game:pushState(self.minigame)
+        if self.outcome == 1 then
+          self.game:pushState(self.minigame)
+        end
         self:popState("Dialog")
       end
     })

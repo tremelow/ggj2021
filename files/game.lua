@@ -11,6 +11,8 @@ require "states/pause"
 
 require "dialog"
 
+require "src/utils/animation"
+
 require "states/minigames/soccer"
 require "states/minigames/jeudessin"
 require "states/minigames/billes"
@@ -25,10 +27,10 @@ function Interact:update(dt)
   -- Update Camera
   camera:update(dt)
   camera:follow(Hero.x, Hero.y)
-  
+
   -- Move Hero
   Hero:update(dt)
-  
+
   -- Identify if PNJ close to player
   for i, v in ipairs(PNJs) do
     v:update(dt, Hero)
@@ -50,8 +52,37 @@ end
 
 
 function Game:initialize()
+
   self:gotoState("Menu")
   interact = Interact:new(self)
+
+  -- Background Image
+  background = love.graphics.newImage("assets/foot.jpg")
+  FIELD_SIZE = background:getWidth()
+
+  -- Initialize Camera, left-right scrolling
+  camera = Camera()
+  camera:setFollowStyle('PLATFORMER')
+  camera:setDeadzone(0, - 200, 0, 200)
+  camera:setBounds(0, WINDOW_HEIGHT * 3/5, FIELD_SIZE, WINDOW_HEIGHT * 2/5)
+
+  -- Load Characters
+  require(".src.Character")
+  require(".src.Player")
+  require(".src.PNJ")
+
+  -- Init Players and PNJs
+  Hero = Player(0,0)
+
+  PNJs = {}
+  local content = ""
+  for line in love.filesystem.lines("assets/txt/pnjs.json") do
+    content = content .. line
+  end
+  local pnjData = json.decode(content)
+  for index, kid in ipairs(pnjData) do
+    table.insert(PNJs, PNJ(kid))
+  end
 end
 
 function Game:exit()

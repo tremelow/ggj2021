@@ -3,6 +3,7 @@
     "name": "Bobby",
     "xpos": 200,
     "ypos": 200,
+    "sprite": "bobby.png",
     "game": "Soccer",
     "dialog": {
       "ready": {
@@ -22,6 +23,7 @@
     "name": "Léon",
     "xpos": 400,
     "ypos": 300,
+    "sprite": "leon.png",
     "game": "Dessin",
     "dialog": {
       "ready": {
@@ -38,9 +40,30 @@
   },
 
   {
-    "name": "Eeettieeeeeeenne",
+    "name": "Olga",
+    "xpos": 1000,
+    "ypos": 350,
+    "sprite": "olga.png",
+    "game": "Dessin",
+    "dialog": {
+      "ready": {
+          "messages": [
+            "Salut Morpion !",
+            "Comment tu vas ?",
+            "Ça te dit de faire un dessin ?"
+          ],
+          "options": {"1": "Oui", "0": "Non"},
+          "yes": "Prépare-toi à crever !",
+          "no": "Je le savais bien que t'étais une poule mouillée !"
+        }
+    }
+  },
+
+  {
+    "name": "Emilie",
     "xpos": 600,
     "ypos": 300,
+    "sprite": "emilie.png",
     "game": "Billes",
     "dialog": {
       "ready": {
