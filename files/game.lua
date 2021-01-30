@@ -6,6 +6,7 @@ Interact = class("Interact"):include(Stateful)
 local interact
 
 require "states/menu"
+require "states/prologue"
 require "states/pause"
 
 require "dialog"
