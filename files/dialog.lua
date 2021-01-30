@@ -6,13 +6,12 @@ function Dialog:enteredState(pnj)
   self.outcome = 0
   self.opt = {}
   for i, opt in pairs(pnj.dialog.options) do
-    os.execute("echo " .. i)
     table.insert(self.opt, {
       opt, function(dialog) self.outcome = tonumber(i) end})
   end
   self.yes = pnj.dialog.yes
   self.no = pnj.dialog.no
-  self.game = pnj.game
+  self.minigame = pnj.minigame
   Talkies.say(self.title, self.msg, {
     options = self.opt,
     oncomplete = function (dialog) self:exit()  end
@@ -25,6 +24,7 @@ function Dialog:exit()
 
   Talkies.say(self.title, self.yes, {
       oncomplete = function (dialog)
+        self.game:pushState(self.minigame)
         self:popState("Dialog")
       end
     })

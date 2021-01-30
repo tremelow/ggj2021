@@ -16,7 +16,8 @@ require "states/minigames/jeudessin"
 
 
 
-function Interact:initialize()
+function Interact:initialize(game)
+  self.game = game
 end
 
 function Interact:update(dt)
@@ -49,7 +50,7 @@ end
 
 function Game:initialize()
   self:gotoState("Menu")
-  interact = Interact:new()
+  interact = Interact:new(self)
 end
 
 function Game:exit()
