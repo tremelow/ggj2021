@@ -1,160 +1,263 @@
 local Dessin = Game:addState("Dessin")
 
+local JeuDessin = Object:extend()
 
-local function loadJeuDessin()
-  width, height, flags = love.window.getMode( ) --Taille de la fenetre
-  
-  --Taille de l'image background craie
-  widthCraie = 1280 
-  heightCraie = 720
-
-  gameWidth = width*3/5
-  gameHeight = height*0.80
-  gamex0 = (width-gameWidth)/2
-  gamey0 = (height - gameHeight)/2
-  --gameCanvas : Canvas qui représente la "fenetre" du mini jeu sur lequel on va dessiner le background craie
-  -- puis par dessus un rectangle noir (qu'on gommera ensuite)
-  gameCanvas = love.graphics.newCanvas(gameWidth,gameHeight) 
-  -- drawingCanvas : le canvas qui accueille le rectangle noir sur lequel on va dessiner
-  drawingCanvas = love.graphics.newCanvas(gameWidth,gameHeight)
-  exampleCanvas = love.graphics.newCanvas(gameWidth,gameHeight)
-  craieBackground = love.graphics.newImage("assets/craieback.png")
-
-  tailleCrayon = 5
-
-  love.graphics.setCanvas(drawingCanvas)
-  love.graphics.setColor(0, 0, 0, 1)
-  love.graphics.rectangle("fill", 0,0,gameWidth,gameHeight) --On met le rectangle noir
-
-
+function JeuDessin:drawExample()
   --Dessin de l'exemple à reproduire
-  love.graphics.setCanvas(exampleCanvas)
-  love.graphics.setColor(0, 0, 0, 1)
-  love.graphics.rectangle("fill", 0,0,gameWidth,gameHeight) --On met le rectangle noir
+  love.graphics.setCanvas(self.exampleCanvas)
+  love.graphics.setBlendMode("alpha", "premultiplied")
+  love.graphics.setColor(1, 1, 1, 1)
+  -- love.graphics.rectangle("fill", 0,0,gameWidth,gameHeight) --On met le rectangle noir
+  love.graphics.draw(tableau, 0,0)
   love.graphics.setBlendMode("multiply", "premultiplied")
   love.graphics.setColor(0, 0, 0, 0)
-  love.graphics.setLineWidth( tailleCrayon ) 
+  love.graphics.setLineWidth( 2*self.tailleCrayon ) 
   love.graphics.setLineStyle( "smooth" )
-  love.graphics.line(1/3*gameWidth,0.35*gameHeight, 1/3*gameWidth, 0.45*gameHeight) --barre 1
-  love.graphics.line(1/2*gameWidth,0.35*gameHeight, 1/2*gameWidth, 0.45*gameHeight) --barre 2
-  love.graphics.line(2/3*gameWidth,0.35*gameHeight, 2/3*gameWidth, 0.45*gameHeight) --barre 3
-  love.graphics.line(1/3*gameWidth,0.55*gameHeight, 1/3*gameWidth, 0.65*gameHeight) --barre 4
-  love.graphics.line(1/2*gameWidth,0.55*gameHeight, 1/2*gameWidth, 0.65*gameHeight) --barre 5
-  love.graphics.line(2/3*gameWidth,0.55*gameHeight, 2/3*gameWidth, 0.65*gameHeight) --barre 6
+  love.graphics.line(0.4*self.gameWidth,0.35*self.gameHeight, 0.4*self.gameWidth, 0.45*self.gameHeight) --barre 1
+  love.graphics.line(1/2*self.gameWidth,0.35*self.gameHeight, 1/2*self.gameWidth, 0.45*self.gameHeight) --barre 2
+  love.graphics.line(0.6*self.gameWidth,0.35*self.gameHeight, 0.6*self.gameWidth, 0.45*self.gameHeight) --barre 3
+  love.graphics.line(0.4*self.gameWidth,0.55*self.gameHeight, 0.4*self.gameWidth, 0.65*self.gameHeight) --barre 4
+  love.graphics.line(1/2*self.gameWidth,0.55*self.gameHeight, 1/2*self.gameWidth, 0.65*self.gameHeight) --barre 5
+  love.graphics.line(0.6*self.gameWidth,0.55*self.gameHeight, 0.6*self.gameWidth, 0.65*self.gameHeight) --barre 6
 
   --triangle haut
-  love.graphics.line(1/3*gameWidth,0.35*gameHeight, 1/2*gameWidth, 0.15*gameHeight)
-  love.graphics.line(2/3*gameWidth,0.35*gameHeight, 1/2*gameWidth, 0.15*gameHeight)
+  love.graphics.line(0.4*self.gameWidth,0.35*self.gameHeight, 1/2*self.gameWidth, 0.15*self.gameHeight)
+  love.graphics.line(0.6*self.gameWidth,0.35*self.gameHeight, 1/2*self.gameWidth, 0.15*self.gameHeight)
 
   --triangle bas
-  love.graphics.line(1/3*gameWidth,0.65*gameHeight, 1/2*gameWidth, 0.85*gameHeight)
-  love.graphics.line(2/3*gameWidth,0.65*gameHeight, 1/2*gameWidth, 0.85*gameHeight)
+  love.graphics.line(0.4*self.gameWidth,0.65*self.gameHeight, 1/2*self.gameWidth, 0.85*self.gameHeight)
+  love.graphics.line(0.6*self.gameWidth,0.65*self.gameHeight, 1/2*self.gameWidth, 0.85*self.gameHeight)
 
   --croisement 1
-  love.graphics.line(1/3*gameWidth,0.45*gameHeight, 1/2*gameWidth, 0.55*gameHeight)
-  love.graphics.line(1/2*gameWidth,0.45*gameHeight, 2/3*gameWidth, 0.55*gameHeight)
+  love.graphics.line(0.4*self.gameWidth,0.45*self.gameHeight, 1/2*self.gameWidth, 0.55*self.gameHeight)
+  love.graphics.line(1/2*self.gameWidth,0.45*self.gameHeight, 0.6*self.gameWidth, 0.55*self.gameHeight)
 
   --croisement 2
-  love.graphics.line(2/3*gameWidth,0.45*gameHeight, 5/9*gameWidth, (1/30 + 0.45)*gameHeight)
-  love.graphics.line(1/3*gameWidth,0.55*gameHeight, 4/9*gameWidth, (0.45 + 2/30)*gameHeight)
-  
+  love.graphics.line(0.6*self.gameWidth,0.45*self.gameHeight, (0.16/0.3)*self.gameWidth, (0.16/0.3 - 0.05)*self.gameHeight)
+  love.graphics.line(0.4*self.gameWidth,0.55*self.gameHeight, (0.14/0.3)*self.gameWidth, (0.14/0.3 + 0.05)*self.gameHeight)
 
   --Dessin des points pour indiquer
-  love.graphics.setCanvas(drawingCanvas)
-  love.graphics.setColor(0, 0, 0, 1)
-  love.graphics.rectangle("fill", 0,0,gameWidth,gameHeight) --On met le rectangle noir
+  love.graphics.setCanvas(self.drawingCanvas)
+  love.graphics.setBlendMode("alpha", "premultiplied")
+  love.graphics.setColor(1, 1, 1, 1)
+  -- love.graphics.rectangle("fill", 0,0,gameWidth,gameHeight) --On met le rectangle noir
+  love.graphics.draw(tableau, 0,0)
   love.graphics.setBlendMode("multiply", "premultiplied")
   love.graphics.setColor(0, 0, 0, 0)
-  love.graphics.ellipse("fill", 1/3*gameWidth, 0.35*gameWidth,3,3)
-  love.graphics.ellipse("fill", 1/2*gameWidth, 0.35*gameWidth,3,3)
-  love.graphics.ellipse("fill", 2/3*gameWidth, 0.35*gameWidth,3,3)
+  love.graphics.ellipse("fill", 0.4*self.gameWidth, 0.35*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+  love.graphics.ellipse("fill", 1/2*self.gameWidth, 0.35*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+  love.graphics.ellipse("fill", 0.6*self.gameWidth, 0.35*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
 
-  love.graphics.ellipse("fill", 1/3*gameWidth, 0.45*gameWidth,3,3)
-  love.graphics.ellipse("fill", 1/2*gameWidth, 0.45*gameWidth,3,3)
-  love.graphics.ellipse("fill", 2/3*gameWidth, 0.45*gameWidth,3,3)
+  love.graphics.ellipse("fill", 0.4*self.gameWidth, 0.45*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+  love.graphics.ellipse("fill", 1/2*self.gameWidth, 0.45*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+  love.graphics.ellipse("fill", 0.6*self.gameWidth, 0.45*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
 
-  love.graphics.ellipse("fill", 1/3*gameWidth, 0.55*gameWidth,3,3)
-  love.graphics.ellipse("fill", 1/2*gameWidth, 0.55*gameWidth,3,3)
-  love.graphics.ellipse("fill", 2/3*gameWidth, 0.55*gameWidth,3,3)
+  love.graphics.ellipse("fill", 0.4*self.gameWidth, 0.55*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+  love.graphics.ellipse("fill", 1/2*self.gameWidth, 0.55*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+  love.graphics.ellipse("fill", 0.6*self.gameWidth, 0.55*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
 
-  love.graphics.ellipse("fill", 1/3*gameWidth, 0.65*gameWidth,3,3)
-  love.graphics.ellipse("fill", 1/2*gameWidth, 0.65*gameWidth,3,3)
-  love.graphics.ellipse("fill", 2/3*gameWidth, 0.65*gameWidth,3,3)
+  love.graphics.ellipse("fill", 0.4*self.gameWidth, 0.65*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+  love.graphics.ellipse("fill", 1/2*self.gameWidth, 0.65*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+  love.graphics.ellipse("fill", 0.6*self.gameWidth, 0.65*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
 
-  love.graphics.ellipse("fill", 1/2*gameWidth, 0.15*gameWidth,3,3)
-  love.graphics.ellipse("fill", 1/2*gameWidth, 0.85*gameWidth,3,3)
+  love.graphics.ellipse("fill", 1/2*self.gameWidth, 0.15*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
+  love.graphics.ellipse("fill", 1/2*self.gameWidth, 0.85*self.gameHeight,self.tailleCrayon/2, self.tailleCrayon/2)
 
   love.graphics.setCanvas()
-
-
-
-
+  
 end
 
-local function updateJeuDessin()
+function JeuDessin:drawButton()
+  love.graphics.setCanvas(self.gameCanvas)
+  love.graphics.setBlendMode("alpha", "premultiplied")
+  love.graphics.setColor(0,0,0,1)
+  love.graphics.rectangle("fill", 0.9*self.gameWidth, 0.9*self.gameHeight, self.gameWidth, self.gameHeight)
+  love.graphics.setCanvas()
+end
 
-  -- Quand on appuie sur la souris on dessine
-  if love.mouse.isDown(1) and timer > 5 then
-    love.graphics.setCanvas(drawingCanvas) --On dessine sur drawingCanvas
-    love.graphics.setBlendMode("multiply", "premultiplied")
-    love.graphics.setColor(0, 0, 0, 0) -- Puisqu'on veut effacer on prend une couleur avec alpha = 0
-    curx = love.mouse.getX() - gamex0 -- Position où le joueur à cliqué. Je comprends pas pk il faut retrancher la position du canvas gameCanvas
-    cury = love.mouse.getY() - gamey0
-    love.graphics.ellipse("fill", curx,cury, 5, 5) --On dessine une point assez large à cet endroit
-    love.graphics.setLineWidth( 10 ) 
-    love.graphics.setLineStyle( "smooth" )
-    love.graphics.line(prevx, prevy, curx, cury) --On dessine une ligne de même epaisseur pour relier le point où est la souris a celui où elle était avant
-    prevx = curx
-    prevy = cury
-    love.graphics.setCanvas()
+
+
+function JeuDessin:loadJeuDessin()
+  self.timer = 0
+  self.scoreComputed = false
+
+  self.width, self.height, flags = love.window.getMode( ) --Taille de la fenetre
+  --Taille de l'image background craie
+  -- widthCraie = 1280 
+  -- heightCraie = 720
+
+  self.gameWidth = 850
+  self.gameHeight = self.height*0.80
+  self.gamex0 = (self.width-self.gameWidth)/2
+  -- gamey0 = (height - gameHeight)/2
+  self.gamey0 = 0
+  --gameCanvas : Canvas qui représente la "fenetre" du mini jeu sur lequel on va dessiner le background craie
+  -- puis par dessus un rectangle noir (qu'on gommera ensuite)
+  self.gameCanvas = love.graphics.newCanvas(self.gameWidth,self.gameHeight) 
+  -- drawingCanvas : le canvas qui accueille le rectangle noir sur lequel on va dessiner
+  self.drawingCanvas = love.graphics.newCanvas(self.gameWidth,self.gameHeight)
+  self.exampleCanvas = love.graphics.newCanvas(self.gameWidth,self.gameHeight)
+  craieBackground = love.graphics.newImage("assets/craieback.png")
+  tableau = love.graphics.newImage("assets/tableau.png")
+
+  self.tailleCrayon = 5
+
+  -- set font
+
+  love.graphics.setCanvas(drawingCanvas)
+  love.graphics.setColor(0, 0, 0, 1)
+  -- love.graphics.rectangle("fill", 0,0,gameWidth,gameHeight) --On met le rectangle noir
+  love.graphics.draw(tableau, 0,0)
+
+  self:drawExample()
+
+  self:drawButton()
+
+  love.graphics.setCanvas()
+end
+
+function JeuDessin:compareCanvases ()
+  love.graphics.setCanvas()
+  local dataDrawing = self.drawingCanvas:newImageData()
+  local dataExample = self.exampleCanvas:newImageData()
+  local dataW, dataH = dataExample:getDimensions()
+  local score = 0
+  for i = 0,(dataW-1) do   
+    for j = 0,(dataH-1) do 
+      local r1,g1,b1,a1 = dataExample:getPixel(i,j)
+      local r2,g2,b2,a2 = dataDrawing:getPixel(i,j)
+      if a1 ~= a2 then
+        score = score + 1
+      end
+    end
+  end
+  self.scoreGame = score
+  self.scoreComputed = true
+  return score
+end
+
+
+function JeuDessin:updateJeuDessin(dt)
+  if self.timer < 20 then
+    self.timer = self.timer + dt
   end
 end
 
 
--- function compareCanvases (example, drawing, localWidth, localHeight)
---   local score 
---   for i = 0,(width-1) do   
---     for j = 0,(height-1) do 
---       local r1,g1,b1,a1 = 
-
-local function drawJeuDessin()
-  if timer < 6 then
-    love.graphics.setCanvas(gameCanvas)-- Sur le gameCanvas on affiche d'abord le background puis drawingCanvas
-    love.graphics.draw(craieBackground)
-    --love.graphics.draw(drawingCanvas,width/4, height/4)
-    love.graphics.draw(exampleCanvas)
-    love.graphics.setCanvas()
-    love.graphics.setCanvas() --on repasse sur le canvas de base puis on affiche gameCanvas (la fenetre de jeu)
-	  love.graphics.draw(gameCanvas, gamex0, gamey0)
+function JeuDessin:drawJeuDessin()
+  font = love.graphics.getFont()
+  local fontWidth
+  local fontHeight
+  --Dialogue Box
+  local textDialogue
+  if not self.scoreComputed then
+    textDialogue = "Montre moi que tu sais dessiner le S de Superman"
   else
-    love.graphics.setCanvas(gameCanvas)-- Sur le gameCanvas on affiche d'abord le background puis drawingCanvas
+    if self.scoreGame > 15000 then
+      textDialogue = "Perdu. T'es nul !"
+    else
+      textDialogue = "Bravo. Tu dessines trop bien !"
+    end
+  end
+  love.graphics.setBlendMode("alpha", "premultiplied")
+  love.graphics.setColor(0,0,0,1)
+  love.graphics.rectangle("fill", self.gamex0, self.gamey0+self.gameHeight, self.gameWidth,self.height-(self.gamey0+self.gameHeight))
+  love.graphics.setColor(1,1,1,1)
+  love.graphics.setLineWidth(5)
+  love.graphics.rectangle("line", self.gamex0+2.5, self.gamey0+self.gameHeight, self.gameWidth-5,self.height-(self.gamey0+self.gameHeight))
+  love.graphics.setBlendMode("alpha", "alphamultiply")
+  fontWidth = font:getWidth(textDialogue)
+  fontHeight = font:getHeight(textDialogue)
+  love.graphics.printf(textDialogue, self.gamex0 + (self.gameWidth - fontWidth)/2, self.gamey0+self.gameHeight + (self.height-(self.gamey0+self.gameHeight) - fontHeight)/2, 1000 )
+
+  if self.timer < 3 then
+    love.graphics.setCanvas(self.gameCanvas)-- Sur le gameCanvas on affiche d'abord le background puis drawingCanvas
     love.graphics.draw(craieBackground)
     --love.graphics.draw(drawingCanvas,width/4, height/4)
-    love.graphics.draw(drawingCanvas)
+    love.graphics.draw(self.exampleCanvas)
     love.graphics.setCanvas() --on repasse sur le canvas de base puis on affiche gameCanvas (la fenetre de jeu)
-    love.graphics.draw(gameCanvas, gamex0, gamey0)
+    love.graphics.draw(self.gameCanvas, self.gamex0, self.gamey0)
+  else
+    love.graphics.setCanvas(self.gameCanvas)-- Sur le gameCanvas on affiche d'abord le background puis drawingCanvas
+    love.graphics.draw(craieBackground)
+    --love.graphics.draw(drawingCanvas,width/4, height/4)
+    love.graphics.draw(self.drawingCanvas)
+    love.graphics.setCanvas() --on repasse sur le canvas de base puis on affiche gameCanvas (la fenetre de jeu)
+    love.graphics.draw(self.gameCanvas, self.gamex0, self.gamey0)
+    --Bouton Valider
+    love.graphics.setBlendMode("alpha", "premultiplied")
+    love.graphics.setColor(0,0,0,1)
+    love.graphics.rectangle("fill", self.gamex0+26,self.gamey0+497, 100,50)
+    love.graphics.setColor(1,1,1,1)
+    love.graphics.setLineWidth(5)
+    love.graphics.rectangle("line", self.gamex0+26+2.5, self.gamey0+497+2.5 , 100,50-5)
+    love.graphics.setLineWidth(1)
+    love.graphics.setBlendMode("alpha", "alphamultiply")
+    fontWidth = font:getWidth("Valider")
+    fontHeight = font:getWidth("Valider")
+    love.graphics.print("Valider", self.gamex0+26 + (100-fontWidth)/2, self.gamey0+497 + 10 )
+  
+
+    -- Quand on appuie sur la souris on dessine
+    if love.mouse.isDown(1) then
+      love.graphics.setCanvas(self.drawingCanvas) --On dessine sur drawingCanvas
+      love.graphics.setBlendMode("multiply", "premultiplied")
+      love.graphics.setColor(0, 0, 0, 0) -- Puisqu'on veut effacer on prend une couleur avec alpha = 0
+      self.curx = love.mouse.getX() - self.gamex0 -- Position où le joueur à cliqué. Je comprends pas pk il faut retrancher la position du canvas gameCanvas
+      self.cury = love.mouse.getY() - self.gamey0
+      love.graphics.ellipse("fill", self.curx,self.cury, self.tailleCrayon, self.tailleCrayon) --On dessine une point assez large à cet endroit
+      love.graphics.setLineWidth( 2*self.tailleCrayon ) 
+      love.graphics.setLineStyle( "smooth" )
+      love.graphics.line(self.prevx, self.prevy, self.curx, self.cury) --On dessine une ligne de même epaisseur pour relier le point où est la souris a celui où elle était avant
+      self.prevx = self.curx
+      self.prevy = self.cury
+      love.graphics.setCanvas()
+    end
   end
 end
+
+
+---------------------
+-- STATE MANAGEMENT
+---------------------
+local minigame = JeuDessin()
 
 
 function Dessin:enteredState()
-  love.graphics.setBackgroundColor(1,1,1,1)
-  loadJeuDessin()
-  timer = 0
+  love.graphics.setBackgroundColor(0,0,0,1)
+  minigame:loadJeuDessin()
+  
+  cursorImg = love.image.newImageData("assets/img/draw/chalk_shade.png")
+  cursor = love.mouse.newCursor(cursorImg)
+  love.mouse.setCursor(cursor)
 end
 
 function Dessin:mousepressed(x, y, button, istouch)
-  prevx = x - gamex0
-  prevy = y - gamey0
+  minigame.prevx = x - minigame.gamex0
+  minigame.prevy = y - minigame.gamey0
+  if x > minigame.gamex0+26+2.5 and x < minigame.gamex0+100+2.5 and y > minigame.gamey0+497+2.5 and y < minigame.gamey0+497+45+2.5 then
+    score = minigame:compareCanvases()
+    print(score)
+  end
 end
 
 function Dessin:update(dt)
-  updateJeuDessin()
-  timer = timer + dt
+  minigame:updateJeuDessin(dt)
 end
 
 function Dessin:draw()
   love.graphics.setColor(1, 1, 1, 1)
-  love.graphics.setBlendMode("alpha", "premultiplied")
-  drawJeuDessin()
+  love.graphics.setLineWidth(1)
+  love.graphics.setBlendMode("alpha", "alphamultiply")
+  minigame:drawJeuDessin()
+end
+
+function Dessin:keypressed(key, code)
+  if key == 'escape' then
+      self:popState("Dessin")
+  elseif key == 'p' then
+      self:pushState("Pause")
+  elseif key == 'r' then
+      minigame:reset()
+  end
 end
