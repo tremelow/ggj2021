@@ -1,9 +1,6 @@
 -- [tutorial](https://aalvarez.me/posts/an-introduction-to-game-states-in-love2d/)
 
 Game = class("Game"):include(Stateful)
-Interact = class("Interact"):include(Stateful)
-
-local interact
 
 require "states/menu"
 require "states/prologue"
@@ -20,42 +17,10 @@ require "states/minigames/shifumi"
 require "states/minigames/punch"
 
 
-function Interact:initialize(game)
-  self.game = game
-end
-
-function Interact:update(dt)
-  -- Update Camera
-  camera:update(dt)
-  camera:follow(Hero.x, Hero.y)
-
-  -- Move Hero
-  Hero:update(dt)
-
-  -- Identify if PNJ close to player
-  for i, v in ipairs(PNJs) do
-    v:update(dt, Hero)
-  end
-end
-
-function Interact:draw()
-end
-
-function Interact:keypressed(key, code)
-  if key == "space" then
-    for i, kid in ipairs(PNJs) do
-      if kid:isCharacterClose(Hero) then
-        self:pushState("Dialog", kid)
-      end
-    end
-  end
-end
-
 
 function Game:initialize()
 
   self:gotoState("Menu")
-  interact = Interact:new(self)
 
   -- Background Image
   background = love.graphics.newImage("assets/foot.jpg")
@@ -83,16 +48,33 @@ function Game:initialize()
     content = content .. line
   end
   local pnjData = json.decode(content)
-  for index, kid in ipairs(pnjData) do
-    table.insert(PNJs, PNJ(kid))
+  
+  for id, kid in pairs(pnjData) do
+    PNJs[id] = PNJ(kid)
   end
+  
+  content = ""
+  for line in love.filesystem.lines("assets/txt/dialogs.json") do
+    content = content .. line
+  end
+  dialogs = json.decode(content)
 end
 
 function Game:exit()
 end
 
 function Game:update(dt)
-  interact:update(dt)
+  -- Update Camera
+  camera:update(dt)
+  camera:follow(Hero.x, Hero.y)
+
+  -- Move Hero
+  Hero:update(dt)
+
+  -- Identify if PNJ close to player
+  for i, v in pairs(PNJs) do
+    v:update(dt, Hero)
+  end
 end
 
 function Game:draw()
@@ -106,7 +88,7 @@ function Game:draw()
 
   local hero_drawn = false
   -- Draw NPCs
-  for i, v in ipairs(PNJs) do
+  for i, v in pairs(PNJs) do
 	if (Hero.y<v.y and math.abs((Hero.x-v.x))<50) then
 		if not hero_drawn then
 			Hero:draw()
@@ -126,7 +108,8 @@ function Game:draw()
   camera:detach()
   --camera:draw() --
 
-  interact:draw()
+  -- interact:draw()
+  Talkies.draw()
 end
 
 
@@ -135,7 +118,14 @@ function Game:keypressed(key, code)
     self:pushState("Pause") -- the topmost state has priority
   end
 
-  interact:keypressed(key, code)
+  if key == "space" then
+    for i, kid in pairs(PNJs) do
+      if kid:isCharacterClose(Hero) then
+        -- TODO: choose flag depending on advancement
+        self:pushState("Dialog", i, "pres_minigame")
+      end
+    end
+  end
 end
 
 function Game:mousepressed(x, y, button, isTouch)

@@ -226,6 +226,8 @@ function MiniGame:enteredState()
     self.source:isLooping(true)
     love.audio.play(self.source)
     self:reset()
+
+    self:pushState("Dialog", "bobby", "first")
 end
 
 function MiniGame:reset()
@@ -239,9 +241,6 @@ function MiniGame:reset()
 end
 
 function MiniGame:update(dt)
-    if love.keyboard.isDown("r") then
-        self:reset()
-    end
     -- Update player
     self.player:update(dt)
 
@@ -270,6 +269,8 @@ function MiniGame:draw()
     if GAME_OVER then
         love.graphics.print("GAME OVER", 21, 40)
     end
+
+    Talkies.draw()
 end
 
 function MiniGame:keypressed(key, code)

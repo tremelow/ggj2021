@@ -11,7 +11,7 @@ function PNJ:new(params)
     self.highlight = false
     -- messages (sous-bloc "ready" au cas où on voudrait distinguer des
     -- phases de l'histoire)
-    self.dialog = params.dialog.ready
+    self.dialog = params.dialog
 
     local spritePath = "assets/img/characters/" .. params.sprite
     self.sprite = love.graphics.newImage(spritePath)
