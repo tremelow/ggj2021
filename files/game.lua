@@ -60,6 +60,8 @@ function Game:initialize()
   -- Background Image
   background = love.graphics.newImage("assets/foot.jpg")
   FIELD_SIZE = background:getWidth()
+  tente = love.graphics.newImage("assets/img/world/tente.png")
+  tableau = love.graphics.newImage("assets/img/world/tableau.png")
 
   -- Initialize Camera, left-right scrolling
   camera = Camera()
@@ -99,6 +101,8 @@ function Game:draw()
 
   -- Draw background image
   love.graphics.draw(background, 0, 0, 0, 1, WINDOW_HEIGHT/background:getHeight())
+  love.graphics.draw(tente, 700,230)
+  love.graphics.draw(tableau, 90, 280)
 
   -- Draw NPCs
   for i, v in ipairs(PNJs) do

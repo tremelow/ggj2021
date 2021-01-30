@@ -1,8 +1,8 @@
 [
   {
     "name": "Bobby",
-    "xpos": 200,
-    "ypos": 200,
+    "xpos": 1900,
+    "ypos": 400,
     "sprite": "bobby.png",
 	"shadow": "bobby_s.png",
     "game": "Soccer",
@@ -22,7 +22,7 @@
 
   {
     "name": "Léon",
-    "xpos": 400,
+    "xpos": 300,
     "ypos": 300,
     "sprite": "leon.png",
 	"shadow": "leon_s.png",
@@ -42,8 +42,8 @@
   },
   {
     "name": "Emilie",
-    "xpos": 600,
-    "ypos": 300,
+    "xpos": 1200,
+    "ypos": 500,
     "sprite": "emilie.png",
 	  "shadow": "emilie_s.png",
     "game": "Billes",
@@ -64,7 +64,7 @@
   {
     "name": "Olga",
     "xpos": 900,
-    "ypos": 500,
+    "ypos": 300,
 	  "sprite": "olga.png",
 	  "shadow": "olga_s.png",
     "game": "Shifumi",
@@ -86,8 +86,8 @@
 
   {
     "name": "Kevin",
-    "xpos": 1200,
-    "ypos": 500,
+    "xpos": 1600,
+    "ypos": 200,
 	  "sprite": "kevin.png",
 	  "shadow": "kevin_s.png",
     "game": "Punch",
