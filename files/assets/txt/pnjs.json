@@ -54,5 +54,26 @@
           "no": "Je le savais bien que t'étais une poule mouillée !"
         }
     }
+  },
+
+  {
+    "name": "Olga",
+    "xpos": 900,
+    "ypos": 500,
+    "game": "Shifumi",
+    "dialog": {
+      "ready": {
+          "messages": [
+            "Coucou Dudule !",
+            "Tu as goûté aux crêpes à l'entrée ? C'est ma maman et moi qui les avons faites !",
+            "Au fait...",
+            "J'ai entendu dire que quelqu'un savait où une certaine grenouille se trouve...",
+            "Mais il va falloir me battre au shifumi si tu veux en savoir plus !"
+          ],
+          "options": {"1": "Oui", "0": "Non"},
+          "yes": "Shi ! Fu ! ... MI !",
+          "no": "Reviens quand tu en as le courage !"
+        }
+    }
   }
 ]
