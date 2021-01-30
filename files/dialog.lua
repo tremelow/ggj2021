@@ -1,48 +1,57 @@
-local Dialog = Interact:addState("Dialog")
+local Dialog = Game:addState("Dialog")
 
-function Dialog:enteredState(pnj)
-  -- ugly copies
-  self.title = pnj.name
-  self.msg = pnj.dialog.messages
-  self.outcome = 0
-  self.opt = {}
-  for i, opt in pairs(pnj.dialog.options) do
-    table.insert(self.opt, {
-      opt, function(dialog) self.outcome = tonumber(i) end})
+function Dialog:enteredState(id, key)
+  self.id = id
+  self.pnj = PNJs[id]
+  self:parse(dialogs[id][key])
+end
+
+function Dialog:parse(list)
+  if list then
+    local speaker = list[1][1]
+    local msg = {}
+    local opt = {}
+    local oncomplete = function (dialog) self:popState("Dialog") end
+    for i, line in ipairs(list) do
+
+      if line[1] == "Minigame" then
+        oncomplete = function(dialog)
+            self:gotoState(self.pnj.minigame)
+          end
+      
+      elseif line[1] == speaker then
+        table.insert(msg, line[2])
+      else
+        Talkies.say(speaker, msg)
+        msg = {}
+        speaker = list[i+1]
+      end
+    end
+    
+    -- Final check: is there a choice?
+    local i = #list
+    if list[i][3] then
+      for index, choice in ipairs(list[i][3]) do
+        table.insert(opt, {choice, function(dialog)
+            
+          end })
+      end
+      Talkies.say(speaker, msg, {options = opt, oncomplete = oncomplete})
+    else
+      Talkies.say(speaker, msg, {oncomplete = oncomplete})
+    end
   end
-  self.yes = pnj.dialog.yes
-  self.no = pnj.dialog.no
-  self.minigame = pnj.minigame
-  Talkies.say(self.title, self.msg, {
-    options = self.opt,
-    oncomplete = function (dialog) self:exit()  end
-    })
 end
 
 function Dialog:exit()
-  local finalLine = self.no
-  if self.outcome == 1 then finalLine = self.yes end
-
-  Talkies.say(self.title, finalLine, {
-      oncomplete = function (dialog)
-        if self.outcome == 1 then
-          self.game:pushState(self.minigame)
-        end
-        self:popState("Dialog")
-      end
-    })
 end
 
 function Dialog:update(dt)
   Talkies.update(dt)
 end
 
-function Dialog:draw()
-  Talkies.draw()
-end
-
 function Dialog:keypressed(key, code)
   if key == "space" then Talkies.onAction() end
-  if key == "up" then Talkies.prevOption() end
-  if key == "down" then Talkies.nextOption() end
+  if key == "z" or key == "up" then Talkies.prevOption() end
+  if key == "s" or key == "down" then Talkies.nextOption() end
 end

@@ -54,8 +54,8 @@
       ],
     "minigame_won":[
         ["Léon", "Tu es revenu ! Tu veux dessiner encore ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
-    ],
-},
+    ]
+    },
 
 "olga":{
     "first":[
@@ -143,7 +143,7 @@
     "first":[
         ["Théodule", "Gloups... Voilà Kevin."],
         ["Théodule", "C'est un gros dur hyper musclé."],
-        ["Théodule", "Son regard est terrifiant... J'ai l'impression qu'il me veut du mal."],
+        ["Théodule", "Son regard est terrifiant... J'ai l'impression qu'il me veut du mal."]
     ],
     "vtff":[
         ["Kevin", "..."],
@@ -176,7 +176,7 @@
     "victory_first":[
         ["Kevin", "Waouh... Tu m'as battu !"],
         ["Kevin", "..."],
-        ["Kevin", "Merci d'avoir joué à mon stand..."]
+        ["Kevin", "Merci d'avoir joué à mon stand..."],
         ["Kevin", "En fait ce matin, j'ai voulu te rendre ta peluche, mais je n'ai pas osé."],
         ["Kevin", "Tu faisais tout pour m'éviter, tu ne voulais pas croiser mon regard..."],
         ["Kevin", "Comme tous les autres, en fait. Je ne comprends pas pourquoi vous avez peur de moi..."],
@@ -203,7 +203,7 @@
         ["Kevin", "... Tu veux réessayer ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame_known_never_won":[
-        ["Kevin", "..."]
+        ["Kevin", "..."],
         ["Kevin", "Tu veux tenter ta chance au punching-ball ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame_won":[
@@ -256,7 +256,7 @@
     ["Bobby", "Tu es sorti de ta zone de confort et tu as dépassé des limites. Bravo !"],
     ["Théodule", "Je n'y croyais pas moi non plus..."],
     ["Théodule", "Maintenant, rends-moi Doudou !"],
-    ["Bobby", "Je voudrais bien, mais je ne l'ai plus, Doudou."]
+    ["Bobby", "Je voudrais bien, mais je ne l'ai plus, Doudou."],
     ["Bobby", "Ma voisine de table l'a trouvé mignon et je lui ai donné."],
     ["Théodule", "C'est qui, ta voisine de table ?"],
     ["Bobby", "Tu ne sais même pas où je suis assis dans la classe ? Tu es sûr que tu t'intéresses aux autres ?"],
@@ -285,5 +285,5 @@
     ["Bobby", "Revoilà Théodule."],
     ["Bobby", "Tu veux rejouer ? De ton plein gré ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ]
-},
+}
 }

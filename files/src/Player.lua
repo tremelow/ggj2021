@@ -1,12 +1,6 @@
 
 Player = Character:extend()
 
-local ORIENTATIONS = {
-  E = {x =  1, y =  0}, SE = {x =  1, y =  1},
-  S = {x =  0, y =  1}, SW = {x = -1, y =  1},
-  W = {x = -1, y =  0}, NW = {x = -1, y = -1},
-  N = {x =  0, y = -1}, NE = {x =  1, y = -1}
-}
 
 -- LIMITS FOR THE PLAYER
 -- TODO ! FIND ADEQUATE LIMITS FOR THE x POSITION
@@ -15,7 +9,7 @@ WINDOW_WIDTH = love.graphics.getWidth()
 
 function Player:new(x,y)
   -- Init Player at position x, y
-  Player.super.new(self,x,y)
+  self.super.new(self,x,y)
 
   self.direction = {x = 0, y = 0}
   self.orientation = {x = 0, y = -1} -- start facing down
@@ -25,7 +19,7 @@ function Player:new(x,y)
   self.sprite = love.graphics.newImage(spritePath)
   local width = math.floor(self.sprite:getWidth() / 12)
   local height = math.floor(self.sprite:getHeight() / 4)
-  local allQuads = Animation:new(self.sprite, width, height, 0.25)
+  local allQuads = Animation:new(self.sprite, width, height, 0.2)
 
   -- Isolate quad depending on direction/orientation
   self.animation = {}
@@ -82,16 +76,23 @@ function Player:update(dt)
 end
 
 
-function Player:draw()
-  local orientation = "S"
-  for dir, xy in pairs(ORIENTATIONS) do
-    if self.orientation.x == xy.x and self.orientation.y == xy.y then
-      orientation = dir
-    end
+function Player:draw()  
+  local orientation = ""
+  if self.orientation.y == 1 then
+    orientation = orientation .. "S"
+  elseif self.orientation.y == -1 then
+    orientation = orientation .. "N"
   end
+
+  if self.orientation.x == 1 then
+    orientation = orientation .. "E"
+  elseif self.orientation.x == -1 then
+    orientation = orientation .. "W"
+  end
+
+  local movement = "animation"
   if self.direction.x == 0 and self.direction.y == 0 then
-    self.neutral[orientation]:draw(self.x, self.y)
-  else
-    self.animation[orientation]:draw(self.x, self.y)
+    movement = "neutral"
   end
+  self[movement][orientation]:draw(self.x, self.y)
 end

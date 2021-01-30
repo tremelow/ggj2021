@@ -224,7 +224,7 @@ function MiniGame:update(dt)
     elseif self.phase == 'charge' then
         self.arrow:update(dt, self.phase, self.player)
     elseif not self.GAME_OVER or not self.GAME_WON then
-        print(self.player.vx, self.player.vy)
+        -- print(self.player.vx, self.player.vy)
         self.player:update(dt, self.target)
         self.target:update(dt)
     end

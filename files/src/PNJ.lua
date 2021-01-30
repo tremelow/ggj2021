@@ -3,7 +3,7 @@ PNJ = Character:extend()
 
 function PNJ:new(params)
     -- initialize PNJ
-    Player.super.new(self, params.xpos, params.ypos)
+    self.super.new(self, params.xpos, params.ypos)
     -- give name to the character
     self.name = params.name
     self.minigame = params.game
@@ -11,7 +11,7 @@ function PNJ:new(params)
     self.highlight = false
     -- messages (sous-bloc "ready" au cas où on voudrait distinguer des
     -- phases de l'histoire)
-    self.dialog = params.dialog.ready
+    self.dialog = params.dialog
 
     local spritePath = "assets/img/characters/" .. params.sprite
     self.sprite = love.graphics.newImage(spritePath)
