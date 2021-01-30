@@ -279,7 +279,6 @@ function Dessin:mousepressed(x, y, button, istouch)
   minigame.prevy = y - minigame.gamey0
   if x > minigame.gamex0+26+2.5 and x < minigame.gamex0+100+2.5 and y > minigame.gamey0+497+2.5 and y < minigame.gamey0+497+45+2.5 then
     score = minigame:compareCanvases()
-    print(score)
   end
   if x > minigame.gamex0+26+2.5 and x < minigame.gamex0+100+2.5 and y > minigame.gamey0+447+2.5 and y < minigame.gamey0+447+45+2.5 then
     minigame:resetDessin()
@@ -299,6 +298,7 @@ end
 
 function Dessin:keypressed(key, code)
   if key == 'escape' then
+      love.mouse.setCursor()
       self:popState("Dessin")
   elseif key == 'p' then
       self:pushState("Pause")

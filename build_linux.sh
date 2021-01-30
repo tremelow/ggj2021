@@ -7,4 +7,4 @@ TITLE="Kermesse"
 
 cd $FILES_FOLDER
 zip -9 -r $TITLE.love .
-cp $TITLE.love $MAIN_FOLDER
+cp $TITLE.love "../$MAIN_FOLDER"
