@@ -14,8 +14,13 @@ function Prologue:enteredState()
   love.graphics.newImage("assets/img/prologue/star1_1.png"), love.graphics.newImage("assets/img/prologue/star1_2.png"),
   love.graphics.newImage("assets/img/prologue/star2_1.png"), love.graphics.newImage("assets/img/prologue/star2_2.png"),
   love.graphics.newImage("assets/img/prologue/star3_1.png"), love.graphics.newImage("assets/img/prologue/star3_2.png")},
-  love.graphics.newImage("assets/img/prologue/doudou_1.png"), love.graphics.newImage("assets/img/prologue/doudou_2.png")}
-  assets_idx = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6}
+  love.graphics.newImage("assets/img/prologue/doudou_1.png"), love.graphics.newImage("assets/img/prologue/doudou_2.png"),
+  {love.graphics.newImage("assets/img/prologue/doko_1.png"),love.graphics.newImage("assets/img/prologue/doko_2.png"),
+  love.graphics.newImage("assets/img/prologue/doko_3.png"), love.graphics.newImage("assets/img/prologue/doko_4.png"),
+  love.graphics.newImage("assets/img/prologue/doko_5.png"), love.graphics.newImage("assets/img/prologue/doko_6.png"),
+  love.graphics.newImage("assets/img/prologue/doko_7.png"), love.graphics.newImage("assets/img/prologue/doko_8.png"),
+  love.graphics.newImage("assets/img/prologue/doko_9.png")}}
+  assets_idx = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 5, 5, 5, 5, 5, 6, 6, 6, 8, 8, 8, 8}
   
   local content = ""
   for line in love.filesystem.lines("assets/txt/prologue.json") do
@@ -42,6 +47,8 @@ function Prologue:draw()
 	  love.graphics.draw(prologue_images[assets_idx[prologue_counter]][6], 6*(WINDOW_WIDTH)/8, WINDOW_HEIGHT/6)
 	  love.graphics.draw(prologue_images[assets_idx[prologue_counter]][8], 2*(WINDOW_WIDTH)/8, WINDOW_HEIGHT/3)
 	end
+  elseif prologue_counter>24 then
+	--love.graphics.draw(prologue_images[8][math.min(frame_counter, 9)])
   else
 	if frame_counter < 6 then
       love.graphics.draw(prologue_images[assets_idx[prologue_counter]], (WINDOW_WIDTH-prologue_images[assets_idx[prologue_counter]]:getWidth())/2, 0)
