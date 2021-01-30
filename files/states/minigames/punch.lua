@@ -128,7 +128,7 @@ end
 
 function MiniGame:keypressed(key, code)
     if key == 'escape' then
-        self:popState("Shifumi")
+        self:popState("Punch")
     elseif key == 'p' then
         self:pushState("Pause")
     elseif key == 'r' then
