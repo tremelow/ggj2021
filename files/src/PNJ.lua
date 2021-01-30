@@ -3,7 +3,7 @@ PNJ = Character:extend()
 
 function PNJ:new(params)
     -- initialize PNJ
-    Player.super.new(self, params.xpos, params.ypos)
+    self.super.new(self, params.xpos, params.ypos)
     -- give name to the character
     self.name = params.name
     self.minigame = params.game
