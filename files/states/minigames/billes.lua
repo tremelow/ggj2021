@@ -1,7 +1,7 @@
 --! file: billes.lua
 local MiniGame = Game:addState("Billes")
 
-require("src.utils.vector")
+local Vector = require("src.utils.vector")
 
 -- Window dimensions
 local WINDOW_HEIGHT = love.graphics.getHeight()

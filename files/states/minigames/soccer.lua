@@ -1,7 +1,7 @@
 --! file: Soccer.lua
 local MiniGame = Game:addState("Soccer")
 
-Vector = require("src.utils.vector")
+local Vector = require("src.utils.vector")
 
 -- THIS IS NOT THE SAME PLAYER CLASS AS IN MAIN GAME
 -- THIS CLASS IS LOCAL ONLY TO THIS MINIGAME
