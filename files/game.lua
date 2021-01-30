@@ -121,6 +121,7 @@ function Game:keypressed(key, code)
   if key == "space" then
     for i, kid in pairs(PNJs) do
       if kid:isCharacterClose(Hero) then
+        -- TODO: choose flag depending on advancement
         self:pushState("Dialog", i, "pres_minigame")
       end
     end
