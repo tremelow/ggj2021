@@ -51,4 +51,9 @@ function Dialog:keypressed(key, code)
   end
   if key == "z" or key == "up" then Talkies.prevOption() end
   if key == "s" or key == "down" then Talkies.nextOption() end
+
+  if key == 'escape' then
+    Talkies.clearMessages()
+    self:popState() -- the topmost state has priority
+  end
 end
