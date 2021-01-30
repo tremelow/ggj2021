@@ -139,5 +139,75 @@
     ],
     },
 
-
+"kevin":{
+    "first":[
+        ["Théodule", "Gloups... Voilà Kevin."],
+        ["Théodule", "C'est un gros dur hyper musclé, ."],
+        ["Théodule", "Son regard est terrifiant... J'ai l'impression qu'il me veut du mal."],
+    ],
+    "vtff":[
+        ["Kevin", "..."],
+        ["Théodule", "Pardon ! Je m'en vais !"]
+    ],
+    "pres_minigame":[
+        ["Kevin", "..."],
+        ["Théodule", "..."],
+        ["Kevin", "..."],
+        ["Théodule", "Excuse-moi..."],
+        ["Théodule", "On m'a dit que tu as trouvé une peluche de grenouille tout à l'heure..."],
+        ["Théodule", "Est-ce que c'est vrai ?"],
+        ["Kevin", "..."],
+        ["Kevin", "Oui."],
+        ["Théodule", "C'est vrai ?!"],
+        ["Théodule", "Est-ce que tu peux me la rendre s'il te plaît ? C'est la mienne."],
+        ["Kevin", "..."],
+        ["Kevin", "Je te dirai où elle est si tu bats mon score au punching ball."],
+        ["Kevin", "Personne n'est venu depuis le début de la récré..."],
+        ["Kevin", "La maîtresse va croire que je vous ai défendu de jouer."],
+        ["Kevin", "Alors, tu veux taper ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+    ],
+    "minigame":[
+        ["Kevin", "C'est parti ! Tape de toutes tes forces !"],
+        ["Minigame", "ref"]
+    ],
+    "no_minigame":[
+        ["Kevin", "... Tu es comme tous les autres."]
+    ],
+    "victory_first":[
+        ["Kevin", "Waouh... Tu m'as battu !"],
+        ["Kevin", "..."],
+        ["Kevin", "Merci d'avoir joué à mon stand..."]
+        ["Kevin", "En fait ce matin, j'ai voulu te rendre ta peluche, mais je n'ai pas osé."],
+        ["Kevin", "Tu faisais tout pour m'éviter, tu ne voulais pas croiser mon regard..."],
+        ["Kevin", "Comme tous les autres, en fait. Je ne comprends pas pourquoi vous avez peur de moi..."],
+        ["Kevin", "Qu'est-ce que j'ai fait de mal ?"],
+        ["Théodule", "Je suis désolé, Kevin..."],
+        ["Théodule", "Je ne savais pas. J'ai toujours cru que tu ne voulais pas qu'on vienne t'embêter."],
+        ["Kevin", "Non, c'est juste mon visage qui est comme ça... À cause de mon ça, je n'ai aucun ami à part Bobby."],
+        ["Théodule", "Je suis vraiment désolé de t'avoir mal jugé."],
+        ["Théodule", "J'aimerais être ton ami, si tu veux bien."],
+        ["Kevin", "..."],
+        ["Kevin", "D'accord."],
+        ["Kevin", "Ta peluche, c'est Bobby qui l'a prise quand je lui ai raconté. Il a dit que ça t'apprendrait."],
+        ["Kevin", "Il doit être au terrain de foot."],
+        ["Théodule", "Merci, Kevin."],
+        ["Kevin", "Oh, tu peux m'appeler... Kev ?"],
+        ["Kevin", "Haha."]
+    ],
+    "victory_not_first":[
+        ["Kevin", "Tu tapes fort, dis donc !"],
+        ["Kevin", "... Tu veux réessayer ?", "D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]
+    ],
+    "defeat":[
+        ["Kevin", "Tu rigoles ? Ça ne compte pas, il faut taper plus fort."],
+        ["Kevin", "... Tu veux réessayer ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+    ],
+    "minigame_known_never_won":[
+        ["Kevin", "..."]
+        ["Kevin", "Tu veux tenter ta chance au punching-ball ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+    ],
+    "minigame_won":[
+        ["Kevin", "..."],
+        ["Kevin", "Personne n'est venu depuis tout à l'heure. Tu veux rejouer ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+    ]
 }
