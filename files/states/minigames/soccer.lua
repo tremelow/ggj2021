@@ -218,6 +218,7 @@ end
 ---------------------
 -- GAME MANAGEMENT
 ---------------------
+TARGET_SCORE = 12
 
 function MiniGame:enteredState()
     self.background_img = love.graphics.newImage("assets/img/football/foot.png")
@@ -238,6 +239,7 @@ function MiniGame:reset()
     -- Reset Score
     SCORE = 0
     GAME_OVER = false
+    self.stopped = false
 end
 
 function MiniGame:update(dt)
