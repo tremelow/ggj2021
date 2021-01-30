@@ -136,13 +136,13 @@
       ],
     "minigame_won":[
         ["Olga", "Tu veux mesurer ta chance à la mienne une nouvelle fois ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
-    ],
+    ]
     },
 
 "kevin":{
     "first":[
         ["Théodule", "Gloups... Voilà Kevin."],
-        ["Théodule", "C'est un gros dur hyper musclé, ."],
+        ["Théodule", "C'est un gros dur hyper musclé."],
         ["Théodule", "Son regard est terrifiant... J'ai l'impression qu'il me veut du mal."],
     ],
     "vtff":[
@@ -210,4 +210,5 @@
         ["Kevin", "..."],
         ["Kevin", "Personne n'est venu depuis tout à l'heure. Tu veux rejouer ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ]
+    }
 }
