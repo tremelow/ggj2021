@@ -121,7 +121,7 @@ function Game:keypressed(key, code)
   if key == "space" then
     for i, kid in pairs(PNJs) do
       if kid:isCharacterClose(Hero) then
-        self:pushState("Dialog", i, "minigame")
+        self:pushState("Dialog", i, "pres_minigame")
       end
     end
   end

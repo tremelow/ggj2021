@@ -2,44 +2,31 @@ local Dialog = Game:addState("Dialog")
 
 function Dialog:enteredState(id, key)
   self.id = id
+  self.key = key
   self.pnj = PNJs[id]
-  self:parse(dialogs[id][key])
+  self.currentLine = 1
+  self:sayLine(self:getLine())
 end
 
-function Dialog:parse(list)
-  if list then
-    local speaker = list[1][1]
-    local msg = {}
-    local opt = {}
-    local oncomplete = function (dialog) self:popState("Dialog") end
-    for i, line in ipairs(list) do
+function Dialog:getLine()
+  return dialogs[self.id][self.key][self.currentLine]
+end
 
-      if line[1] == "Minigame" then
-        oncomplete = function(dialog)
-            self:gotoState(self.pnj.minigame)
-          end
-      
-      elseif line[1] == speaker then
-        table.insert(msg, line[2])
-      else
-        Talkies.say(speaker, msg)
-        msg = {}
-        speaker = list[i+1]
-      end
+function Dialog:sayLine(line)
+  if line[1] == "Minigame" then
+    self:gotoState(self.pnj.minigame)
+  elseif line[3] then
+    local options = {}
+    for index, choice in ipairs(line[3]) do
+      table.insert(options, {choice, function(dialog)
+          self.key = line[4][index]
+          self.currentLine = 1
+        end })
     end
-    
-    -- Final check: is there a choice?
-    local i = #list
-    if list[i][3] then
-      for index, choice in ipairs(list[i][3]) do
-        table.insert(opt, {choice, function(dialog)
-            
-          end })
-      end
-      Talkies.say(speaker, msg, {options = opt, oncomplete = oncomplete})
-    else
-      Talkies.say(speaker, msg, {oncomplete = oncomplete})
-    end
+    Talkies.say(line[1], line[2], {options = options})
+  else
+    Talkies.say(line[1], line[2])
+    self.currentLine = self.currentLine + 1
   end
 end
 
@@ -51,7 +38,17 @@ function Dialog:update(dt)
 end
 
 function Dialog:keypressed(key, code)
-  if key == "space" then Talkies.onAction() end
+  if key == "space" then
+    Talkies.onAction()
+    if not Talkies.isOpen() then
+      line = self:getLine()
+      if line then
+        self:sayLine(line)
+      else
+        self:popState("Dialog")
+      end
+    end
+  end
   if key == "z" or key == "up" then Talkies.prevOption() end
   if key == "s" or key == "down" then Talkies.nextOption() end
 end
