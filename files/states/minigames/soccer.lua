@@ -218,7 +218,7 @@ end
 ---------------------
 -- GAME MANAGEMENT
 ---------------------
-TARGET_SCORE = 1
+TARGET_SCORE = 5
 
 function MiniGame:enteredState(name, unlock)
     self.background_img = love.graphics.newImage("assets/img/football/foot.png")
