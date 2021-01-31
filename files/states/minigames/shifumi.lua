@@ -195,6 +195,7 @@ end
 
 function MiniGame:Select()
     self.me_select = self.select
+    math.randomseed(os.time())
     self.ia_select = math.random(1,3)
     self.MI = true
     local outcome = self:outCome()
