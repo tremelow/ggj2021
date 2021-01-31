@@ -138,6 +138,9 @@ function MiniGame:update(dt)
         else
             self:pushState("Dialog", self.pnj_id, "defeat")
         end
+        minigameMusic:stop()
+        overworldMusic:play()
+        currentMusic = overworldMusic
         self:popState("Shifumi")
     end
 
