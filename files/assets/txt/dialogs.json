@@ -428,7 +428,7 @@
         ["olga", "C'est évidemment ma chance de sorcière qui a rejailli sur vous, puisque je n'ai pas acheté de ticket..."],
         ["bobby", "J'ai aussi fait ma part. Sans moi, Doudou n'aurait jamais été retrouvé."],
         ["kevin", "Mais c'est toi qui l'avais pris au départ..."],
-        ["leon", "L'important, c'est quand même que tout finisse bien, non ?", ["Oui !"], ["no_minigame"]]
+        ["leon", "L'important, c'est quand même que tout finisse bien, non ?", ["Oui !"], ["minigame"]]
     ],
     "minigame":[
         ["Minigame", "ref"]
