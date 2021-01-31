@@ -17,12 +17,12 @@ local Bille = class("Bille")
 
 local DRAG = 1
 local BALL_RADIUS = 40
--- local BALL_SPRITE = love.graphics.newImage("assets/img/football/football.png")
+local SPRITE_PATH = "/assets/img/billes/bille"
 
 local isCollision = false
 local computeCollision = true
 
-function Bille:initialize(x,y)
+function Bille:initialize(x,y, sprite)
     -- Position of the ball center
     self.x = x
     self.y = y
@@ -34,6 +34,8 @@ function Bille:initialize(x,y)
     self.vx = 0
     self.vy = 0
     self.w  = 0
+
+    self.sprite = love.graphics.newImage(SPRITE_PATH .. sprite)
 end
 
 function Bille:update(dt)
@@ -44,12 +46,13 @@ function Bille:update(dt)
 end
 
 function Bille:draw()
-    -- -- Scaling parameters to fit image in a DIAMETER x DIAMETER box
-    -- scalex = BALL_RADIUS * 2 / BALL_SPRITE:getWidth()
-    -- scaley = BALL_RADIUS * 2 / BALL_SPRITE:getHeight()
-
     -- Draw image to scale
-    love.graphics.circle('fill', self.x, self.y, BALL_RADIUS)
+
+    love.graphics.draw(self.sprite,
+        (self.x - BALL_RADIUS),
+        (self.y - BALL_RADIUS),
+        self.angle
+    )
 end
 
 function Bille:isOut(dt)
@@ -195,7 +198,11 @@ local GAME_OVER = false
 local TRIES = 4
 
 function MiniGame:drawWelcome()
-    love.graphics.printf("J'ai encore "..TRIES.." essais !", WINDOW_WIDTH/4, WINDOW_HEIGHT/3, WINDOW_WIDTH/2, 'center')
+    if TRIES > 1 then
+        love.graphics.printf("J'ai encore "..TRIES.." billes !", WINDOW_WIDTH/4, WINDOW_HEIGHT/3, WINDOW_WIDTH/2, 'center')
+    else
+        love.graphics.printf("C'est la dernière bille que m'ont prêté mes amis ! \n Je ne dois pas les décevoir ! ", WINDOW_WIDTH/4, WINDOW_HEIGHT/3, WINDOW_WIDTH/2, 'center')
+    end
 end
 
 function MiniGame:drawOutcome()
@@ -238,9 +245,10 @@ function MiniGame:reset()
 end
 
 function MiniGame:replace()
-    self.target = Bille(WINDOW_WIDTH/2, WINDOW_HEIGHT / 6)
+    self.target = Bille(WINDOW_WIDTH/2, WINDOW_HEIGHT / 6, "_emilie.png")
     self.player = PlayerBille(WINDOW_WIDTH/5 + 3/5 * WINDOW_WIDTH * math.random(),
-                        WINDOW_HEIGHT * 5/6
+                        WINDOW_HEIGHT * 5/6,
+                        TRIES ..".png"
                     )
     self.arrow = Arrow(self.player.x, self.player.y)
 
@@ -307,7 +315,7 @@ function MiniGame:draw()
     if GAME_STOP then
         self:drawOutcome()
     end
-    
+
     font = love.graphics.newFont(20)
 end
 

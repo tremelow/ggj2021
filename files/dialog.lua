@@ -26,9 +26,9 @@ function Dialog:sayLine(line)
           self.currentLine = 1
         end })
     end
-    Talkies.say(line[1], line[2], {options = options})
+    Talkies.say(line[1], line[2], {image = love.graphics.newImage("assets/img/talkies/theodule.png"),options = options})
   else
-    Talkies.say(line[1], line[2])
+    Talkies.say(line[1], line[2], {image = love.graphics.newImage("assets/img/talkies/theodule.png")})
     self.currentLine = self.currentLine + 1
   end
 end
