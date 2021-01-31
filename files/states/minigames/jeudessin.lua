@@ -2,6 +2,8 @@ local Dessin = Game:addState("Dessin")
 
 local JeuDessin = class("JeuDessin")
 
+local GAME_WON = false
+
 function JeuDessin:drawExample()
   --Dessin de l'exemple à reproduire
   love.graphics.setCanvas(self.exampleCanvas)
@@ -190,6 +192,7 @@ function JeuDessin:drawJeuDessin()
       textDialogue = "Perdu. T'es nul !"
     else
       textDialogue = "Bravo. Tu dessines trop bien !"
+      GAME_WON = true
     end
   end
   love.graphics.setBlendMode("alpha", "premultiplied")
@@ -267,9 +270,12 @@ end
 ---------------------
 local minigame = JeuDessin()
 
-function Dessin:enteredState()
+function Dessin:enteredState(name, unlock)
   love.graphics.setBackgroundColor(0,0,0,1)
   minigame:loadJeuDessin()
+
+  self.pnj_id = name
+  self.unlock = unlock
 
   --music 
   currentMusic:stop()
@@ -310,6 +316,20 @@ function Dessin:keypressed(key, code)
       minigameMusic:stop()
       overworldMusic:play()
       currentMusic = overworldMusic
+      
+      if GAME_WON then
+        -- If already won
+        if Hero.advancement[self.pnj_id] == "minigame_won" then
+            self:pushState("Dialog", self.pnj_id, "victory_not_first")
+        else
+            -- First win
+            Hero.advancement[self.pnj_id] = "minigame_won"
+            Hero.advancement[self.unlock] = "pres_minigame"
+            self:pushState("Dialog", self.pnj_id, "victory_first")
+        end
+      else
+        self:pushState("Dialog", self.pnj_id, "defeat")
+      end
       self:popState("Dessin")
   elseif key == 'p' then
       minigameMusic:pause()

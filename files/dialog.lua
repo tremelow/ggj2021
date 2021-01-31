@@ -14,7 +14,10 @@ end
 
 function Dialog:sayLine(line)
   if line[1] == "Minigame" then
-    self:gotoState(self.pnj.minigame)
+    if not Hero.advancement[self.pnj.name] == "minigame_won" then
+      Hero.advancement[self.pnj.name] = "minigame_known_never_won"
+    end
+    self:gotoState(self.pnj.minigame, self.id, self.pnj.unlock)
   elseif line[3] then
     local options = {}
     for index, choice in ipairs(line[3]) do

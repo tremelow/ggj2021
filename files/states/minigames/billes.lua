@@ -204,12 +204,14 @@ function MiniGame:reset()
     self.phase = 'aim'
 end
 
-function MiniGame:enteredState()
+function MiniGame:enteredState(name, unlock)
     self:reset() 
      --music 
     currentMusic:stop()
     minigameMusic:play()
     currentMusic = minigameMusic
+    self.pnj_id = name
+    self.unlock = unlock
 end
 
 function MiniGame:update(dt)
@@ -222,9 +224,17 @@ function MiniGame:update(dt)
 
     if GAME_OVER then
         if GAME_WON then
-            self:pushState("Dialog", "emilie", "victory_not_first")
+            -- If already won
+            if Hero.advancement[self.pnj_id] == "minigame_won" then
+                self:pushState("Dialog", self.pnj_id, "victory_not_first")
+            else
+                -- First win
+                Hero.advancement[self.pnj_id] = "minigame_won"
+                Hero.advancement[self.unlock] = "pres_minigame"
+                self:pushState("Dialog", self.pnj_id, "victory_first")
+            end
         else
-            self:pushState("Dialog", "emilie", "defeat")
+            self:pushState("Dialog", self.pnj_id, "defeat")
         end
         self:popState("Billes")
     end

@@ -4,8 +4,9 @@
     "xpos": 1900,
     "ypos": 400,
     "sprite": "bobby.png",
-	"shadow": "bobby_s.png",
+	  "shadow": "bobby_s.png",
     "game": "Soccer",
+    "unlock": "emilie",
     "dialog": {
       "ready": {
           "messages": [
@@ -25,8 +26,9 @@
     "xpos": 300,
     "ypos": 300,
     "sprite": "leon.png",
-	"shadow": "leon_s.png",
+	  "shadow": "leon_s.png",
     "game": "Dessin",
+    "unlock": "olga",
     "dialog": {
       "ready": {
           "messages": [
@@ -48,6 +50,7 @@
     "sprite": "emilie.png",
 	  "shadow": "emilie_s.png",
     "game": "Billes",
+    "unlock": "mr-tombola",
     "dialog": {
       "ready": {
           "messages": [
@@ -69,6 +72,7 @@
 	  "sprite": "olga.png",
 	  "shadow": "olga_s.png",
     "game": "Shifumi",
+    "unlock": "kevin",
     "dialog": {
       "ready": {
           "messages": [
@@ -92,6 +96,7 @@
 	  "sprite": "kevin.png",
 	  "shadow": "kevin_s.png",
     "game": "Punch",
+    "unlock": "bobby",
     "dialog": {
       "ready": {
           "messages": [

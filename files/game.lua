@@ -53,6 +53,8 @@ function Game:initialize()
   
   for id, kid in pairs(pnjData) do
     PNJs[id] = PNJ(kid)
+    Hero.hasSpoken[id] = false
+    Hero.advancement[id] = "vtff"
   end
   
   content = ""
@@ -135,7 +137,12 @@ function Game:keypressed(key, code)
     for i, kid in pairs(PNJs) do
       if kid:isCharacterClose(Hero) then
         -- TODO: choose flag depending on advancement
-        self:pushState("Dialog", i, "minigame_known_never_won")
+        if Hero.hasSpoken[i] then
+          self:pushState("Dialog", i, Hero.advancement[i])
+        else 
+          Hero.hasSpoken[i] = true
+          self:pushState("Dialog", i, 'first')
+        end 
       end
     end
   end

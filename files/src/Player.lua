@@ -11,6 +11,10 @@ function Player:new(x,y)
   -- Init Player at position x, y
   self.super.new(self,x,y)
 
+  -- Flow Chart Mngmt
+  self.hasSpoken = {}
+  self.advancement = {}
+
   self.direction = {x = 0, y = 0}
   self.orientation = {x = 0, y = -1} -- start facing down
 

@@ -220,7 +220,7 @@ end
 ---------------------
 TARGET_SCORE = 1
 
-function MiniGame:enteredState()
+function MiniGame:enteredState(name, unlock)
     self.background_img = love.graphics.newImage("assets/img/football/foot.png")
      --music 
      currentMusic:stop()
@@ -228,6 +228,8 @@ function MiniGame:enteredState()
      currentMusic = minigameMusic
 
     self:reset()
+    self.pnj_id = name
+    self.unlock = unlock
 end
 
 function MiniGame:reset()
@@ -251,9 +253,17 @@ function MiniGame:update(dt)
     elseif not self.stopped then
         self.stopped = true
         if SCORE > TARGET_SCORE then
-            self:pushState("Dialog", "bobby", "victory_not_first")
+            -- If already won
+            if Hero.advancement[self.pnj_id] == "minigame_won" then
+                self:pushState("Dialog", self.pnj_id, "victory_not_first")
+            else
+                -- First win
+                Hero.advancement[self.pnj_id] = "minigame_won"
+                Hero.advancement[self.unlock] = "pres_minigame"
+                self:pushState("Dialog", self.pnj_id, "victory_first")
+            end
         else
-            self:pushState("Dialog", "bobby", "defeat")
+            self:pushState("Dialog", self.pnj_id, "defeat")
         end
         self:popState("Soccer")
     end

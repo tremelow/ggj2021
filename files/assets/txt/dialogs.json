@@ -5,6 +5,21 @@
         ["Théodule", "Il passe son temps à dessiner dans ses cahiers en rêvassant."],
         ["Théodule", "C'est le dernier à être sorti de la salle de classe... Peut-être qu'il a vu quelqu'un emporter Doudou ?"]
     ],
+    "vtff":[
+        ["Léon", "Hmmm ?"],
+        ["Léon", "Oh, c'est toi, heu..."],
+        ["Théodule", "Théodule"],
+        ["Théodule", "Désolé de t'embêter..."],
+        ["Théodule", "Est-ce que tu as vu une grenouille grande comme ça ?"],
+        ["Léon", "Je ne savais pas qu'il y avait des grenouilles si grandes. Peut-être en Amazonie ?"],
+        ["Théodule", "Heu, non... C'est ma peluche, Doudou."],
+        ["Théodule", "Je l'ai perdue."],
+        ["Léon", "Ah."],
+        ["Léon", "Ça ne me dit rien... Peut-être que tu peux me la dessiner ?"],
+        ["Théodule", "Je ne sais pas dessiner, moi..."],
+        ["Léon", "Mais c'est facile ! Je vais t'apprendre."],
+        ["Léon", "Tu veux bien dessiner avec moi ?", ["D'accord", "Pas tout de suite"], ["minigame","no_minigame"]]
+    ],
     "pres_minigame":[
         ["Léon", "Hmmm ?"],
         ["Léon", "Oh, c'est toi, heu..."],

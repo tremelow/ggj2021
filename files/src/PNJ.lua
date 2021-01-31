@@ -7,6 +7,7 @@ function PNJ:new(params)
     -- give name to the character
     self.name = params.name
     self.minigame = params.game
+    self.unlock = params.unlock
     -- flag for interaction
     self.highlight = false
     -- messages (sous-bloc "ready" au cas où on voudrait distinguer des
