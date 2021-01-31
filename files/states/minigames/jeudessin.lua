@@ -132,6 +132,7 @@ function JeuDessin:loadJeuDessin()
   self.exampleCanvas = love.graphics.newCanvas(self.gameWidth,self.gameHeight)
   craieBackground = love.graphics.newImage("assets/craieback.png")
   self.tableau = love.graphics.newImage("assets/tableau.png")
+  self.teteLeon =  love.graphics.newImage("assets/img/talkies/leon.png")
 
   self.tailleCrayon = 5
 
@@ -140,7 +141,7 @@ function JeuDessin:loadJeuDessin()
   love.graphics.setCanvas(self.drawingCanvas)
   love.graphics.setColor(0, 0, 0, 1)
   -- love.graphics.rectangle("fill", 0,0,gameWidth,gameHeight) --On met le rectangle noir
-  love.graphics.draw(self.tableau, 0,0)
+  --love.graphics.draw(self.tableau, 0,0)
 
   self:drawExample()
 
@@ -201,11 +202,11 @@ function JeuDessin:drawJeuDessin()
   love.graphics.setColor(1,1,1,1)
   love.graphics.setLineWidth(5)
   love.graphics.rectangle("line", self.gamex0+2.5, self.gamey0+self.gameHeight, self.gameWidth-5,self.height-(self.gamey0+self.gameHeight))
+  love.graphics.draw(self.teteLeon, self.gamex0, self.gamey0+self.gameHeight, 0, 1, 1.03)
   love.graphics.setBlendMode("alpha", "alphamultiply")
   fontWidth = font:getWidth(textDialogue)
   fontHeight = font:getHeight(textDialogue)
   love.graphics.printf(textDialogue, self.gamex0 + (self.gameWidth - fontWidth)/2, self.gamey0+self.gameHeight + (self.height-(self.gamey0+self.gameHeight) - fontHeight)/2, 1000 )
-
   if self.timer < 3 then
     love.graphics.setCanvas(self.gameCanvas)-- Sur le gameCanvas on affiche d'abord le background puis drawingCanvas
     love.graphics.draw(craieBackground)
