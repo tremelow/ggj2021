@@ -42,6 +42,10 @@ end
 function Player:resetAdvancement(pnjData)
   self.x = 0
   self.y = 0 
+
+  self.direction = {x = 0, y = 0}
+  self.orientation = {x = 0, y = -1} -- start facing down
+  
   self.hasSpoken = {}
   self.advancement = {}
     
