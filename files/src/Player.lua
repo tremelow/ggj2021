@@ -22,7 +22,7 @@ function Player:new(x,y)
   local spritePath = "assets/img/characters/theodule.png"
   self.sprite = love.graphics.newImage(spritePath)
   local width = math.floor(self.sprite:getWidth() / 12)
-  local height = math.floor(self.sprite:getHeight() / 4)
+  local height = math.floor(self.sprite:getHeight() / 5)
   local allQuads = Animation:new(self.sprite, width, height, 0.2)
 
   -- Isolate quad depending on direction/orientation
@@ -33,7 +33,7 @@ function Player:new(x,y)
     self.animation[dir] = allQuads:isolateQuads(indices)
   end
   for i, dir in pairs({"E", "SE", "S", "SW", "W", "NW", "N", "NE"})do
-    self.neutral[dir] = allQuads:isolateQuads({36 + i})
+    self.neutral[dir] = allQuads:isolateQuads({36 + i, 48 + i})
   end
 end
 
