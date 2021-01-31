@@ -39,8 +39,10 @@ function Epilogue:draw()
     love.graphics.draw(epilogue_images[assets_idx[epilogue_counter]+1], 0, 0)
   end
   
+  love.graphics.setColor(0,0,0,0.7)
+  love.graphics.rectangle("fill", WINDOW_WIDTH/4, 8*WINDOW_HEIGHT/9, WINDOW_WIDTH/2, 300)
+  
   love.graphics.setColor(255,255,255)
-
   local wTitle = math.floor(WINDOW_WIDTH/2)
   local xTitle = math.floor((WINDOW_WIDTH - wTitle)/2)
   local yTitle = math.floor(8*WINDOW_HEIGHT/9)

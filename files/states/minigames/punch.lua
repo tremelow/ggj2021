@@ -17,6 +17,7 @@ local PunchingBall = class("PunchingBall")
 local PB_RADIUS = WINDOW_HEIGHT / 6
 
 function PunchingBall:initialize()
+	self.back = love.graphics.newImage(ASSET_FOLDER .. "background.png")
     self.img = love.graphics.newImage(ASSET_FOLDER .. "punchingball_1.png")
 end
 
@@ -24,6 +25,7 @@ function PunchingBall:update(dt)
 end
 
 function PunchingBall:draw(dt)
+	love.graphics.draw(self.back)
     love.graphics.draw(self.img, 
         WINDOW_WIDTH/2 - self.img:getWidth()/2,
         WINDOW_HEIGHT * 2/ 5 - self.img:getHeight()/2)
