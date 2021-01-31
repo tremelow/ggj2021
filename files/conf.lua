@@ -3,7 +3,7 @@
 
 -- Configuration
 function love.conf(t)
-	t.title = "Panique à la Kermesse"
+	t.title = "Théodule à la Kermesse"
 	t.version = "11.3"
 	t.window.width = 1280
 	t.window.height = 720
