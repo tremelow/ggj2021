@@ -27,7 +27,7 @@
     "ypos": 400,
     "sprite": "leon.png",
 	  "shadow": "leon_s.png",
-    "game": "Dessin",
+    "game": "Shifumi",
     "unlock": "olga",
     "dialog": {
       "ready": {

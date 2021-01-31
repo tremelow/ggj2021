@@ -33,7 +33,7 @@ end
 function Tile:draw(select)   
     -- Scaling parameters to fit image in a TILE_HEIGHT x TILE_HEIGHT box
     scale = TILE_HEIGHT / self.img:getHeight()
-    
+
     if select == self.pos then
         love.graphics.rectangle("fill",
             WINDOW_WIDTH/N_TILES * self.pos - WINDOW_WIDTH/N_TILES/2 - TILE_HEIGHT/2 - 10,
@@ -156,12 +156,16 @@ function MiniGame:update(dt)
     if PLAYER_SCORE > 2 or OPPONENT_SCORE > 2 then
         GAME_OVER = true
     end
-    self.select = MiniGame:mouseSelect()
+    local mSelect, mSelectBool = MiniGame:mouseSelect()
+    if mSelectBool then
+        self.select = mSelect
+    end
     Talkies.update(dt)
 end
 
 function MiniGame:mouseSelect()
-    local mSelect
+    local mSelect = -1
+    local mSelectBool = false
     for i = 1,3 do
         local x1 = WINDOW_WIDTH/N_TILES * i - WINDOW_WIDTH/N_TILES/2 - TILE_HEIGHT/2 - 10
         local x2 = x1 + TILE_HEIGHT + 20
@@ -172,7 +176,10 @@ function MiniGame:mouseSelect()
             mSelect = i
         end
     end
-    return mSelect
+    if mSelect > 0 then
+        mSelectBool = true
+    end
+    return mSelect, mSelectBool
 end
 
 function MiniGame:nextSelect()
