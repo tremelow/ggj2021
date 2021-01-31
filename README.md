@@ -4,7 +4,7 @@ Contribution à la Global Game Jam 2021 sur le thème : Lost and Found
 (*Perdu et (Re)trouvé*)
 
 ![theodule_kermesse](https://github.com/tremelow/ggj2021/tree/main/files/theodule_kermesse.png?raw=true)
-![plot](https://github.com/tremelow/ggj2021/tree/main/files/theodule_kermesse.png)
+![](../main/files/theodule_kermesse.png)
 Merci à Vipallegoria/onik pour l'illustration
 
 ## Instructions (English)
