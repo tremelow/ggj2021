@@ -1,4 +1,5 @@
 {"leon":{
+    "force_minigame": [["Minigame"]],
     "first":[
         ["Théodule", "C'est Léon."],
         ["Théodule", "Il est un peu comme moi, il ne parle pas beaucoup."],
@@ -73,6 +74,7 @@
     },
 
 "olga":{
+    "force_minigame": [["Minigame"]],
     "first":[
         ["Théodule", "C'est Olga."],
         ["Théodule", "Elle tient le stand de voyance, mais elle est déguisée en sorcière."],
@@ -155,6 +157,7 @@
 },
 
 "kevin":{
+    "force_minigame": [["Minigame"]],
     "first":[
         ["Théodule", "Gloups... Voilà Kevin."],
         ["Théodule", "C'est un gros dur hyper musclé."],
@@ -228,6 +231,7 @@
 },
 
 "bobby":{
+    "force_minigame": [["Minigame"]],
     "first":[
         ["Théodule", "Voilà Bobby."],
         ["Théodule", "Il est obsédé par le foot, il passe toutes les récrés à faire des buts dans les cages."],
@@ -304,6 +308,7 @@
 },
 
 "emilie":{
+    "force_minigame": [["Minigame"]],
     "first":[
         ["Théodule", "C'est Émilie..."],
         ["Théodule", "Aaaaah ! Quelle aura ! Elle est si intimidante !"]

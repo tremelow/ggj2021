@@ -137,7 +137,7 @@ function JeuDessin:loadJeuDessin()
 
   -- set font
 
-  love.graphics.setCanvas(drawingCanvas)
+  love.graphics.setCanvas(self.drawingCanvas)
   love.graphics.setColor(0, 0, 0, 1)
   -- love.graphics.rectangle("fill", 0,0,gameWidth,gameHeight) --On met le rectangle noir
   love.graphics.draw(self.tableau, 0,0)
