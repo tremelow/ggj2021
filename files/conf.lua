@@ -3,9 +3,9 @@
 
 -- Configuration
 function love.conf(t)
-	t.title = "Méga Compet" 	-- The title of the window the game is in (string)
-	t.version = "11.3"         	-- The LÖVE version this game was made for (string)
-	t.window.width = 1280       -- not quite the pixel resolution?
+	t.title = "Panique à la Kermesse"
+	t.version = "11.3"
+	t.window.width = 1280
 	t.window.height = 720
 
 	-- For Windows debugging

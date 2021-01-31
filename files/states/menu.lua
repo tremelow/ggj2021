@@ -16,7 +16,7 @@ function Menu:draw()
   local wTitle = math.floor(WINDOW_WIDTH/3)
   local xTitle = math.floor((WINDOW_WIDTH - wTitle)/2)
   local yTitle = math.floor(WINDOW_HEIGHT/3)
-  local title = "FUCKING KERMESSE"
+  local title = "Panique à la Kermesse"
   love.graphics.printf(title, xTitle, yTitle, wTitle, "center")
 
   local wInst = wTitle
@@ -33,5 +33,4 @@ function Menu:keypressed(key, code)
   end
 
   self:gotoState("Prologue")
-  --self:popState("Menu")
 end
