@@ -82,7 +82,7 @@ function Prologue:draw()
 
   love.graphics.setColor(255,255,255)
 
-  local wTitle = math.floor(WINDOW_WIDTH/2)
+  local wTitle = math.floor(2*WINDOW_WIDTH/3)
   local xTitle = math.floor((WINDOW_WIDTH - wTitle)/2)
   local yTitle = math.floor(8*WINDOW_HEIGHT/9)
   local title = prologue_text[prologue_counter]
