@@ -288,6 +288,8 @@ function Dessin:enteredState(name, unlock)
   love.mouse.setCursor(cursor)
 end
 
+
+
 function Dessin:mousepressed(x, y, button, istouch)
   minigame.prevx = x - minigame.gamex0
   minigame.prevy = y - minigame.gamey0
@@ -334,6 +336,20 @@ function Dessin:keypressed(key, code)
   elseif key == 'p' then
       minigameMusic:pause()
       self:pushState("Pause")
+  elseif GAME_WON and key == 'space' then
+    if Hero.advancement[self.pnj_id] == "minigame_won" then
+            self:pushState("Dialog", self.pnj_id, "victory_not_first")
+    else
+        -- First win
+        Hero.advancement[self.pnj_id] = "minigame_won"
+        Hero.advancement[self.unlock] = "pres_minigame"
+        self:pushState("Dialog", self.pnj_id, "victory_first")
+    end
+    love.mouse.setCursor()
+    minigameMusic:stop()
+    overworldMusic:play()
+    currentMusic = overworldMusic
+    self:popState("Dessin")
   elseif key == 'r' then
       minigame:reset()
   end

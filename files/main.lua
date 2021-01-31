@@ -17,6 +17,8 @@ function love.load(arg)
   -- Window dimensions
   WINDOW_HEIGHT = love.graphics.getHeight()
   WINDOW_WIDTH = love.graphics.getWidth()
+
+  love.graphics.setNewFont(24)
   
   game = Game:new()
 end

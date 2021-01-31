@@ -9,7 +9,7 @@
     "vtff":[
         ["Léon", "Hmmm ?"],
         ["Léon", "Oh, c'est toi, heu..."],
-        ["Théodule", "Théodule"],
+        ["Théodule", "Théodule."],
         ["Théodule", "Désolé de t'embêter..."],
         ["Théodule", "Est-ce que tu as vu une grenouille grande comme ça ?"],
         ["Léon", "Je ne savais pas qu'il y avait des grenouilles si grandes. Peut-être en Amazonie ?"],
@@ -249,7 +249,7 @@
         ["Bobby", "... Doudou ?"],
         ["Bobby", "...... Kev ?"],
         ["Bobby", "Pfffft... Hahahaha !"],
-        ["Bobby", "Oui, c'est vrai, j'ai demandé à Kevin de me donner ta peluche stupide"],
+        ["Bobby", "Oui, c'est vrai, j'ai demandé à Kevin de me donner ta peluche stupide."],
 		["Bobby", "et je ne te la rendrai pas. Ça t'apprendra à juger les autres sans les connaître !"],
         ["Théodule", "..."],
         ["Théodule", "Kev m'a pardonné, pourquoi est-ce que tu ne peux pas en faire autant ?"],
@@ -384,7 +384,7 @@
         ["Émilie", "Prêt à me ravir Altaïr ?"]
     ],
     "minigame_won":[
-        ["Émilie", "La Tombola va bientôt commencer, on devrait y aller"]
+        ["Émilie", "La tombola va bientôt commencer, on devrait y aller."]
     ]
 },
 "mr-tombola":{

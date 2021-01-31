@@ -149,13 +149,12 @@ function Game:keypressed(key, code)
   if key == "space" then
     for i, kid in pairs(PNJs) do
       if kid:isCharacterClose(Hero) then
-        -- TODO: choose flag depending on advancement
         if Hero.hasSpoken[i] then
           self:pushState("Dialog", i, Hero.advancement[i])
         else 
           Hero.hasSpoken[i] = true
           self:pushState("Dialog", i, 'first')
-        end 
+        end
       end
     end
   end
