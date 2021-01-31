@@ -1,8 +1,8 @@
 {
   "bobby": {
     "name": "Bobby",
-    "xpos": 300,
-    "ypos": 300,
+    "xpos": 280,
+    "ypos": 500,
     "sprite": "bobby.png",
 	  "shadow": "bobby_s.png",
     "game": "Soccer",
@@ -115,10 +115,10 @@
 
   "mr-tombola": {
     "name": "M. Tombola",
-    "xpos": 200,
-    "ypos": 600,
-	  "sprite": "kevin.png",
-	  "shadow": "kevin_s.png",
+    "xpos": 270,
+    "ypos": 180,
+	  "sprite": "mr-tombola.png",
+	  "shadow": "mr-tombola_s.png",
     "game": "Epilogue"
   }
 }
