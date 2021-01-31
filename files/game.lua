@@ -43,6 +43,8 @@ function Game:initialize()
 
   -- Init Players and PNJs
   Hero = Player(0,0)
+  Names = {theo = "Théodule"}
+  DialogSprite = {theo = love.graphics.newImage("assets/img/talkies/theodule.png")}
 
   PNJs = {}
   local content = ""
@@ -52,6 +54,13 @@ function Game:initialize()
   local pnjData = json.decode(content)
   
   for id, kid in pairs(pnjData) do
+    Names[id] = kid.name
+    local talky = "assets/img/talkies/" .. id .. ".png"
+    if love.filesystem.isFile(talky) then
+      DialogSprite[id] = love.graphics.newImage(talky)
+    else
+      DialogSprite[id] = love.graphics.newImage("assets/img/talkies/papyrus.png")
+    end
     PNJs[id] = PNJ(kid)
     Hero.hasSpoken[id] = false
     Hero.advancement[id] = "vtff"

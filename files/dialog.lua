@@ -18,18 +18,20 @@ function Dialog:sayLine(line)
       Hero.advancement[self.pnj.name] = "minigame_known_never_won"
     end
     self:gotoState(self.pnj.minigame, self.id, self.pnj.unlock)
-  elseif line[3] then
-    local options = {}
-    for index, choice in ipairs(line[3]) do
-      table.insert(options, {choice, function(dialog)
-          self.key = line[4][index]
-          self.currentLine = 1
-        end })
-    end
-    Talkies.say(line[1], line[2], {image = love.graphics.newImage("assets/img/talkies/theodule.png"),options = options})
   else
-    Talkies.say(line[1], line[2], {image = love.graphics.newImage("assets/img/talkies/theodule.png")})
+    local config = {image = DialogSprite[line[1]]}
+    if line[3] then
+      local options = {}
+      for index, choice in ipairs(line[3]) do
+        table.insert(options, {choice, function(dialog)
+            self.key = line[4][index]
+            self.currentLine = 1
+          end })
+      end
+      config.options = options
+    end
     self.currentLine = self.currentLine + 1
+    Talkies.say(Names[line[1]], line[2], config)
   end
 end
 

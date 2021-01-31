@@ -1,432 +1,432 @@
 {"leon":{
     "force_minigame": [["Minigame"]],
     "first":[
-        ["Théodule", "C'est Léon."],
-        ["Théodule", "Il est un peu comme moi, il ne parle pas beaucoup."],
-        ["Théodule", "Il passe son temps à dessiner dans ses cahiers en rêvassant."],
-        ["Théodule", "C'est le dernier à être sorti de la salle de classe... Peut-être qu'il a vu quelqu'un emporter Doudou ?"]
+        ["theo", "C'est Léon."],
+        ["theo", "Il est un peu comme moi, il ne parle pas beaucoup."],
+        ["theo", "Il passe son temps à dessiner dans ses cahiers en rêvassant."],
+        ["theo", "C'est le dernier à être sorti de la salle de classe... Peut-être qu'il a vu quelqu'un emporter Doudou ?"]
     ],
     "vtff":[
-        ["Léon", "Hmmm ?"],
-        ["Léon", "Oh, c'est toi, heu..."],
-        ["Théodule", "Théodule."],
-        ["Théodule", "Désolé de t'embêter..."],
-        ["Théodule", "Est-ce que tu as vu une grenouille grande comme ça ?"],
-        ["Léon", "Je ne savais pas qu'il y avait des grenouilles si grandes. Peut-être en Amazonie ?"],
-        ["Théodule", "Heu, non... C'est ma peluche, Doudou."],
-        ["Théodule", "Je l'ai perdue."],
-        ["Léon", "Ah."],
-        ["Léon", "Ça ne me dit rien... Peut-être que tu peux me la dessiner ?"],
-        ["Théodule", "Je ne sais pas dessiner, moi..."],
-        ["Léon", "Mais c'est facile ! Je vais t'apprendre."],
-        ["Léon", "Tu veux bien dessiner avec moi ?", ["D'accord", "Pas tout de suite"], ["minigame","no_minigame"]]
+        ["leon", "Hmmm ?"],
+        ["leon", "Oh, c'est toi, heu..."],
+        ["theo", "Théodule."],
+        ["theo", "Désolé de t'embêter..."],
+        ["theo", "Est-ce que tu as vu une grenouille grande comme ça ?"],
+        ["leon", "Je ne savais pas qu'il y avait des grenouilles si grandes. Peut-être en Amazonie ?"],
+        ["theo", "Heu, non... C'est ma peluche, Doudou."],
+        ["theo", "Je l'ai perdue."],
+        ["leon", "Ah."],
+        ["leon", "Ça ne me dit rien... Peut-être que tu peux me la dessiner ?"],
+        ["theo", "Je ne sais pas dessiner, moi..."],
+        ["leon", "Mais c'est facile ! Je vais t'apprendre."],
+        ["leon", "Tu veux bien dessiner avec moi ?", ["D'accord", "Pas tout de suite"], ["minigame","no_minigame"]]
     ],
     "pres_minigame":[
-        ["Léon", "Hmmm ?"],
-        ["Léon", "Oh, c'est toi, heu..."],
-        ["Théodule", "Théodule"],
-        ["Théodule", "Désolé de t'embêter..."],
-        ["Théodule", "Est-ce que tu as vu une grenouille grande comme ça ?"],
-        ["Léon", "Je ne savais pas qu'il y avait des grenouilles si grandes. Peut-être en Amazonie ?"],
-        ["Théodule", "Heu, non... C'est ma peluche, Doudou."],
-        ["Théodule", "Je l'ai perdue."],
-        ["Léon", "Ah."],
-        ["Léon", "Ça ne me dit rien... Peut-être que tu peux me la dessiner ?"],
-        ["Théodule", "Je ne sais pas dessiner, moi..."],
-        ["Léon", "Mais c'est facile ! Je vais t'apprendre."],
-        ["Léon", "Tu veux bien dessiner avec moi ?", ["D'accord", "Pas tout de suite"], ["minigame","no_minigame"]]
+        ["leon", "Hmmm ?"],
+        ["leon", "Oh, c'est toi, heu..."],
+        ["theo", "theo"],
+        ["theo", "Désolé de t'embêter..."],
+        ["theo", "Est-ce que tu as vu une grenouille grande comme ça ?"],
+        ["leon", "Je ne savais pas qu'il y avait des grenouilles si grandes. Peut-être en Amazonie ?"],
+        ["theo", "Heu, non... C'est ma peluche, Doudou."],
+        ["theo", "Je l'ai perdue."],
+        ["leon", "Ah."],
+        ["leon", "Ça ne me dit rien... Peut-être que tu peux me la dessiner ?"],
+        ["theo", "Je ne sais pas dessiner, moi..."],
+        ["leon", "Mais c'est facile ! Je vais t'apprendre."],
+        ["leon", "Tu veux bien dessiner avec moi ?", ["D'accord", "Pas tout de suite"], ["minigame","no_minigame"]]
     ],
     "minigame":[
-        ["Léon", "..."],
-        ["Léon", "Voilà ! Il suffit de relier les points !"],
+        ["leon", "..."],
+        ["leon", "Voilà ! Il suffit de relier les points !"],
         ["Minigame","Ref"]
     ],
     "no_minigame":[
-        ["Léon", "Dommage... Reviens quand tu veux !"]
+        ["leon", "Dommage... Reviens quand tu veux !"]
     ],
     "victory_first":[
-        ["Léon", "Oh ! Mais tu dessines super bien, finalement !"],
-        ["Léon", "Mais c'est pas la peine de dessiner ta grenouille, si je l'avais vue je m'en souviendrais."],
-        ["Théodule", "Oh..."],
-        ["Léon", "Mais tu peux aller au stand de voyance !"],
-        ["Léon", "Peut-être qu'Olga pourra lire ton futur et te dire où trouver Doudou."],
-        ["Léon", "Dis-lui que si elle te le fait gratis, je dessinerai son portrait !"],
-        ["Théodule", "C'est une bonne idée, ça !"],
-        ["Théodule", "Merci beaucoup, Léon !"],
-        ["Léon", "De rien ! C'était marrant de dessiner avec toi. Tu as beaucoup de potentiel !"],
-        ["Théodule", "C'est gentil. Et... Tu peux m'appeler Théo."],
-        ["Léon", "Hmmm ? À plus, Théodule."]
+        ["leon", "Oh ! Mais tu dessines super bien, finalement !"],
+        ["leon", "Mais c'est pas la peine de dessiner ta grenouille, si je l'avais vue je m'en souviendrais."],
+        ["theo", "Oh..."],
+        ["leon", "Mais tu peux aller au stand de voyance !"],
+        ["leon", "Peut-être qu'Olga pourra lire ton futur et te dire où trouver Doudou."],
+        ["leon", "Dis-lui que si elle te le fait gratis, je dessinerai son portrait !"],
+        ["theo", "C'est une bonne idée, ça !"],
+        ["theo", "Merci beaucoup, Léon !"],
+        ["leon", "De rien ! C'était marrant de dessiner avec toi. Tu as beaucoup de potentiel !"],
+        ["theo", "C'est gentil. Et... Tu peux m'appeler Théo."],
+        ["leon", "Hmmm ? À plus, Théodule."]
     ],
     "victory_not_first":[
-        ["Léon", "Bravo !"],
-        ["Léon", "Tu veux dessiner encore ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["leon", "Bravo !"],
+        ["leon", "Tu veux dessiner encore ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "defeat":[
-        ["Léon", "Hmmm... C'est pas terrible."],
-        ["Léon", "Tu veux réessayer ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["leon", "Hmmm... C'est pas terrible."],
+        ["leon", "Tu veux réessayer ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame_known_never_won":[
-        ["Léon", "Alors, tu veux que je t'apprenne à dessiner ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["leon", "Alors, tu veux que je t'apprenne à dessiner ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
       ],
     "minigame_won":[
-        ["Léon", "Tu es revenu ! Tu veux dessiner encore ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["leon", "Tu es revenu ! Tu veux dessiner encore ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ]
     },
 
 "olga":{
     "force_minigame": [["Minigame"]],
     "first":[
-        ["Théodule", "C'est Olga."],
-        ["Théodule", "Elle tient le stand de voyance, mais elle est déguisée en sorcière."],
-        ["Théodule", "Elle me fait un peu peur..."],
-        ["Théodule", "Je ne serais pas étonnée qu'elle ait des vrais pouvoirs magiques."]
+        ["theo", "C'est Olga."],
+        ["theo", "Elle tient le stand de voyance, mais elle est déguisée en sorcière."],
+        ["theo", "Elle me fait un peu peur..."],
+        ["theo", "Je ne serais pas étonnée qu'elle ait des vrais pouvoirs magiques."]
     ],
     "vtff":[
-        ["Olga", "Salut Dudule !"],
-        ["Olga", "Pour deux euros je lis l'avenir et le passé."],
-        ["Théodule", "Je les garde pour la tombola..."],
-        ["Olga", "Alors fiche le camp, rapiat !"]
+        ["olga", "Salut Dudule !"],
+        ["olga", "Pour deux euros je lis l'avenir et le passé."],
+        ["theo", "Je les garde pour la tombola..."],
+        ["olga", "Alors fiche le camp, rapiat !"]
     ],
     "pres_minigame":[
-        ["Olga", "Salut Dudule !"],
-        ["Olga", "Pour deux euros je lis l'avenir et le passé."],
-        ["Théodule", "Heu... C'est Léon qui m'envoie."],
-        ["Olga", "..."],
-        ["Olga", "V-vraiment ?"],
-        ["Olga", "Je ne savais pas que vous étiez amis."],
-        ["Théodule", "Il a dit que si tu utilisais tes pouvoirs pour m'aider à retrouver Doudou, il ferait ton portrait."],
-        ["Olga", "Oh !"],
-        ["Olga", "D'accord... À une condition."],
-        ["Olga", "Je ne lis pas l'avenir des gens malchanceux, ça me déprime."],
-        ["Olga", "Alors si tu veux connaître les secrets du temps, il va falloir que tu me battes à pierre feuille ciseaux !"],
-        ["Olga", "Prêt à combattre ?", ["D'accord", "Pas tout de suite"], ["minigame","no_minigame"]]
+        ["olga", "Salut Dudule !"],
+        ["olga", "Pour deux euros je lis l'avenir et le passé."],
+        ["theo", "Heu... C'est Léon qui m'envoie."],
+        ["olga", "..."],
+        ["olga", "V-vraiment ?"],
+        ["olga", "Je ne savais pas que vous étiez amis."],
+        ["theo", "Il a dit que si tu utilisais tes pouvoirs pour m'aider à retrouver Doudou, il ferait ton portrait."],
+        ["olga", "Oh !"],
+        ["olga", "D'accord... À une condition."],
+        ["olga", "Je ne lis pas l'avenir des gens malchanceux, ça me déprime."],
+        ["olga", "Alors si tu veux connaître les secrets du temps, il va falloir que tu me battes à pierre feuille ciseaux !"],
+        ["olga", "Prêt à combattre ?", ["D'accord", "Pas tout de suite"], ["minigame","no_minigame"]]
     ],
     "minigame":[
-        ["Olga", "Je vais te battre à plate couture !"],
-        ["Olga", "Pierre... Feuille... Ciseaux !"],
+        ["olga", "Je vais te battre à plate couture !"],
+        ["olga", "Pierre... Feuille... Ciseaux !"],
         ["Minigame","Ref"]
     ],
     "no_minigame":[
-        ["Olga", "Ahah ! Tu as peur de ma puissance ?"]
+        ["olga", "Ahah ! Tu as peur de ma puissance ?"]
     ],
     "victory_first":[
-        ["Olga", "Hmph ! Un humain ordinaire, me battre à pierre feuille ciseaux ?"],
-        ["Olga", "Tu dois avoir un sacré pot !"],
-        ["Olga", "Très bien ! Que veux-tu savoir, le passé ou l'avenir ?"],
-        ["Théodule", "Je veux savoir où est passé Doudou. C'est ma peluche porte-bonheur. Elle a disparu de mon sac."],
-        ["Olga", "Tu t'en sors très bien sans Doudou, pourtant."],
-        ["Olga", "Mais c'est d'accord, je vais lire ton passé pour découvrir la vérité."],
-        ["Olga", "..."],
-        ["Olga", "......"],
-        ["Olga", "........."],
-        ["Olga", "Je vois, je vois..."],
-        ["Olga", "Oui, je vois un petit garçon tout maigre qui arrive à l'école..."],
-        ["Olga", "Son sac est entrouvert..."],
-        ["Olga", "Oh !"],
-        ["Théodule", "Quoi ?"],
-        ["Olga", "Quelque chose est tombé de son sac !"],
-        ["Olga", "C'est une grenouille en peluche..."],
-        ["Théodule", "Doudou !"],
-        ["Olga", "Quelqu'un se penche pour le ramasser..."],
-        ["Théodule", "Qui ? Qui ça ?"],
-        ["Olga", "Mais tais-toi donc !"],
-        ["Olga", "Zut, j'ai perdu ma concentration ! Je ne vois plus rien..."],
-        ["Olga", "Je n'ai pas vu son visage, mais c'était un garçon..."],
-        ["Olga", "Tu sais qui je pense que c'était ?"],
-        ["Olga", "Kevin. Ça lui ressemblerait bien de faire ce genre de crasses..."],
-        ["Théodule", "Kevin ? Oh non..."],
-        ["Olga", "En tout cas, si c'est lui, ça va être difficile de récupérer Doudou..."],
-        ["Olga", "Bonne chance Dudule !"],
-        ["Théodule", "Merci... Et moi c'est Théo..."],
-        ["Olga", "Hahaha !"]        
+        ["olga", "Hmph ! Un humain ordinaire, me battre à pierre feuille ciseaux ?"],
+        ["olga", "Tu dois avoir un sacré pot !"],
+        ["olga", "Très bien ! Que veux-tu savoir, le passé ou l'avenir ?"],
+        ["theo", "Je veux savoir où est passé Doudou. C'est ma peluche porte-bonheur. Elle a disparu de mon sac."],
+        ["olga", "Tu t'en sors très bien sans Doudou, pourtant."],
+        ["olga", "Mais c'est d'accord, je vais lire ton passé pour découvrir la vérité."],
+        ["olga", "..."],
+        ["olga", "......"],
+        ["olga", "........."],
+        ["olga", "Je vois, je vois..."],
+        ["olga", "Oui, je vois un petit garçon tout maigre qui arrive à l'école..."],
+        ["olga", "Son sac est entrouvert..."],
+        ["olga", "Oh !"],
+        ["theo", "Quoi ?"],
+        ["olga", "Quelque chose est tombé de son sac !"],
+        ["olga", "C'est une grenouille en peluche..."],
+        ["theo", "Doudou !"],
+        ["olga", "Quelqu'un se penche pour le ramasser..."],
+        ["theo", "Qui ? Qui ça ?"],
+        ["olga", "Mais tais-toi donc !"],
+        ["olga", "Zut, j'ai perdu ma concentration ! Je ne vois plus rien..."],
+        ["olga", "Je n'ai pas vu son visage, mais c'était un garçon..."],
+        ["olga", "Tu sais qui je pense que c'était ?"],
+        ["olga", "Kevin. Ça lui ressemblerait bien de faire ce genre de crasses..."],
+        ["theo", "Kevin ? Oh non..."],
+        ["olga", "En tout cas, si c'est lui, ça va être difficile de récupérer Doudou..."],
+        ["olga", "Bonne chance Dudule !"],
+        ["theo", "Merci... Et moi c'est Théo..."],
+        ["olga", "Hahaha !"]        
     ],
     "victory_not_first":[
-        ["Olga", "Grrr ! C'est pas possible !"],
-        ["Olga", "Mais j'aurai ma revanche !", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["olga", "Grrr ! C'est pas possible !"],
+        ["olga", "Mais j'aurai ma revanche !", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "defeat":[
-        ["Olga", "Hahahaha ! Je suis la meilleure !"],
-        ["Olga", "On recommence !", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["olga", "Hahahaha ! Je suis la meilleure !"],
+        ["olga", "On recommence !", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame_known_never_won":[
-        ["Olga", "Alors, tu es prêt à m'affronter ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["olga", "Alors, tu es prêt à m'affronter ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
       ],
     "minigame_won":[
-        ["Olga", "Tu veux mesurer ta chance à la mienne une nouvelle fois ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["olga", "Tu veux mesurer ta chance à la mienne une nouvelle fois ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ]
 },
 
 "kevin":{
     "force_minigame": [["Minigame"]],
     "first":[
-        ["Théodule", "Gloups... Voilà Kevin."],
-        ["Théodule", "C'est un gros dur hyper musclé."],
-        ["Théodule", "Son regard est terrifiant... J'ai l'impression qu'il me veut du mal."]
+        ["theo", "Gloups... Voilà Kevin."],
+        ["theo", "C'est un gros dur hyper musclé."],
+        ["theo", "Son regard est terrifiant... J'ai l'impression qu'il me veut du mal."]
     ],
     "vtff":[
-        ["Kevin", "..."],
-        ["Théodule", "Pardon ! Je m'en vais !"]
+        ["kevin", "..."],
+        ["theo", "Pardon ! Je m'en vais !"]
     ],
     "pres_minigame":[
-        ["Kevin", "..."],
-        ["Théodule", "..."],
-        ["Kevin", "..."],
-        ["Théodule", "Excuse-moi..."],
-        ["Théodule", "On m'a dit que tu as trouvé une peluche de grenouille tout à l'heure..."],
-        ["Théodule", "Est-ce que c'est vrai ?"],
-        ["Kevin", "..."],
-        ["Kevin", "Oui."],
-        ["Théodule", "C'est vrai ?!"],
-        ["Théodule", "Est-ce que tu peux me la rendre s'il te plaît ? C'est la mienne."],
-        ["Kevin", "..."],
-        ["Kevin", "Je te dirai où elle est si tu bats mon score au punching ball."],
-        ["Kevin", "Personne n'est venu depuis le début de la récré..."],
-        ["Kevin", "La maîtresse va croire que je vous ai défendus de jouer."],
-        ["Kevin", "Alors, tu veux taper ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["kevin", "..."],
+        ["theo", "..."],
+        ["kevin", "..."],
+        ["theo", "Excuse-moi..."],
+        ["theo", "On m'a dit que tu as trouvé une peluche de grenouille tout à l'heure..."],
+        ["theo", "Est-ce que c'est vrai ?"],
+        ["kevin", "..."],
+        ["kevin", "Oui."],
+        ["theo", "C'est vrai ?!"],
+        ["theo", "Est-ce que tu peux me la rendre s'il te plaît ? C'est la mienne."],
+        ["kevin", "..."],
+        ["kevin", "Je te dirai où elle est si tu bats mon score au punching ball."],
+        ["kevin", "Personne n'est venu depuis le début de la récré..."],
+        ["kevin", "La maîtresse va croire que je vous ai défendus de jouer."],
+        ["kevin", "Alors, tu veux taper ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame":[
-        ["Kevin", "C'est parti ! Tape de toutes tes forces !"],
+        ["kevin", "C'est parti ! Tape de toutes tes forces !"],
         ["Minigame", "ref"]
     ],
     "no_minigame":[
-        ["Kevin", "... Tu es comme tous les autres."]
+        ["kevin", "... Tu es comme tous les autres."]
     ],
     "victory_first":[
-        ["Kevin", "Waouh... Tu m'as battu !"],
-        ["Kevin", "..."],
-        ["Kevin", "Merci d'avoir joué à mon stand..."],
-        ["Kevin", "En fait ce matin, j'ai voulu te rendre ta peluche, mais je n'ai pas osé."],
-        ["Kevin", "Tu faisais tout pour m'éviter, tu ne voulais pas croiser mon regard..."],
-        ["Kevin", "Comme tous les autres, en fait. Je ne comprends pas pourquoi vous avez peur de moi..."],
-        ["Kevin", "Qu'est-ce que j'ai fait de mal ?"],
-        ["Théodule", "Je suis désolé, Kevin..."],
-        ["Théodule", "Je ne savais pas. J'ai toujours cru que tu ne voulais pas qu'on vienne t'embêter."],
-        ["Kevin", "Non, c'est juste mon visage qui est comme ça... À cause de ça, je n'ai aucun ami à part Bobby."],
-        ["Théodule", "Je suis vraiment désolé de t'avoir mal jugé."],
-        ["Théodule", "J'aimerais être ton ami, si tu veux bien."],
-        ["Kevin", "..."],
-        ["Kevin", "D'accord."],
-        ["Kevin", "Ta peluche, c'est Bobby qui l'a prise quand je lui ai raconté. Il a dit que ça t'apprendrait."],
-        ["Kevin", "Il doit être au terrain de foot."],
-        ["Théodule", "Merci, Kevin."],
-        ["Kevin", "Oh, tu peux m'appeler... Kev ?"],
-        ["Kevin", "Haha."]
+        ["kevin", "Waouh... Tu m'as battu !"],
+        ["kevin", "..."],
+        ["kevin", "Merci d'avoir joué à mon stand..."],
+        ["kevin", "En fait ce matin, j'ai voulu te rendre ta peluche, mais je n'ai pas osé."],
+        ["kevin", "Tu faisais tout pour m'éviter, tu ne voulais pas croiser mon regard..."],
+        ["kevin", "Comme tous les autres, en fait. Je ne comprends pas pourquoi vous avez peur de moi..."],
+        ["kevin", "Qu'est-ce que j'ai fait de mal ?"],
+        ["theo", "Je suis désolé, Kevin..."],
+        ["theo", "Je ne savais pas. J'ai toujours cru que tu ne voulais pas qu'on vienne t'embêter."],
+        ["kevin", "Non, c'est juste mon visage qui est comme ça... À cause de ça, je n'ai aucun ami à part Bobby."],
+        ["theo", "Je suis vraiment désolé de t'avoir mal jugé."],
+        ["theo", "J'aimerais être ton ami, si tu veux bien."],
+        ["kevin", "..."],
+        ["kevin", "D'accord."],
+        ["kevin", "Ta peluche, c'est Bobby qui l'a prise quand je lui ai raconté. Il a dit que ça t'apprendrait."],
+        ["kevin", "Il doit être au terrain de foot."],
+        ["theo", "Merci, Kevin."],
+        ["kevin", "Oh, tu peux m'appeler... Kev ?"],
+        ["kevin", "Haha."]
     ],
     "victory_not_first":[
-        ["Kevin", "Tu tapes fort, dis donc !"],
-        ["Kevin", "... Tu veux réessayer ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["kevin", "Tu tapes fort, dis donc !"],
+        ["kevin", "... Tu veux réessayer ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "defeat":[
-        ["Kevin", "Tu rigoles ? Ça ne compte pas, il faut taper plus fort."],
-        ["Kevin", "... Tu veux réessayer ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["kevin", "Tu rigoles ? Ça ne compte pas, il faut taper plus fort."],
+        ["kevin", "... Tu veux réessayer ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame_known_never_won":[
-        ["Kevin", "..."],
-        ["Kevin", "Tu veux tenter ta chance au punching-ball ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["kevin", "..."],
+        ["kevin", "Tu veux tenter ta chance au punching-ball ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame_won":[
-        ["Kevin", "..."],
-        ["Kevin", "Personne n'est venu depuis tout à l'heure. Tu veux rejouer ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["kevin", "..."],
+        ["kevin", "Personne n'est venu depuis tout à l'heure. Tu veux rejouer ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ]
 },
 
 "bobby":{
     "force_minigame": [["Minigame"]],
     "first":[
-        ["Théodule", "Voilà Bobby."],
-        ["Théodule", "Il est obsédé par le foot, il passe toutes les récrés à faire des buts dans les cages."],
-        ["Théodule", "On n'a pas grand chose à se dire..."]
+        ["theo", "Voilà Bobby."],
+        ["theo", "Il est obsédé par le foot, il passe toutes les récrés à faire des buts dans les cages."],
+        ["theo", "On n'a pas grand chose à se dire..."]
     ],
     "vtff":[
-        ["Bobby", "Qu'est-ce que tu me veux, morpion ?"],
-        ["Bobby", "Dégage de là, tu me gênes !"]
+        ["bobby", "Qu'est-ce que tu me veux, morpion ?"],
+        ["bobby", "Dégage de là, tu me gênes !"]
     ],
     "pres_minigame":[
-        ["Bobby", "Qu'est-ce que tu me veux, morpion ?"],
-        ["Théodule", "Pas la peine de faire semblant, Bobby."],
-        ["Théodule", "Kev m'a tout dit. C'est toi qui a Doudou !"],
-        ["Bobby", "..."],
-        ["Bobby", "... Doudou ?"],
-        ["Bobby", "...... Kev ?"],
-        ["Bobby", "Pfffft... Hahahaha !"],
-        ["Bobby", "Oui, c'est vrai, j'ai demandé à Kevin de me donner ta peluche stupide."],
-		["Bobby", "et je ne te la rendrai pas. Ça t'apprendra à juger les autres sans les connaître !"],
-        ["Théodule", "..."],
-        ["Théodule", "Kev m'a pardonné, pourquoi est-ce que tu ne peux pas en faire autant ?"],
-        ["Bobby", "Pourquoi est-ce que je te pardonnerais ? Tu as fait quoi pour ça ?"],
-        ["Bobby", "Depuis que tu es dans notre école, tu ne m'as jamais adressé la parole."],
-        ["Bobby", "Est-ce que seulement tu t'intéresses aux autres ? Ou tu ne fais que t'apitoyer sur ton sort toute la journée ?"],
-        ["Bobby", "Pourquoi ce serait à nous de faire le premier pas ?"],
-        ["Théodule", "Qu'est-ce que tu racontes ? Bien sûr que je m'intéresse aux autres ! Ce n'est pas de ma faute si j'ai du mal..."],
-        ["Bobby", "Prouve-le moi, alors. Si tu veux que je t'aide, montre-moi que tu es prêt à faire des efforts."],
-        ["Bobby", "Joue au foot avec moi."],
-        ["Théodule", "Quoi ? Mais je ne sais pas jouer ! Je suis nul en sport..."],
-        ["Bobby", "Tu vas voir, c'est marrant. Fais juste rebondir le ballon sur ta tête, ça sera déjà bien."],
-        ["Bobby", "Alors, qu'est-ce que tu en dis ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["bobby", "Qu'est-ce que tu me veux, morpion ?"],
+        ["theo", "Pas la peine de faire semblant, Bobby."],
+        ["theo", "Kev m'a tout dit. C'est toi qui a Doudou !"],
+        ["bobby", "..."],
+        ["bobby", "... Doudou ?"],
+        ["bobby", "...... Kev ?"],
+        ["bobby", "Pfffft... Hahahaha !"],
+        ["bobby", "Oui, c'est vrai, j'ai demandé à Kevin de me donner ta peluche stupide."],
+		["bobby", "et je ne te la rendrai pas. Ça t'apprendra à juger les autres sans les connaître !"],
+        ["theo", "..."],
+        ["theo", "Kev m'a pardonné, pourquoi est-ce que tu ne peux pas en faire autant ?"],
+        ["bobby", "Pourquoi est-ce que je te pardonnerais ? Tu as fait quoi pour ça ?"],
+        ["bobby", "Depuis que tu es dans notre école, tu ne m'as jamais adressé la parole."],
+        ["bobby", "Est-ce que seulement tu t'intéresses aux autres ? Ou tu ne fais que t'apitoyer sur ton sort toute la journée ?"],
+        ["bobby", "Pourquoi ce serait à nous de faire le premier pas ?"],
+        ["theo", "Qu'est-ce que tu racontes ? Bien sûr que je m'intéresse aux autres ! Ce n'est pas de ma faute si j'ai du mal..."],
+        ["bobby", "Prouve-le moi, alors. Si tu veux que je t'aide, montre-moi que tu es prêt à faire des efforts."],
+        ["bobby", "Joue au foot avec moi."],
+        ["theo", "Quoi ? Mais je ne sais pas jouer ! Je suis nul en sport..."],
+        ["bobby", "Tu vas voir, c'est marrant. Fais juste rebondir le ballon sur ta tête, ça sera déjà bien."],
+        ["bobby", "Alors, qu'est-ce que tu en dis ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame":[
-        ["Bobby", "Cool ! Je te regarde."],
+        ["bobby", "Cool ! Je te regarde."],
         ["Minigame", "ref"]
     ],
     "no_minigame":[
-        ["Bobby", "Typique. J'espère que Doudou ne te manque pas trop."]
+        ["bobby", "Typique. J'espère que Doudou ne te manque pas trop."]
     ],
     "victory_first":[
-        ["Bobby", "Hé ben ! Je m'attendais pas à ce que tu y arrives."],
-        ["Bobby", "Tu es sorti de ta zone de confort et tu as dépassé des limites. Bravo !"],
-        ["Théodule", "Je n'y croyais pas moi non plus..."],
-        ["Théodule", "Maintenant, rends-moi Doudou !"],
-        ["Bobby", "Je voudrais bien, mais je ne l'ai plus, Doudou."],
-        ["Bobby", "Ma voisine de table l'a trouvé mignon et je lui ai donné."],
-        ["Théodule", "C'est qui, ta voisine de table ?"],
-        ["Bobby", "Tu ne sais même pas où je suis assis dans la classe ? Tu es sûr que tu t'intéresses aux autres ?"],
-        ["Théodule", "Arrête, j'ai compris... Tu as raison. Je n'ai pas fait assez d'efforts pour aller vers les autres."],
-        ["Bobby", "La première étape, c'est de s'en rendre compte."],
-        ["Bobby", "Ma voisine de table, c'est Émilie."],
-        ["Théodule", "!!"],
-        ["Théodule", "Oh non..."],
-        ["Bobby", "Courage, Théodule."],
-        ["Théodule", "Merci, Robert."],
-        ["Bobby", "Ne m'appelle plus jamais comme ça."]
+        ["bobby", "Hé ben ! Je m'attendais pas à ce que tu y arrives."],
+        ["bobby", "Tu es sorti de ta zone de confort et tu as dépassé des limites. Bravo !"],
+        ["theo", "Je n'y croyais pas moi non plus..."],
+        ["theo", "Maintenant, rends-moi Doudou !"],
+        ["bobby", "Je voudrais bien, mais je ne l'ai plus, Doudou."],
+        ["bobby", "Ma voisine de table l'a trouvé mignon et je lui ai donné."],
+        ["theo", "C'est qui, ta voisine de table ?"],
+        ["bobby", "Tu ne sais même pas où je suis assis dans la classe ? Tu es sûr que tu t'intéresses aux autres ?"],
+        ["theo", "Arrête, j'ai compris... Tu as raison. Je n'ai pas fait assez d'efforts pour aller vers les autres."],
+        ["bobby", "La première étape, c'est de s'en rendre compte."],
+        ["bobby", "Ma voisine de table, c'est Émilie."],
+        ["theo", "!!"],
+        ["theo", "Oh non..."],
+        ["bobby", "Courage, Théodule."],
+        ["theo", "Merci, Robert."],
+        ["bobby", "Ne m'appelle plus jamais comme ça."]
     ],
     "victory_not_first":[
-        ["Bobby", "Tu commences à prendre le coup !"],
-        ["Bobby", "Tu veux perdre le reste de tes neurones ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["bobby", "Tu commences à prendre le coup !"],
+        ["bobby", "Tu veux perdre le reste de tes neurones ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "defeat":[
-        ["Bobby", "C'est nul ! Fais un effort un peu..."],
-        ["Bobby", "Allez, recommence !", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["bobby", "C'est nul ! Fais un effort un peu..."],
+        ["bobby", "Allez, recommence !", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame_known_never_won":[
-        ["Bobby", "Revoilà le morpion."],
-        ["Bobby", "Tu as décidé de ne plus être une poule mouillée ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["bobby", "Revoilà le morpion."],
+        ["bobby", "Tu as décidé de ne plus être une poule mouillée ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame_won":[
-        ["Bobby", "Revoilà Théodule."],
-        ["Bobby", "Tu veux rejouer ? De ton plein gré ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["bobby", "Revoilà Théodule."],
+        ["bobby", "Tu veux rejouer ? De ton plein gré ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ]
 },
 
 "emilie":{
     "force_minigame": [["Minigame"]],
     "first":[
-        ["Théodule", "C'est Émilie..."],
-        ["Théodule", "Aaaaah ! Quelle aura ! Elle est si intimidante !"]
+        ["theo", "C'est Émilie..."],
+        ["theo", "Aaaaah ! Quelle aura ! Elle est si intimidante !"]
     ],
     "vtff":[
-        ["Émilie", "Dans dix-sept jours, il y aura une éclipse partielle de soleil... J'ai trop hâte !"]
+        ["emilie", "Dans dix-sept jours, il y aura une éclipse partielle de soleil... J'ai trop hâte !"]
     ],
     "pres_minigame":[
-        ["Théodule", "..."],
-        ["Théodule", "Salut, Émilie."],
-        ["Émilie", "Oh ? Salut, Théodule ! Ça va ?"],
-        ["Théodule", "Oui, très bien... Enfin non, ça ne va pas."],
-        ["Théodule", "J'ai perdu Doudou, ma grenouille en peluche, et il paraît que c'est toi qui l'a."],
-        ["Émilie", "..."],
-        ["Émilie", "Oh ! Tu parles d'Altaïr ?"],
-        ["Émilie", "C'est Bobby qui me l'a donnée... Je ne savais pas qu'elle avait déjà un propriétaire."],
-        ["Théodule", "Eh bien, c'est le cas... il s'appelle Doudou. C'est une peluche porte-bonheur. Elle donne une chance incroyable."],
-        ["Émilie", "Une peluche qui porte chance ?"],
-        ["Émilie", "..."],
-        ["Émilie", "Dans ce cas, je vais la garder un peu plus longtemps, si tu veux bien, Théodule."],
-        ["Théodule", "Quoi ? Mais j'en ai besoin maintenant !"],
-        ["Émilie", "Je te la rends à la fin de la récré, promis."],
-        ["Théodule", "S'il-te-plaît, Émilie !"],
-        ["Émilie", "Voilà ce que je te propose. Jouons aux billes."],
-        ["Émilie", "Si tu parviens à toucher ma bille favorite, Bételgeuse, tu peux reprendre Altaïr tout de suite."],
-		["Émilie", "Sinon, tu devras me la laisser."],
-        ["Théodule", "Combien de billes est-ce que tu me prêtes ?"],
-        ["Émilie", "Ah non, Théodule, chacun ses billes. Je ne vais pas porter secours à mon adversaire."],
-        ["Théodule", "Mais... je n'ai pas de billes, moi !"],
-        ["Émilie", "Quel dommage. Tu déclares forfait ?"],
-        ["Kevin", "Pas si vite !"],
-        ["Bobby", "Émilie, tu essaies de profiter de la naïveté du nouveau ?"],
-        ["Olga", "Tu es encore plus retorse que moi..."],
-        ["Léon", "Ça n'est vraiment pas très gentil."],
-        ["Léon", "Moi, je lui donne une bille, à Théo. Pour te remercier d'avoir dessiné avec moi."],
-        ["Kevin", "Moi aussi ! Théo, c'est le seul d'entre vous qui est venu me voir à la récré..."],
-        ["Bobby", "Tiens, prends la mienne aussi, Théo. Tu l'a méritée."],
-        ["Olga", "Alors comme ça, tout le monde s'y met ? Tu en as de la chance d'avoir des amis comme ça, Théo."],
-		["Olga", "Voilà ma bille préférée... Tu n'as pas intérêt à la perdre !"],
-        ["Théodule", "Vous... vous êtes tous venus pour m'aider ?"],
-        ["Théodule", "Merci ! Je ne vous décevrai pas, les copains."],
-        ["Théodule", "Je suis prêt !"],
-        ["Émilie", "Mmmh... vous êtes bien embêtants, tous. Mais bon, j'ai promis..."],
-        ["Émilie", "Marché conclu ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["theo", "..."],
+        ["theo", "Salut, Émilie."],
+        ["emilie", "Oh ? Salut, Théodule ! Ça va ?"],
+        ["theo", "Oui, très bien... Enfin non, ça ne va pas."],
+        ["theo", "J'ai perdu Doudou, ma grenouille en peluche, et il paraît que c'est toi qui l'a."],
+        ["emilie", "..."],
+        ["emilie", "Oh ! Tu parles d'Altaïr ?"],
+        ["emilie", "C'est Bobby qui me l'a donnée... Je ne savais pas qu'elle avait déjà un propriétaire."],
+        ["theo", "Eh bien, c'est le cas... il s'appelle Doudou. C'est une peluche porte-bonheur. Elle donne une chance incroyable."],
+        ["emilie", "Une peluche qui porte chance ?"],
+        ["emilie", "..."],
+        ["emilie", "Dans ce cas, je vais la garder un peu plus longtemps, si tu veux bien, Théodule."],
+        ["theo", "Quoi ? Mais j'en ai besoin maintenant !"],
+        ["emilie", "Je te la rends à la fin de la récré, promis."],
+        ["theo", "S'il-te-plaît, Émilie !"],
+        ["emilie", "Voilà ce que je te propose. Jouons aux billes."],
+        ["emilie", "Si tu parviens à toucher ma bille favorite, Bételgeuse, tu peux reprendre Altaïr tout de suite."],
+		["emilie", "Sinon, tu devras me la laisser."],
+        ["theo", "Combien de billes est-ce que tu me prêtes ?"],
+        ["emilie", "Ah non, Théodule, chacun ses billes. Je ne vais pas porter secours à mon adversaire."],
+        ["theo", "Mais... je n'ai pas de billes, moi !"],
+        ["emilie", "Quel dommage. Tu déclares forfait ?"],
+        ["kevin", "Pas si vite !"],
+        ["bobby", "Émilie, tu essaies de profiter de la naïveté du nouveau ?"],
+        ["olga", "Tu es encore plus retorse que moi..."],
+        ["leon", "Ça n'est vraiment pas très gentil."],
+        ["leon", "Moi, je lui donne une bille, à Théo. Pour te remercier d'avoir dessiné avec moi."],
+        ["kevin", "Moi aussi ! Théo, c'est le seul d'entre vous qui est venu me voir à la récré..."],
+        ["bobby", "Tiens, prends la mienne aussi, Théo. Tu l'a méritée."],
+        ["olga", "Alors comme ça, tout le monde s'y met ? Tu en as de la chance d'avoir des amis comme ça, Théo."],
+		["olga", "Voilà ma bille préférée... Tu n'as pas intérêt à la perdre !"],
+        ["theo", "Vous... vous êtes tous venus pour m'aider ?"],
+        ["theo", "Merci ! Je ne vous décevrai pas, les copains."],
+        ["theo", "Je suis prêt !"],
+        ["emilie", "Mmmh... vous êtes bien embêtants, tous. Mais bon, j'ai promis..."],
+        ["emilie", "Marché conclu ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame":[
-        ["Émilie", "Parfait."],
-        ["Émilie", "Montre-moi de quoi tu es capable !"],
+        ["emilie", "Parfait."],
+        ["emilie", "Montre-moi de quoi tu es capable !"],
         ["Minigame", "ref"]
     ],
     "no_minigame":[
-        ["Émilie", "Comme tu veux !"]
+        ["emilie", "Comme tu veux !"]
     ],
     "victory_first":[
-        ["Théodule", "J'ai gagné !"],
-        ["Théodule", "Grâce à mes amis, j'ai gagné !"],
-        ["Théodule", "Je vais pouvoir retrouver Doudou et..."],
-        ["Théodule", "Émilie ?"],
-        ["Émilie", "..."],
-        ["Émilie", "Tiens, prends ton Doudou..."],
-        ["Émilie", "J'espère qu'il te portera plus chance qu'à moi."]
+        ["theo", "J'ai gagné !"],
+        ["theo", "Grâce à mes amis, j'ai gagné !"],
+        ["theo", "Je vais pouvoir retrouver Doudou et..."],
+        ["theo", "Émilie ?"],
+        ["emilie", "..."],
+        ["emilie", "Tiens, prends ton Doudou..."],
+        ["emilie", "J'espère qu'il te portera plus chance qu'à moi."]
     ],
     "victory_not_first":[
-        ["Émilie", "C'est ma bille préférée parce qu'elle ressemble un peu à une planète, tu ne trouves pas ?"],
-        ["Émilie", "Encore une fois ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["emilie", "C'est ma bille préférée parce qu'elle ressemble un peu à une planète, tu ne trouves pas ?"],
+        ["emilie", "Encore une fois ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "defeat":[
-        ["Émilie", "Ce n'est pas pour cette fois, on dirait."],
-        ["Émilie", "Tu peux garder tes billes, et réessayer si tu veux !", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["emilie", "Ce n'est pas pour cette fois, on dirait."],
+        ["emilie", "Tu peux garder tes billes, et réessayer si tu veux !", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame_known_never_won":[
-        ["Émilie", "Salut, Théodule. Ça me fait plaisir de te revoir."],
-        ["Émilie", "Prêt à me ravir Altaïr ?"]
+        ["emilie", "Salut, Théodule. Ça me fait plaisir de te revoir."],
+        ["emilie", "Prêt à me ravir Altaïr ?"]
     ],
     "minigame_won":[
-        ["Émilie", "La tombola va bientôt commencer, on devrait y aller."]
+        ["emilie", "La tombola va bientôt commencer, on devrait y aller."]
     ]
 },
 "mr-tombola":{
     "first":[
-        ["Théodule", "C'est le stand de tombola..."],
-        ["Théodule", "Il faut vite que je retrouve Doudou pour participer !"]
+        ["theo", "C'est le stand de tombola..."],
+        ["theo", "Il faut vite que je retrouve Doudou pour participer !"]
     ],
     "vtff":[
-        ["Théodule", "C'est le stand de tombola..."],
-        ["Théodule", "Il faut vite que je retrouve Doudou pour participer !"]
+        ["theo", "C'est le stand de tombola..."],
+        ["theo", "Il faut vite que je retrouve Doudou pour participer !"]
     ],
     "pres_minigame":[
-        ["Théodule", "Bonjour ! Est-ce que je pourrais avoir un ticket pour la tombola ?"],
-        ["Monsieur Tombola", "Pas de problème, fiston !"],
-        ["Monsieur Tombola", "Le premier prix est un téléscope junior"],
-		["Monsieur Tombola", "le deuxième un repas pour 2 dans l’auberge du Pont du Diable"],
-		["Monsieur Tombola", "et le troisième une photo dédicacée de Charles Aznavour."],
-        ["Monsieur Tombola", "Bien sûr, il y a aussi des lots de consolation…"],
-        ["Théodule", "Pas de problème. Je gagnerai le premier prix grâce à Doudou !"],
-        ["Monsieur Tombola", "Bien sûr, jeune homme. Voilà votre ticket : le numéro 33 !"],
-        ["Monsieur Tombola", "Il semblerait que la pause soit sur le point de se terminer… Nous allons procéder au tirage au sort !"],
-        ["Monsieur Tombola", "Que tous les participants se rassemblent !"],
-        ["Monsieur Tombola", "L’heureux gagnant du troisième prix, la photo dédicacée de Charles Aznavour, est… le numéro 15 !"],
-        ["Monsieur Tombola", "Le deuxième prix, le repas à l’auberge du Pont du Diable, est remporté par… le numéro 4 !"],
-        ["Monsieur Tombola", "Et le nouveau propriétaire du premier prix, le téléscope junior, est… le numéro 32 !"],
-        ["Monsieur Tombola", "Félicitations à nos gagnants !"],
-        ["Théodule", "... Quoi ?"],
-        ["Théodule", "Comment est-ce possible..."],
-        ["Théodule", "Doudou ! Après tout ce temps ! Tu m'abandonnes, toi aussi ?"],
-        ["Émilie", "Théo !"],
-        ["Émilie", "Altaïr m'a porté chance, finalement !"],
-        ["Émilie", "J’ai remporté le téléscope !"],
-        ["Émilie", "Je vais devenir la première élève de CM1 à découvrir une étoile !"],
-        ["Émilie", "C’est grâce à toi ! Merci !"],
-        ["Émilie", "Oh, et tu as gagné tous ces bonbons ? C'est incroyable !"],
-        ["Émilie", "Qu'est-ce que tu vas en faire ?"],
-        ["Théodule", "Les partager, je suppose. Tu en veux ?"],
-        ["Olga", "Halte là ! J’exige ma part des bonbons !"],
-        ["Olga", "C'est évidemment ma chance de sorcière qui a rejailli sur vous, puisque je n'ai pas acheté de ticket..."],
-        ["Bobby", "J'ai aussi fait ma part. Sans moi, Doudou n'aurait jamais été retrouvé."],
-        ["Kevin", "Mais c'est toi qui l'avais pris au départ..."],
-        ["Léon", "L'important, c'est quand même que tout finisse bien, non ?"]
+        ["theo", "Bonjour ! Est-ce que je pourrais avoir un ticket pour la tombola ?"],
+        ["mr-tombola", "Pas de problème, fiston !"],
+        ["mr-tombola", "Le premier prix est un téléscope junior"],
+		["mr-tombola", "le deuxième un repas pour 2 dans l’auberge du Pont du Diable"],
+		["mr-tombola", "et le troisième une photo dédicacée de Charles Aznavour."],
+        ["mr-tombola", "Bien sûr, il y a aussi des lots de consolation…"],
+        ["theo", "Pas de problème. Je gagnerai le premier prix grâce à Doudou !"],
+        ["mr-tombola", "Bien sûr, jeune homme. Voilà votre ticket : le numéro 33 !"],
+        ["mr-tombola", "Il semblerait que la pause soit sur le point de se terminer… Nous allons procéder au tirage au sort !"],
+        ["mr-tombola", "Que tous les participants se rassemblent !"],
+        ["mr-tombola", "L’heureux gagnant du troisième prix, la photo dédicacée de Charles Aznavour, est… le numéro 15 !"],
+        ["mr-tombola", "Le deuxième prix, le repas à l’auberge du Pont du Diable, est remporté par… le numéro 4 !"],
+        ["mr-tombola", "Et le nouveau propriétaire du premier prix, le téléscope junior, est… le numéro 32 !"],
+        ["mr-tombola", "Félicitations à nos gagnants !"],
+        ["theo", "... Quoi ?"],
+        ["theo", "Comment est-ce possible..."],
+        ["theo", "Doudou ! Après tout ce temps ! Tu m'abandonnes, toi aussi ?"],
+        ["emilie", "Théo !"],
+        ["emilie", "Altaïr m'a porté chance, finalement !"],
+        ["emilie", "J’ai remporté le téléscope !"],
+        ["emilie", "Je vais devenir la première élève de CM1 à découvrir une étoile !"],
+        ["emilie", "C’est grâce à toi ! Merci !"],
+        ["emilie", "Oh, et tu as gagné tous ces bonbons ? C'est incroyable !"],
+        ["emilie", "Qu'est-ce que tu vas en faire ?"],
+        ["theo", "Les partager, je suppose. Tu en veux ?"],
+        ["olga", "Halte là ! J’exige ma part des bonbons !"],
+        ["olga", "C'est évidemment ma chance de sorcière qui a rejailli sur vous, puisque je n'ai pas acheté de ticket..."],
+        ["bobby", "J'ai aussi fait ma part. Sans moi, Doudou n'aurait jamais été retrouvé."],
+        ["kevin", "Mais c'est toi qui l'avais pris au départ..."],
+        ["leon", "L'important, c'est quand même que tout finisse bien, non ?"]
     ]
 }
 }
