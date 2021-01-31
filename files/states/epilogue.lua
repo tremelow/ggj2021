@@ -56,7 +56,8 @@ function Epilogue:keypressed(key, code)
     self:pushState("Pause")
   end
   if epilogue_counter >= 7 then
-    --epilogueMusic:stop()
+    epilogueMusic:stop()
+    Hero:resetAdvancement(pnjData)
     self:gotoState("Menu")
 	-- on veut quitter le jeu, pas y retourner
   end

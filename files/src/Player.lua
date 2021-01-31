@@ -13,6 +13,8 @@ function Player:new(x,y)
 
   -- Flow Chart Mngmt
   self.hasSpoken = {}
+
+  -- advancement
   self.advancement = {}
 
   self.direction = {x = 0, y = 0}
@@ -34,6 +36,18 @@ function Player:new(x,y)
   end
   for i, dir in pairs({"E", "SE", "S", "SW", "W", "NW", "N", "NE"})do
     self.neutral[dir] = allQuads:isolateQuads({36 + i, 48 + i})
+  end
+end
+
+function Player:resetAdvancement(pnjData)
+  self.x = 0
+  self.y = 0 
+  self.hasSpoken = {}
+  self.advancement = {}
+    
+  for id, kid in pairs(pnjData) do
+    self.hasSpoken[id] = false
+    self.advancement[id] = "vtff"
   end
 end
 
