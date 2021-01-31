@@ -56,7 +56,7 @@ function Game:initialize()
   for id, kid in pairs(pnjData) do
     Names[id] = kid.name
     local talky = "assets/img/talkies/" .. id .. ".png"
-    if love.filesystem.isFile(talky) then
+    if love.filesystem.getInfo(talky) then
       DialogSprite[id] = love.graphics.newImage(talky)
     else
       DialogSprite[id] = love.graphics.newImage("assets/img/talkies/papyrus.png")
