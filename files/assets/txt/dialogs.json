@@ -388,6 +388,7 @@
     ]
 },
 "mr-tombola":{
+    "force_minigame": [["Minigame"]],
     "first":[
         ["theo", "C'est le stand de tombola..."],
         ["theo", "Il faut vite que je retrouve Doudou pour participer !"]
@@ -406,6 +407,7 @@
         ["theo", "Pas de problème. Je gagnerai le premier prix grâce à Doudou !"],
         ["mr-tombola", "Bien sûr, jeune homme. Voilà votre ticket : le numéro 33 !"],
         ["mr-tombola", "Il semblerait que la pause soit sur le point de se terminer… Nous allons procéder au tirage au sort !"],
+        ["mr-tombola", "..."],
         ["mr-tombola", "Que tous les participants se rassemblent !"],
         ["mr-tombola", "L’heureux gagnant du troisième prix, la photo dédicacée de Charles Aznavour, est… le numéro 15 !"],
         ["mr-tombola", "Le deuxième prix, le repas à l’auberge du Pont du Diable, est remporté par… le numéro 4 !"],

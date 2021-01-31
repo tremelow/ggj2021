@@ -123,23 +123,23 @@ end
 
 
 function MiniGame:resolve()
+    minigameMusic:stop()
+    overworldMusic:play()
+    currentMusic = overworldMusic
     if PLAYER_SCORE > OPPONENT_SCORE then
         -- If already won
         if Hero.advancement[self.pnj_id] == "minigame_won" then
-            self:pushState("Dialog", self.pnj_id, "victory_not_first")
+            self:gotoState("Dialog", self.pnj_id, "victory_not_first")
         else
             -- First win
             Hero.advancement[self.pnj_id] = "minigame_won"
             Hero.advancement[self.unlock] = "pres_minigame"
-            self:pushState("Dialog", self.pnj_id, "victory_first")
+            self:gotoState("Dialog", self.pnj_id, "victory_first")
         end
     else
-        self:pushState("Dialog", self.pnj_id, "defeat")
+        self:gotoState("Dialog", self.pnj_id, "defeat")
     end
-    minigameMusic:stop()
-    overworldMusic:play()
-    currentMusic = overworldMusic
-    self:popState("Shifumi")
+    -- self:popState("Shifumi")
 end
 
 function MiniGame:enteredState(name, unlock)
@@ -219,6 +219,8 @@ function MiniGame:keypressed(key, code)
         overworldMusic:play()
         currentMusic = overworldMusic
         self:popState("Shifumi")
+    elseif GAME_OVER then
+        self:resolve()
     elseif key == 'p' then
         minigameMusic:pause()
         self:pushState("Pause")
@@ -230,8 +232,6 @@ function MiniGame:keypressed(key, code)
         self:nextSelect()
     elseif key == 'space' and self.select > 0 then
         self:Select()
-    elseif GAME_OVER and key == "space" then
-        self:resolve()    
     else
         self.select = -1
         self.MI = false
