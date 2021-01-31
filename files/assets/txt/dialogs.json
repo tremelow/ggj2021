@@ -178,7 +178,7 @@
         ["Kevin", "..."],
         ["Kevin", "Je te dirai où elle est si tu bats mon score au punching ball."],
         ["Kevin", "Personne n'est venu depuis le début de la récré..."],
-        ["Kevin", "La maîtresse va croire que je vous ai défendu de jouer."],
+        ["Kevin", "La maîtresse va croire que je vous ai défendus de jouer."],
         ["Kevin", "Alors, tu veux taper ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame":[
@@ -198,7 +198,7 @@
         ["Kevin", "Qu'est-ce que j'ai fait de mal ?"],
         ["Théodule", "Je suis désolé, Kevin..."],
         ["Théodule", "Je ne savais pas. J'ai toujours cru que tu ne voulais pas qu'on vienne t'embêter."],
-        ["Kevin", "Non, c'est juste mon visage qui est comme ça... À cause de mon ça, je n'ai aucun ami à part Bobby."],
+        ["Kevin", "Non, c'est juste mon visage qui est comme ça... À cause de ça, je n'ai aucun ami à part Bobby."],
         ["Théodule", "Je suis vraiment désolé de t'avoir mal jugé."],
         ["Théodule", "J'aimerais être ton ami, si tu veux bien."],
         ["Kevin", "..."],
@@ -276,7 +276,7 @@
         ["Bobby", "Ma voisine de table l'a trouvé mignon et je lui ai donné."],
         ["Théodule", "C'est qui, ta voisine de table ?"],
         ["Bobby", "Tu ne sais même pas où je suis assis dans la classe ? Tu es sûr que tu t'intéresses aux autres ?"],
-        ["Théodule", "Arrête, j'ai compris... Tu as raison. Je n'ai pas fait   assez d'efforts pour aller vers les autres."],
+        ["Théodule", "Arrête, j'ai compris... Tu as raison. Je n'ai pas fait assez d'efforts pour aller vers les autres."],
         ["Bobby", "La première étape, c'est de s'en rendre compte."],
         ["Bobby", "Ma voisine de table, c'est Émilie."],
         ["Théodule", "!!"],
@@ -309,7 +309,7 @@
         ["Théodule", "Aaaaah ! Quelle aura ! Elle est si intimidante !"]
     ],
     "vtff":[
-        ["Émilie", "Dans un dix-sept jours, il y aura une éclipse partielle de soleil... J'ai trop hâte !"]
+        ["Émilie", "Dans dix-sept jours, il y aura une éclipse partielle de soleil... J'ai trop hâte !"]
     ],
     "pres_minigame":[
         ["Théodule", "..."],
@@ -372,7 +372,7 @@
     ],
     "defeat":[
         ["Émilie", "Ce n'est pas pour cette fois, on dirait."],
-        ["Émilie", "Tu peux gardertes billes, et réessayer si tu veux !", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["Émilie", "Tu peux garder tes billes, et réessayer si tu veux !", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame_known_never_won":[
         ["Émilie", "Salut, Théodule. Ça me fait plaisir de te revoir."],
