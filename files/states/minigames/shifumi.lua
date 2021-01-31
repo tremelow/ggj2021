@@ -109,6 +109,39 @@ function MiniGame:reset()
     GAME_WON = false
 end
 
+
+function MiniGame:drawOutcome()
+    --love.graphics.setColor(0.3,0.3, 1)
+    -- love.graphics.rectangle("fill", WINDOW_WIDTH/4, WINDOW_HEIGHT/3, WINDOW_WIDTH/2, WINDOW_WIDTH/5)
+    if PLAYER_SCORE > OPPONENT_SCORE then
+        love.graphics.printf("Quel mastermind !", WINDOW_WIDTH/4, WINDOW_HEIGHT/3, WINDOW_WIDTH/2, 'center')
+    else
+        love.graphics.printf("Joue mieux !", WINDOW_WIDTH/4, WINDOW_HEIGHT/3, WINDOW_WIDTH/2, 'center')
+    end
+    love.graphics.setColor(1,1, 1)
+end
+
+
+function MiniGame:resolve()
+    if PLAYER_SCORE > OPPONENT_SCORE then
+        -- If already won
+        if Hero.advancement[self.pnj_id] == "minigame_won" then
+            self:pushState("Dialog", self.pnj_id, "victory_not_first")
+        else
+            -- First win
+            Hero.advancement[self.pnj_id] = "minigame_won"
+            Hero.advancement[self.unlock] = "pres_minigame"
+            self:pushState("Dialog", self.pnj_id, "victory_first")
+        end
+    else
+        self:pushState("Dialog", self.pnj_id, "defeat")
+    end
+    minigameMusic:stop()
+    overworldMusic:play()
+    currentMusic = overworldMusic
+    self:popState("Shifumi")
+end
+
 function MiniGame:enteredState(name, unlock)
     self:reset() 
      --music 
@@ -123,28 +156,6 @@ function MiniGame:update(dt)
     if PLAYER_SCORE > 2 or OPPONENT_SCORE > 2 then
         GAME_OVER = true
     end
-
-
-    if GAME_OVER then
-        if PLAYER_SCORE > OPPONENT_SCORE then
-            -- If already won
-            if Hero.advancement[self.pnj_id] == "minigame_won" then
-                self:pushState("Dialog", self.pnj_id, "victory_not_first")
-            else
-                -- First win
-                Hero.advancement[self.pnj_id] = "minigame_won"
-                Hero.advancement[self.unlock] = "pres_minigame"
-                self:pushState("Dialog", self.pnj_id, "victory_first")
-            end
-        else
-            self:pushState("Dialog", self.pnj_id, "defeat")
-        end
-        minigameMusic:stop()
-        overworldMusic:play()
-        currentMusic = overworldMusic
-        self:popState("Shifumi")
-    end
-
     Talkies.update(dt)
 end
 
@@ -194,6 +205,10 @@ function MiniGame:draw()
     love.graphics.print("Theodule - " .. PLAYER_SCORE, 22, 30)
     love.graphics.print("Olga - " .. OPPONENT_SCORE, WINDOW_WIDTH - 138, 30)
 
+    if GAME_OVER then
+        self:drawOutcome()
+    end
+
     -- Talkies
     Talkies.draw()
 end
@@ -215,6 +230,8 @@ function MiniGame:keypressed(key, code)
         self:nextSelect()
     elseif key == 'space' and self.select > 0 then
         self:Select()
+    elseif GAME_OVER and key == "space" then
+        self:resolve()    
     else
         self.select = -1
         self.MI = false
