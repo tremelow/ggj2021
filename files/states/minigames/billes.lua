@@ -188,7 +188,7 @@ end
 ---------------------
 -- STATE MANAGEMENT
 ---------------------
-local background_img = love.graphics.newImage("assets/img/billes/asphalt.jpg")
+local background_img = love.graphics.newImage("assets/img/billes/space.jpg")
 
 local GAME_STOP = true
 local GAME_OVER = false
@@ -285,12 +285,12 @@ function MiniGame:nextPhase()
 end
 
 function MiniGame:draw()
-    -- -- Scaling parameters to fit image in a WIDTH x HEIGHT box
-    -- scalex = WINDOW_WIDTH / background_img:getWidth()
-    -- scaley = WINDOW_HEIGHT / background_img:getHeight()
+    -- Scaling parameters to fit image in a WIDTH x HEIGHT box
+    scalex = WINDOW_WIDTH / background_img:getWidth()
+    scaley = WINDOW_HEIGHT / background_img:getHeight()
 
-    -- -- Draw image to scale
-    -- love.graphics.draw(background_img, 0, 0, 0, scalex, scaley)
+    -- Draw image to scale
+    love.graphics.draw(background_img, 0, 0, 0, scalex, scaley)
     if self.phase == 'init' then
         self:drawWelcome()
     end
