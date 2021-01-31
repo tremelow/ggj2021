@@ -24,7 +24,7 @@ function Game:initialize()
   self:gotoState("Menu")
 
   -- Background Image
-  background = love.graphics.newImage("assets/foot.jpg")
+  background = love.graphics.newImage("assets/img/world/fond.png")
   FIELD_SIZE = background:getWidth()
   
   background_elems = {love.graphics.newImage("assets/img/world/tente.png"), love.graphics.newImage("assets/img/world/tableau.png"),
