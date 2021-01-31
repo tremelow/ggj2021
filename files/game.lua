@@ -81,13 +81,14 @@ function Game:initialize()
 --music
   overworldMusic = love.audio.newSource("assets/audio/overworld.mp3", "stream")
   overworldMusic:setLooping(true)
-  overworldMusic:setVolume(0.5)
+  overworldMusic:setVolume(0.2)
   minigameMusic = love.audio.newSource("assets/audio/minigame.mp3", "stream")
   minigameMusic:setLooping(true)
+  minigameMusic:setVolume(0.8)
   prologueMusic = love.audio.newSource("assets/audio/prologue.mp3", "stream")
-  prologueMusic:setVolume(0.7)
-  epilogueMusic = love.audio.newSource("assets/audio/prologue.mp3", "stream")
-  epilogueMusic:setVolume(0.7)
+  prologueMusic:setVolume(0.5)
+  epilogueMusic = love.audio.newSource("assets/audio/epilogue.mp3", "stream")
+  epilogueMusic:setVolume(0.5)
 end
 
 function Game:exit()
