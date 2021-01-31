@@ -144,12 +144,12 @@ end
 
 function MiniGame:enteredState(name, unlock)
     self:reset() 
-     --music 
-     currentMusic:stop()
-     minigameMusic:play()
-     currentMusic = minigameMusic
-     self.pnj_id = name
-     self.unlock = unlock
+    --music 
+    currentMusic:stop()
+    minigameMusic:play()
+    currentMusic = minigameMusic
+    self.pnj_id = name
+    self.unlock = unlock
 end
 
 function MiniGame:update(dt)

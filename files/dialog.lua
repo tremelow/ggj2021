@@ -6,6 +6,7 @@ function Dialog:enteredState(id, key)
   self.pnj = PNJs[id]
   self.currentLine = 1
   self:sayLine(self:getLine())
+
 end
 
 function Dialog:getLine()
@@ -14,9 +15,6 @@ end
 
 function Dialog:sayLine(line)
   if line[1] == "Minigame" then
-    if not Hero.advancement[self.pnj.name] == "minigame_won" then
-      Hero.advancement[self.pnj.name] = "minigame_known_never_won"
-    end
     self:gotoState(self.pnj.minigame, self.id, self.pnj.unlock)
   else
     local config = {image = DialogSprite[line[1]]}
@@ -26,6 +24,10 @@ function Dialog:sayLine(line)
         table.insert(options, {choice, function(dialog)
             self.key = line[4][index]
             self.currentLine = 1
+  
+            if self.key == "no_minigame" then
+              Hero.advancement[self.id] = "minigame_known_never_won"
+            end
           end })
       end
       config.options = options

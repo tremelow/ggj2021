@@ -381,7 +381,7 @@
     ],
     "minigame_known_never_won":[
         ["emilie", "Salut, Théodule. Ça me fait plaisir de te revoir."],
-        ["emilie", "Prêt à me ravir Altaïr ?"]
+        ["emilie", "Prêt à me ravir Altaïr ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame_won":[
         ["emilie", "La tombola va bientôt commencer, on devrait y aller."]
