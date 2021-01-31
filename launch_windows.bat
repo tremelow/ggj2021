@@ -1,1 +1,1 @@
-copy /b love.exe+game.love game.exe
+dist\love.exe files
