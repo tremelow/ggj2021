@@ -111,5 +111,14 @@
           "no": "Ah...hum...ok..."
         }
     }
+  },
+
+  "mr-tombola": {
+    "name": "Kevin",
+    "xpos": 200,
+    "ypos": 600,
+	  "sprite": "kevin.png",
+	  "shadow": "kevin_s.png",
+    "game": " "
   }
 }
