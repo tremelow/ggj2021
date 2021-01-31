@@ -97,8 +97,8 @@ function Game:draw()
   -- Draw background image
   love.graphics.draw(background, 0, 0, 0, 1, WINDOW_HEIGHT/background:getHeight())
   love.graphics.draw(tente, 700,230)
-  love.graphics.draw(tableau, 90, 280)
-  love.graphics.draw(cage, 2000, 400)
+  love.graphics.draw(tableau, 2000, 400)
+  love.graphics.draw(cage, 50, 280)
   love.graphics.draw(punchingball, 1600, 150)
 
   local hero_drawn = false
