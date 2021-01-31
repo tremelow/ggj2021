@@ -33,9 +33,9 @@ end
 function Epilogue:draw()
   love.graphics.setBackgroundColor(0,0,0)
   if frame_counter < 6 then
-    love.graphics.draw(epilogue_images[assets_idx[epilogue_counter]][1], 0, 0)
+    love.graphics.draw(epilogue_images[assets_idx[epilogue_counter]], 0, 0)
   else
-    love.graphics.draw(epilogue_images[assets_idx[epilogue_counter]][2], 0, 0)
+    love.graphics.draw(epilogue_images[assets_idx[epilogue_counter]+1], 0, 0)
   end
   
   love.graphics.setColor(255,255,255)
@@ -56,7 +56,7 @@ function Epilogue:keypressed(key, code)
   end
   if epilogue_counter >= 7 then
     --epilogueMusic:stop()
-    --self:popState("Epilogue")
+    self:gotoState("Menu")
 	-- on veut quitter le jeu, pas y retourner
   end
 end
