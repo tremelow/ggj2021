@@ -1,5 +1,5 @@
 $loveFile = Test-Path Kermesse.love
-if -NOT ($loveFile) {
+if(-NOT ($loveFile)) {
     Compress-Archive -Path 'files\*' -DestinationPath 'Kermesse.zip'
     Rename-Item 'Kermesse.zip' 'Kermesse.love'
 }
