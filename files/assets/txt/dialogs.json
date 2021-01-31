@@ -426,7 +426,19 @@
         ["olga", "C'est évidemment ma chance de sorcière qui a rejailli sur vous, puisque je n'ai pas acheté de ticket..."],
         ["bobby", "J'ai aussi fait ma part. Sans moi, Doudou n'aurait jamais été retrouvé."],
         ["kevin", "Mais c'est toi qui l'avais pris au départ..."],
-        ["leon", "L'important, c'est quand même que tout finisse bien, non ?"]
+        ["leon", "L'important, c'est quand même que tout finisse bien, non ?", ["Oui !"], ["no_minigame"]]
+    ],
+    "minigame":[
+        ["Minigame", "ref"]
+    ],
+    "no_minigame":[
+        ["mr-tombola", "Retourne t'amuser avec tes amis !"]
+    ],
+    "minigame_known_never_won":[
+        ["mr-tombola", "Prêts à recevoir vos cadeaux ?", ["Oui", "Pas tout de suite"], ["minigame", "no_minigame"]]
+    ],
+    "minigame_won":[
+        ["mr-tombola", "Prêts à recevoir vos cadeaux ?", ["Oui", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ]
 }
 }
