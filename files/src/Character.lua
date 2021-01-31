@@ -12,7 +12,7 @@ function Character:new(x,y)
     self.v = 500
 
     -- Sprite of character
-    self.image = love.graphics.newImage("assets/sheep.png")
+    self.image = nil
 
     -- Position
     self.x = x 
