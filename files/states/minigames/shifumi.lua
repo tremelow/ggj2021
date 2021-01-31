@@ -188,6 +188,7 @@ function MiniGame:outCome()
 end
 
 function MiniGame:draw()
+	love.graphics.draw(love.graphics.newImage(TILE_FOLDER .. "shifumi_back.png"), 160, 0)
     for i,v in ipairs(self.tiles) do
         v:draw(self.select)
     end
