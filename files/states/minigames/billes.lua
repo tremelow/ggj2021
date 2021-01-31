@@ -199,6 +199,7 @@ function MiniGame:drawWelcome()
 end
 
 function MiniGame:drawOutcome()
+    
     if self.player:isOut() then
         love.graphics.printf("Raté !", WINDOW_WIDTH/4, WINDOW_HEIGHT/3, WINDOW_WIDTH/2, 'center')
     end
@@ -285,6 +286,8 @@ function MiniGame:nextPhase()
 end
 
 function MiniGame:draw()
+    font = love.graphics.newFont(37)
+    love.graphics.setFont(font)
     -- Scaling parameters to fit image in a WIDTH x HEIGHT box
     scalex = WINDOW_WIDTH / background_img:getWidth()
     scaley = WINDOW_HEIGHT / background_img:getHeight()
@@ -304,6 +307,8 @@ function MiniGame:draw()
     if GAME_STOP then
         self:drawOutcome()
     end
+    
+    font = love.graphics.newFont(20)
 end
 
 function MiniGame:keypressed(key, code)

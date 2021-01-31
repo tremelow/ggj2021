@@ -222,6 +222,7 @@ TARGET_SCORE = 1
 
 function MiniGame:enteredState(name, unlock)
     self.background_img = love.graphics.newImage("assets/img/football/foot.png")
+    
      --music 
      currentMusic:stop()
      minigameMusic:play()
@@ -243,6 +244,41 @@ function MiniGame:reset()
     self.stopped = false
 end
 
+function MiniGame:drawWelcome()
+    love.graphics.printf("J'ai encore "..TRIES.." essais !", WINDOW_WIDTH/4, WINDOW_HEIGHT/3, WINDOW_WIDTH/2, 'center')
+end
+
+function MiniGame:drawOutcome()
+    --love.graphics.setColor(0.3,0.3, 1)
+    -- love.graphics.rectangle("fill", WINDOW_WIDTH/4, WINDOW_HEIGHT/3, WINDOW_WIDTH/2, WINDOW_WIDTH/5)
+    if SCORE > TARGET_SCORE then
+        love.graphics.printf("Wouah Trop fort ! !", WINDOW_WIDTH/4, WINDOW_HEIGHT/3, WINDOW_WIDTH/2, 'center')
+    else
+        love.graphics.printf("T'as pas le niveau !", WINDOW_WIDTH/4, WINDOW_HEIGHT/3, WINDOW_WIDTH/2, 'center')
+    end
+    love.graphics.setColor(1,1, 1)
+end
+
+function MiniGame:resolve()
+    if SCORE > TARGET_SCORE then
+        -- If already won
+        if Hero.advancement[self.pnj_id] == "minigame_won" then
+            self:pushState("Dialog", self.pnj_id, "victory_not_first")
+        else
+            -- First win
+            Hero.advancement[self.pnj_id] = "minigame_won"
+            Hero.advancement[self.unlock] = "pres_minigame"
+            self:pushState("Dialog", self.pnj_id, "victory_first")
+        end
+    else
+        self:pushState("Dialog", self.pnj_id, "defeat")
+    end
+    minigameMusic:stop()
+    overworldMusic:play()
+    currentMusic = overworldMusic
+    self:popState("Soccer")
+end
+
 function MiniGame:update(dt)
     -- Update player
     self.player:update(dt)
@@ -250,31 +286,16 @@ function MiniGame:update(dt)
     -- Update ball if not game over
     if not GAME_OVER then
         self.ball:update(dt, self.player)
-    elseif not self.stopped then
-        self.stopped = true
-        if SCORE > TARGET_SCORE then
-            -- If already won
-            if Hero.advancement[self.pnj_id] == "minigame_won" then
-                self:pushState("Dialog", self.pnj_id, "victory_not_first")
-            else
-                -- First win
-                Hero.advancement[self.pnj_id] = "minigame_won"
-                Hero.advancement[self.unlock] = "pres_minigame"
-                self:pushState("Dialog", self.pnj_id, "victory_first")
-            end
-        else
-            self:pushState("Dialog", self.pnj_id, "defeat")
-        end
-        minigameMusic:stop()
-        overworldMusic:play()
-        currentMusic = overworldMusic
-        self:popState("Soccer")
     end
 
     Talkies.update(dt)
 end
 
 function MiniGame:draw()
+    
+    font = love.graphics.newFont(37)
+    love.graphics.setFont(font)
+
     -- Scaling parameters to fit image in a WIDTH x HEIGHT box
     scalex = WINDOW_WIDTH / self.background_img:getWidth()
     scaley = WINDOW_HEIGHT / self.background_img:getHeight()
@@ -287,13 +308,14 @@ function MiniGame:draw()
     self.player:draw(self.ball)
     
     -- SCORE
-    love.graphics.rectangle("line", 20, 20, 140, 50)
-    love.graphics.print("SCORE - ", 21, 20)
-    love.graphics.print(SCORE, 120, 20)
+    love.graphics.setColor(0,0,0)
+    love.graphics.print("SCORE - " .. SCORE, 120, 20)
     if GAME_OVER then
-        love.graphics.print("GAME OVER", 21, 40)
+        self:drawOutcome()
     end
+    love.graphics.setColor(1,1,1)
 
+    font = love.graphics.newFont(20)
     Talkies.draw()
 end
 
@@ -306,6 +328,8 @@ function MiniGame:keypressed(key, code)
     elseif key == 'p' then
         minigameMusic:pause()
         self:pushState("Pause")
+    elseif GAME_OVER and key == "space" then
+        self:resolve()
     elseif key == 'r' then
         self:reset()
     end
