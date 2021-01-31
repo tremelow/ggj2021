@@ -1,1 +1,1 @@
-love $FILES_FOLDER
+love files
