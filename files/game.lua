@@ -28,10 +28,12 @@ function Game:initialize()
   FIELD_SIZE = background:getWidth()
   
   background_elems = {love.graphics.newImage("assets/img/world/stand.png"), love.graphics.newImage("assets/img/world/tente.png"), 
-  love.graphics.newImage("assets/img/world/tableau.png"),
+  love.graphics.newImage("assets/img/world/tableau.png"), love.graphics.newImage("assets/img/world/fanions.png"),
+  love.graphics.newImage("assets/img/world/fanions.png"), love.graphics.newImage("assets/img/world/fanions.png"),
+  love.graphics.newImage("assets/img/world/ballons.png"), love.graphics.newImage("assets/img/world/ballons.png"),
 	love.graphics.newImage("assets/img/world/cage.png"), love.graphics.newImage("assets/img/world/punchingball.png")
 	}
-  background_elems_pos = {{1200, 100}, {700,250},{2000, 400}, {50, 280},{1600, 150}}
+  background_elems_pos = {{1200, 100}, {700,250},{2000, 400},{280, 150}, {700, 150}, {2200, 130}, {950,120}, {1300, 500}, {50, 280},{1600, 150}}
   
   -- Initialize Camera, left-right scrolling
   camera = Camera()
