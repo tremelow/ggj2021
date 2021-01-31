@@ -1,9 +1,11 @@
 local Pause = Game:addState("Pause")
 
 function Pause:enteredState()
+  currentMusic:pause()
 end
 
 function Pause:exitedState()
+  currentMusic:play()
 end
 
 function Pause:update(dt)

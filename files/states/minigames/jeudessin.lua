@@ -146,10 +146,6 @@ function JeuDessin:loadJeuDessin()
 
   love.graphics.setCanvas()
 
-  --music 
-  self.source = love.audio.newSource("assets/audio/minigame.wav", "stream")
-  self.source:isLooping(true)
-  love.audio.play(self.source)
 
 end
 
@@ -274,6 +270,12 @@ local minigame = JeuDessin()
 function Dessin:enteredState()
   love.graphics.setBackgroundColor(0,0,0,1)
   minigame:loadJeuDessin()
+
+  --music 
+  currentMusic:stop()
+  minigameMusic:play()
+  currentMusic = minigameMusic
+  
   
   cursorImg = love.image.newImageData("assets/img/draw/chalk_shade.png")
   cursor = love.mouse.newCursor(cursorImg)
@@ -305,9 +307,12 @@ end
 function Dessin:keypressed(key, code)
   if key == 'escape' then
       love.mouse.setCursor()
-      minigame.source:stop()
+      minigameMusic:stop()
+      overworldMusic:play()
+      currentMusic = overworldMusic
       self:popState("Dessin")
   elseif key == 'p' then
+      minigameMusic:pause()
       self:pushState("Pause")
   elseif key == 'r' then
       minigame:reset()

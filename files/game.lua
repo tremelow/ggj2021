@@ -60,6 +60,15 @@ function Game:initialize()
     content = content .. line
   end
   dialogs = json.decode(content)
+
+--music
+  overworldMusic = love.audio.newSource("assets/audio/overworld.mp3", "stream")
+  overworldMusic:setLooping(true)
+  overworldMusic:setVolume(0.5)
+  minigameMusic = love.audio.newSource("assets/audio/minigame.wav", "stream")
+  minigameMusic:setLooping(true)
+  prologueMusic = love.audio.newSource("assets/audio/prologue.mp3", "stream")
+  prologueMusic:setVolume(0.7)
 end
 
 function Game:exit()

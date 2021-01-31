@@ -223,9 +223,10 @@ TARGET_SCORE = 12
 function MiniGame:enteredState()
     self.background_img = love.graphics.newImage("assets/img/football/foot.png")
      --music 
-    self.source = love.audio.newSource("assets/audio/minigame.wav", "stream")
-    self.source:isLooping(true)
-    love.audio.play(self.source)
+     currentMusic:stop()
+     minigameMusic:play()
+     currentMusic = minigameMusic
+
     self:reset()
 
     self:pushState("Dialog", "bobby", "first")
@@ -277,9 +278,12 @@ end
 
 function MiniGame:keypressed(key, code)
     if key == 'escape' then
-        self.source:stop()
+        minigameMusic:stop()
+        overworldMusic:play()
+        currentMusic = overworldMusic
         self:popState("Soccer")
     elseif key == 'p' then
+        minigameMusic:pause()
         self:pushState("Pause")
     elseif key == 'r' then
         self:reset()

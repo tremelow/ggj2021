@@ -28,6 +28,10 @@ function Prologue:enteredState()
     content = content .. line
   end
   prologue_text = json.decode(content)
+
+  --music
+  prologueMusic:play()
+  currentMusic = prologueMusic
 end
 
 function Prologue:update(dt)
@@ -89,13 +93,19 @@ end
 
 function Prologue:keypressed(key, code)
   if key == 'space' then
-	  prologue_counter = prologue_counter+1
+    prologue_counter = prologue_counter+1
   elseif key == 'escape' then
+    prologueMusic:stop()
     self:popState("Prologue")
+    overworldMusic:play()
+    currentMusic = overworldMusic
   elseif key == 'p' then
     self:pushState("Pause")
   end
   if prologue_counter >= 29 then
-	  self:popState("Prologue")
+    prologueMusic:stop()
+    self:popState("Prologue")
+    overworldMusic:play()
+    currentMusic = overworldMusic
   end
 end

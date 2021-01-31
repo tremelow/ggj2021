@@ -111,9 +111,9 @@ end
 function MiniGame:enteredState()
     self:reset() 
      --music 
-    self.source = love.audio.newSource("assets/audio/minigame.wav", "stream")
-    self.source:isLooping(true)
-    love.audio.play(self.source)
+     currentMusic:stop()
+     minigameMusic:play()
+     currentMusic = minigameMusic
 end
 
 function MiniGame:update(dt)
@@ -163,9 +163,12 @@ end
 
 function MiniGame:keypressed(key, code)
     if key == 'escape' then
-        self.source:stop()
+        minigameMusic:stop()
+        overworldMusic:play()
+        currentMusic = overworldMusic
         self:popState("Shifumi")
     elseif key == 'p' then
+        minigameMusic:pause()
         self:pushState("Pause")
     elseif key == 'r' then
         self:reset()
