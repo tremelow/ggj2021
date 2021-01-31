@@ -7,7 +7,7 @@ local Vector = require("src.utils.vector")
 local WINDOW_HEIGHT = love.graphics.getHeight()
 local WINDOW_WIDTH = love.graphics.getWidth()
 
-local SCORE = 0
+local TRIES = 4
 local GAME_OVER = false
 
 ---------------------
@@ -190,18 +190,61 @@ end
 ---------------------
 local background_img = love.graphics.newImage("assets/img/billes/asphalt.jpg")
 
+local GAME_STOP = true
 local GAME_OVER = false
-local GAME_WON = false
+local TRIES = 4
+
+function MiniGame:drawWelcome()
+    love.graphics.printf("J'ai encore "..TRIES.." essais !", WINDOW_WIDTH/4, WINDOW_HEIGHT/3, WINDOW_WIDTH/2, 'center')
+end
+
+function MiniGame:drawOutcome()
+    if self.player:isOut() then
+        love.graphics.printf("Raté !", WINDOW_WIDTH/4, WINDOW_HEIGHT/3, WINDOW_WIDTH/2, 'center')
+    end
+    if self.target:isOut() then
+        love.graphics.printf("Oui ! J'ai gagné ", WINDOW_WIDTH/4, WINDOW_HEIGHT/3, WINDOW_WIDTH/2, 'center')
+    end
+end
+
+function MiniGame:resolve()
+    if self.target:isOut() then
+        -- If already won
+        if Hero.advancement[self.pnj_id] == "minigame_won" then
+            self:pushState("Dialog", self.pnj_id, "victory_not_first")
+        else
+            -- First win
+            Hero.advancement[self.pnj_id] = "minigame_won"
+            Hero.advancement[self.unlock] = "pres_minigame"
+            self:pushState("Dialog", self.pnj_id, "victory_first")
+        end
+    elseif TRIES < 1 then
+        self:pushState("Dialog", self.pnj_id, "defeat")
+    end
+    if TRIES < 1 or self.target:isOut() then 
+        minigameMusic:stop()
+        overworldMusic:play()
+        currentMusic = overworldMusic
+        self:popState("Billes")
+    else
+        self:replace()
+    end
+end
 
 function MiniGame:reset()
+    TRIES = 4
+    self:replace()
+end
+
+function MiniGame:replace()
     self.target = Bille(WINDOW_WIDTH/2, WINDOW_HEIGHT / 6)
     self.player = PlayerBille(WINDOW_WIDTH/5 + 3/5 * WINDOW_WIDTH * math.random(),
                         WINDOW_HEIGHT * 5/6
                     )
     self.arrow = Arrow(self.player.x, self.player.y)
-    GAME_OVER = false
-    GAME_WON = false
-    self.phase = 'aim'
+
+    self.phase = 'init'
+    GAME_STOP = false
 end
 
 function MiniGame:enteredState(name, unlock)
@@ -214,50 +257,30 @@ function MiniGame:enteredState(name, unlock)
     self.unlock = unlock
 end
 
+
 function MiniGame:update(dt)
-    if self.player:isOut() then
-        GAME_OVER = true
-    end
-    if self.target:isOut() then
-        GAME_WON = true
-    end
-
-    if GAME_OVER then
-        if GAME_WON then
-            -- If already won
-            if Hero.advancement[self.pnj_id] == "minigame_won" then
-                self:pushState("Dialog", self.pnj_id, "victory_not_first")
-            else
-                -- First win
-                Hero.advancement[self.pnj_id] = "minigame_won"
-                Hero.advancement[self.unlock] = "pres_minigame"
-                self:pushState("Dialog", self.pnj_id, "victory_first")
-            end
-        else
-            self:pushState("Dialog", self.pnj_id, "defeat")
-        end
-        minigameMusic:stop()
-        overworldMusic:play()
-        currentMusic = overworldMusic
-        self:popState("Billes")
-    end
-
     if self.phase == 'aim' then
         self.arrow:update(dt, self.phase)
     elseif self.phase == 'charge' then
         self.arrow:update(dt, self.phase, self.player)
-    elseif not GAME_OVER or not GAME_WON then
+    elseif not GAME_STOP then
         -- print(self.player.vx, self.player.vy)
         self.player:update(dt, self.target)
         self.target:update(dt)
+        if self.player:isOut() or self.target:isOut() then
+            GAME_STOP = true
+        end
     end
 end
 
 function MiniGame:nextPhase()
-    if self.phase == 'aim' then
+    if self.phase == 'init' then
+        self.phase = 'aim'
+    elseif self.phase == 'aim' then
         self.phase = 'charge'
     elseif self.phase == 'charge' then
         self.phase = 'shoot'
+        TRIES = TRIES - 1
     end
 end
 
@@ -268,6 +291,9 @@ function MiniGame:draw()
 
     -- -- Draw image to scale
     -- love.graphics.draw(background_img, 0, 0, 0, scalex, scaley)
+    if self.phase == 'init' then
+        self:drawWelcome()
+    end
     
     self.player:draw()
     self.target:draw()
@@ -275,13 +301,8 @@ function MiniGame:draw()
         self.arrow:draw()
     end
 
-    if GAME_OVER then
-        love.graphics.print("GAME OVER", 20, 20)
-        if GAME_WON then
-            love.graphics.print("YOU WIN", 20, 40)
-        else
-            love.graphics.print("YOU LOSE", 20, 40)
-        end
+    if GAME_STOP then
+        self:drawOutcome()
     end
 end
 
@@ -296,6 +317,8 @@ function MiniGame:keypressed(key, code)
         self:pushState("Pause")
     elseif key == 'r' then
         self:reset()
+    elseif GAME_STOP and key == 'space' then
+        self:resolve()
     elseif key == 'space' then
         self:nextPhase()
     end 
