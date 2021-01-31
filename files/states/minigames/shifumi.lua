@@ -209,9 +209,9 @@ function MiniGame:keypressed(key, code)
         self:pushState("Pause")
     elseif key == 'r' then
         self:reset()
-    elseif key == 'left' then
+    elseif key == 'left' or key == "q" then
         self:prevSelect()
-    elseif key == 'right' then
+    elseif key == 'right' or key == "d" then
         self:nextSelect()
     elseif key == 'space' and self.select > 0 then
         self:Select()
