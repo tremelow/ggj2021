@@ -28,5 +28,5 @@ intéragir avec l'environnement.
 
 
 ## Authors
-Pauline Brunet (writing and pixel art), Théo Golvet (music and code),
-Aurore Mattio (assets and code), Youssef Miftah (code), Léopold Trémant (code).
+Pauline Brunet (writing and art), Théo Golvet (music and code),
+Aurore Mattio (art and code), Youssef Miftah (code), Léopold Trémant (code).
