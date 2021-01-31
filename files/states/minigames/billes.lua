@@ -16,7 +16,7 @@ local GAME_OVER = false
 local Bille = class("Bille")
 
 local DRAG = 1
-local BALL_RADIUS = 20
+local BALL_RADIUS = 40
 -- local BALL_SPRITE = love.graphics.newImage("assets/img/football/football.png")
 
 local isCollision = false

@@ -330,10 +330,6 @@
         ["Émilie", "Voilà ce que je te propose. Jouons aux billes."],
         ["Émilie", "Si tu parviens à toucher ma bille favorite, Bételgeuse, tu peux reprendre Altaïr tout de suite."],
 		["Émilie", "Sinon, tu devras me la laisser."],
-        ["Émilie", "Marché conclu ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
-    ],
-    "minigame":[
-        ["Émilie", "Parfait."],
         ["Théodule", "Combien de billes est-ce que tu me prêtes ?"],
         ["Émilie", "Ah non, Théodule, chacun ses billes. Je ne vais pas porter secours à mon adversaire."],
         ["Théodule", "Mais... je n'ai pas de billes, moi !"],
@@ -351,6 +347,10 @@
         ["Théodule", "Merci ! Je ne vous décevrai pas, les copains."],
         ["Théodule", "Je suis prêt !"],
         ["Émilie", "Mmmh... vous êtes bien embêtants, tous. Mais bon, j'ai promis..."],
+        ["Émilie", "Marché conclu ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+    ],
+    "minigame":[
+        ["Émilie", "Parfait."],
         ["Émilie", "Montre-moi de quoi tu es capable !"],
         ["Minigame", "ref"]
     ],
@@ -372,11 +372,14 @@
     ],
     "defeat":[
         ["Émilie", "Ce n'est pas pour cette fois, on dirait."],
-        ["Émilie", "Mais tu peux réessayer si tu veux !", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["Émilie", "Tu peux gardertes billes, et réessayer si tu veux !", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame_known_never_won":[
         ["Émilie", "Salut, Théodule. Ça me fait plaisir de te revoir."],
         ["Émilie", "Prêt à me ravir Altaïr ?"]
+    ],
+    "minigame_won":[
+        ["Émilie", "La Tombola va bientôt commencer, on devrait y aller"]
     ]
 },
 "mr-tombola":{
