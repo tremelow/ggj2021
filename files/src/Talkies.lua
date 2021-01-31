@@ -248,7 +248,7 @@ function Talkies.draw()
 
   -- message box
   local boxW = windowWidth-(2*currentDialog.padding)
-  local boxH = (windowHeight/4)-(2*currentDialog.padding)
+  local boxH = (windowHeight/5)-(2*currentDialog.padding)
   local boxX = currentDialog.padding
   local boxY = windowHeight-(boxH+currentDialog.padding)
 
