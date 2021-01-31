@@ -25,7 +25,7 @@ function Dialog:sayLine(line)
             self.key = line[4][index]
             self.currentLine = 1
   
-            if self.key == "no_minigame" then
+            if self.key == "no_minigame" and not Hero.advancement[self.id] == "minigame_won" then
               Hero.advancement[self.id] = "minigame_known_never_won"
             end
           end })

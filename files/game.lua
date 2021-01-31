@@ -27,9 +27,11 @@ function Game:initialize()
   background = love.graphics.newImage("assets/img/world/fond.png")
   FIELD_SIZE = background:getWidth()
   
-  background_elems = {love.graphics.newImage("assets/img/world/tente.png"), love.graphics.newImage("assets/img/world/tableau.png"),
-	love.graphics.newImage("assets/img/world/cage.png"), love.graphics.newImage("assets/img/world/punchingball.png")}
-  background_elems_pos = {{700,230},{2000, 400}, {50, 280},{1600, 150}}
+  background_elems = {love.graphics.newImage("assets/img/world/stand.png"), love.graphics.newImage("assets/img/world/tente.png"), 
+  love.graphics.newImage("assets/img/world/tableau.png"),
+	love.graphics.newImage("assets/img/world/cage.png"), love.graphics.newImage("assets/img/world/punchingball.png")
+	}
+  background_elems_pos = {{1200, 100}, {700,250},{2000, 400}, {50, 280},{1600, 150}}
   
   -- Initialize Camera, left-right scrolling
   camera = Camera()
@@ -116,7 +118,7 @@ function Game:draw()
 
   local hero_drawn = false
   for idx, elem in pairs(background_elems) do
-    if (Hero.y<background_elems_pos[idx][2] and math.abs((Hero.x-background_elems_pos[idx][1]))<100) then
+    if (Hero.y<background_elems_pos[idx][2] and math.abs((Hero.x-(background_elems_pos[idx][1]+50)))<100) then
 		if not hero_drawn then
 			Hero:draw()
 			hero_drawn = true

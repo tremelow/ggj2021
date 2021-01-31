@@ -6,7 +6,7 @@ local WINDOW_HEIGHT = love.graphics.getHeight()
 local WINDOW_WIDTH = love.graphics.getWidth()
 
 --Asset Folder
-local ASSET_FOLDER = "assets/img/punch/"
+local ASSET_FOLDER = "assets/img/punchingball/"
 
 TARGET_SCORE = 0.1
 
@@ -17,25 +17,18 @@ local PunchingBall = class("PunchingBall")
 local PB_RADIUS = WINDOW_HEIGHT / 6
 
 function PunchingBall:initialize()
-    self.dabam = false
-end
-
-function PunchingBall:BAM()
-    self.dabam = true
+	self.back = love.graphics.newImage(ASSET_FOLDER .. "background.png")
+    self.img = love.graphics.newImage(ASSET_FOLDER .. "punchingball_1.png")
 end
 
 function PunchingBall:update(dt)
 end
 
 function PunchingBall:draw(dt)
-    love.graphics.setColor(1, 0.5, 0.5)
-    love.graphics.circle('fill',
-        WINDOW_WIDTH/2, WINDOW_HEIGHT * 2/ 5, PB_RADIUS+4
-    )
-    love.graphics.setColor(1, 0, 0)
-    love.graphics.circle('fill',
-        WINDOW_WIDTH/2, WINDOW_HEIGHT * 2 / 5, PB_RADIUS
-    )
+	love.graphics.draw(self.back)
+    love.graphics.draw(self.img, 
+        WINDOW_WIDTH/2 - self.img:getWidth()/2,
+        WINDOW_HEIGHT * 2/ 5 - self.img:getHeight()/2)
 end
 
 -----------------------
@@ -49,6 +42,8 @@ CHARGE_AMOUNT = 9
 
 function PowerBar:initialize()
     self.power = 0
+    self.sbam = love.graphics.newImage(ASSET_FOLDER .. "sbam_1.png")
+    self.bbam = love.graphics.newImage(ASSET_FOLDER .. "bbam_1.png")
 end
 
 function PowerBar:charge()
@@ -64,7 +59,7 @@ function PowerBar:update(dt)
     self.power = math.max(0, self.power)
 end
 
-function PowerBar:draw()
+function PowerBar:draw(punch)
     love.graphics.setColor(1, 1, 1)
     love.graphics.rectangle("line",
         WINDOW_WIDTH / 4,
@@ -83,15 +78,29 @@ function PowerBar:draw()
 
     love.graphics.setColor(1, 1, 1)
     love.graphics.print("...",
-        WINDOW_WIDTH / 4, WINDOW_HEIGHT * 6/8 - 40)
+        WINDOW_WIDTH / 4, WINDOW_HEIGHT * 6/8 - 60)
     love.graphics.print("pas mal !",
-        WINDOW_WIDTH / 2, WINDOW_HEIGHT * 6/8 - 40)
+        WINDOW_WIDTH / 2, WINDOW_HEIGHT * 6/8 - 60)
     love.graphics.print("wouah !",
-        WINDOW_WIDTH * 6 / 8, WINDOW_HEIGHT * 6/8 - 40)
+        WINDOW_WIDTH * 6 / 8, WINDOW_HEIGHT * 6/8 - 60)
 
         
     love.graphics.printf("Concentre ta force dans ton poing !",
     0 , WINDOW_HEIGHT*14/16 + 20 , WINDOW_WIDTH, 'center')
+
+
+    
+    if punch then
+        if self:score() < 0.7 then
+            love.graphics.draw(self.sbam, 
+                WINDOW_WIDTH/2 - self.sbam:getWidth()/2,
+                WINDOW_HEIGHT * 2/ 5 - self.sbam:getHeight()/2)
+        else 
+            love.graphics.draw(self.bbam, 
+                WINDOW_WIDTH/2 - self.bbam:getWidth()/2,
+                WINDOW_HEIGHT * 2/ 5 - self.bbam:getHeight()/2)
+        end
+    end
 end
 
 ---------------------
@@ -103,7 +112,7 @@ function MiniGame:reset()
     self.punching_ball = PunchingBall()
 
     self.timer = 5
-    self.BAM = false
+    self.bam = false
 
     self.GAME_START = false
     GAME_OVER  = false
@@ -123,9 +132,9 @@ function MiniGame:drawOutcome()
     --love.graphics.setColor(0.3,0.3, 1)
     -- love.graphics.rectangle("fill", WINDOW_WIDTH/4, WINDOW_HEIGHT/3, WINDOW_WIDTH/2, WINDOW_WIDTH/5)
     if self.bar:score() > TARGET_SCORE then
-        love.graphics.printf("Wouah Trop fort ! !", WINDOW_WIDTH/4, WINDOW_HEIGHT/3, WINDOW_WIDTH/2, 'center')
+        love.graphics.printf("Wouah Trop fort ! !", WINDOW_WIDTH/4, WINDOW_HEIGHT/12, WINDOW_WIDTH/2, 'center')
     else
-        love.graphics.printf("T'as pas le niveau !", WINDOW_WIDTH/4, WINDOW_HEIGHT/3, WINDOW_WIDTH/2, 'center')
+        love.graphics.printf("T'as pas le niveau !", WINDOW_WIDTH/4, WINDOW_HEIGHT/12, WINDOW_WIDTH/2, 'center')
     end
     love.graphics.setColor(1,1, 1)
 end
@@ -162,7 +171,7 @@ function MiniGame:update(dt)
     if self.timer <= 0 then
         self.timer = self.timer - dt
         self.GAME_START = false
-        self.punching_ball:BAM()
+        self.bam = true
     end
 
     if self.timer <= -1 then
@@ -175,13 +184,13 @@ end
 
 function MiniGame:draw()
     
-
-    self.bar:draw()
-    love.graphics.setColor(1, 1, 1)
-    love.graphics.print("TIME LEFT - " .. string.format("%.1f", math.max(0,self.timer)), 22, 30)
-
     self.punching_ball:draw()
     love.graphics.setColor(1, 1, 1)
+
+
+    self.bar:draw(self.bam)
+    love.graphics.setColor(1, 1, 1)
+    love.graphics.print("TIME LEFT - " .. string.format("%.1f", math.max(0,self.timer)), 22, 30)
 
     font = love.graphics.newFont(37)
     love.graphics.setFont(font)
