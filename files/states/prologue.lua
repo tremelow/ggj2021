@@ -7,6 +7,7 @@ local prologue_counter = 1
 local frame_counter = 0
 local prologue_text = {}
 local anim_counter = 1
+local assets_idx = {}
 
 function Prologue:enteredState()
   prologue_images = {love.graphics.newImage("assets/img/prologue/theodule_1.png"), love.graphics.newImage("assets/img/prologue/theodule_2.png"),

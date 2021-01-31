@@ -1,9 +1,25 @@
 {"leon":{
+    "force_minigame": [["Minigame"]],
     "first":[
         ["Théodule", "C'est Léon."],
         ["Théodule", "Il est un peu comme moi, il ne parle pas beaucoup."],
         ["Théodule", "Il passe son temps à dessiner dans ses cahiers en rêvassant."],
         ["Théodule", "C'est le dernier à être sorti de la salle de classe... Peut-être qu'il a vu quelqu'un emporter Doudou ?"]
+    ],
+    "vtff":[
+        ["Léon", "Hmmm ?"],
+        ["Léon", "Oh, c'est toi, heu..."],
+        ["Théodule", "Théodule"],
+        ["Théodule", "Désolé de t'embêter..."],
+        ["Théodule", "Est-ce que tu as vu une grenouille grande comme ça ?"],
+        ["Léon", "Je ne savais pas qu'il y avait des grenouilles si grandes. Peut-être en Amazonie ?"],
+        ["Théodule", "Heu, non... C'est ma peluche, Doudou."],
+        ["Théodule", "Je l'ai perdue."],
+        ["Léon", "Ah."],
+        ["Léon", "Ça ne me dit rien... Peut-être que tu peux me la dessiner ?"],
+        ["Théodule", "Je ne sais pas dessiner, moi..."],
+        ["Léon", "Mais c'est facile ! Je vais t'apprendre."],
+        ["Léon", "Tu veux bien dessiner avec moi ?", ["D'accord", "Pas tout de suite"], ["minigame","no_minigame"]]
     ],
     "pres_minigame":[
         ["Léon", "Hmmm ?"],
@@ -58,6 +74,7 @@
     },
 
 "olga":{
+    "force_minigame": [["Minigame"]],
     "first":[
         ["Théodule", "C'est Olga."],
         ["Théodule", "Elle tient le stand de voyance, mais elle est déguisée en sorcière."],
@@ -140,6 +157,7 @@
 },
 
 "kevin":{
+    "force_minigame": [["Minigame"]],
     "first":[
         ["Théodule", "Gloups... Voilà Kevin."],
         ["Théodule", "C'est un gros dur hyper musclé."],
@@ -163,7 +181,7 @@
         ["Kevin", "..."],
         ["Kevin", "Je te dirai où elle est si tu bats mon score au punching ball."],
         ["Kevin", "Personne n'est venu depuis le début de la récré..."],
-        ["Kevin", "La maîtresse va croire que je vous ai défendu de jouer."],
+        ["Kevin", "La maîtresse va croire que je vous ai défendus de jouer."],
         ["Kevin", "Alors, tu veux taper ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame":[
@@ -183,7 +201,7 @@
         ["Kevin", "Qu'est-ce que j'ai fait de mal ?"],
         ["Théodule", "Je suis désolé, Kevin..."],
         ["Théodule", "Je ne savais pas. J'ai toujours cru que tu ne voulais pas qu'on vienne t'embêter."],
-        ["Kevin", "Non, c'est juste mon visage qui est comme ça... À cause de mon ça, je n'ai aucun ami à part Bobby."],
+        ["Kevin", "Non, c'est juste mon visage qui est comme ça... À cause de ça, je n'ai aucun ami à part Bobby."],
         ["Théodule", "Je suis vraiment désolé de t'avoir mal jugé."],
         ["Théodule", "J'aimerais être ton ami, si tu veux bien."],
         ["Kevin", "..."],
@@ -213,6 +231,7 @@
 },
 
 "bobby":{
+    "force_minigame": [["Minigame"]],
     "first":[
         ["Théodule", "Voilà Bobby."],
         ["Théodule", "Il est obsédé par le foot, il passe toutes les récrés à faire des buts dans les cages."],
@@ -261,7 +280,7 @@
         ["Bobby", "Ma voisine de table l'a trouvé mignon et je lui ai donné."],
         ["Théodule", "C'est qui, ta voisine de table ?"],
         ["Bobby", "Tu ne sais même pas où je suis assis dans la classe ? Tu es sûr que tu t'intéresses aux autres ?"],
-        ["Théodule", "Arrête, j'ai compris... Tu as raison. Je n'ai pas fait   assez d'efforts pour aller vers les autres."],
+        ["Théodule", "Arrête, j'ai compris... Tu as raison. Je n'ai pas fait assez d'efforts pour aller vers les autres."],
         ["Bobby", "La première étape, c'est de s'en rendre compte."],
         ["Bobby", "Ma voisine de table, c'est Émilie."],
         ["Théodule", "!!"],
@@ -289,12 +308,13 @@
 },
 
 "emilie":{
+    "force_minigame": [["Minigame"]],
     "first":[
         ["Théodule", "C'est Émilie..."],
         ["Théodule", "Aaaaah ! Quelle aura ! Elle est si intimidante !"]
     ],
     "vtff":[
-        ["Émilie", "Dans un dix-sept jours, il y aura une éclipse partielle de soleil... J'ai trop hâte !"]
+        ["Émilie", "Dans dix-sept jours, il y aura une éclipse partielle de soleil... J'ai trop hâte !"]
     ],
     "pres_minigame":[
         ["Théodule", "..."],
@@ -315,10 +335,6 @@
         ["Émilie", "Voilà ce que je te propose. Jouons aux billes."],
         ["Émilie", "Si tu parviens à toucher ma bille favorite, Bételgeuse, tu peux reprendre Altaïr tout de suite."],
 		["Émilie", "Sinon, tu devras me la laisser."],
-        ["Émilie", "Marché conclu ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
-    ],
-    "minigame":[
-        ["Émilie", "Parfait."],
         ["Théodule", "Combien de billes est-ce que tu me prêtes ?"],
         ["Émilie", "Ah non, Théodule, chacun ses billes. Je ne vais pas porter secours à mon adversaire."],
         ["Théodule", "Mais... je n'ai pas de billes, moi !"],
@@ -336,11 +352,15 @@
         ["Théodule", "Merci ! Je ne vous décevrai pas, les copains."],
         ["Théodule", "Je suis prêt !"],
         ["Émilie", "Mmmh... vous êtes bien embêtants, tous. Mais bon, j'ai promis..."],
+        ["Émilie", "Marché conclu ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+    ],
+    "minigame":[
+        ["Émilie", "Parfait."],
         ["Émilie", "Montre-moi de quoi tu es capable !"],
         ["Minigame", "ref"]
     ],
     "no_minigame":[
-        ["Émilie", "Tu me laisses Altaïr ? Très bien !"]
+        ["Émilie", "Comme tu veux !"]
     ],
     "victory_first":[
         ["Théodule", "J'ai gagné !"],
@@ -357,19 +377,26 @@
     ],
     "defeat":[
         ["Émilie", "Ce n'est pas pour cette fois, on dirait."],
-        ["Émilie", "Mais tu peux réessayer si tu veux !", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
+        ["Émilie", "Tu peux garder tes billes, et réessayer si tu veux !", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame_known_never_won":[
         ["Émilie", "Salut, Théodule. Ça me fait plaisir de te revoir."],
         ["Émilie", "Prêt à me ravir Altaïr ?"]
+    ],
+    "minigame_won":[
+        ["Émilie", "La Tombola va bientôt commencer, on devrait y aller"]
     ]
 },
 "mr-tombola":{
-    "no_doudou":[
+    "first":[
         ["Théodule", "C'est le stand de tombola..."],
         ["Théodule", "Il faut vite que je retrouve Doudou pour participer !"]
     ],
-    "has_doudou":[
+    "vtff":[
+        ["Théodule", "C'est le stand de tombola..."],
+        ["Théodule", "Il faut vite que je retrouve Doudou pour participer !"]
+    ],
+    "pres_minigame":[
         ["Théodule", "Bonjour ! Est-ce que je pourrais avoir un ticket pour la tombola ?"],
         ["Monsieur Tombola", "Pas de problème, fiston !"],
         ["Monsieur Tombola", "Le premier prix est un téléscope junior"],

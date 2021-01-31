@@ -99,6 +99,7 @@ function MiniGame:reset()
     self.olga = Player("_olga", 2)
 
     self.select = -1
+    self.me_select = -1
     self.MI = false
 
     OPPONENT_SCORE = 0
@@ -108,15 +109,43 @@ function MiniGame:reset()
     GAME_WON = false
 end
 
-function MiniGame:enteredState()
+function MiniGame:enteredState(name, unlock)
     self:reset() 
      --music 
      currentMusic:stop()
      minigameMusic:play()
      currentMusic = minigameMusic
+     self.pnj_id = name
+     self.unlock = unlock
 end
 
 function MiniGame:update(dt)
+    if PLAYER_SCORE > 2 or OPPONENT_SCORE > 2 then
+        GAME_OVER = true
+    end
+
+
+    if GAME_OVER then
+        if PLAYER_SCORE > OPPONENT_SCORE then
+            -- If already won
+            if Hero.advancement[self.pnj_id] == "minigame_won" then
+                self:pushState("Dialog", self.pnj_id, "victory_not_first")
+            else
+                -- First win
+                Hero.advancement[self.pnj_id] = "minigame_won"
+                Hero.advancement[self.unlock] = "pres_minigame"
+                self:pushState("Dialog", self.pnj_id, "victory_first")
+            end
+        else
+            self:pushState("Dialog", self.pnj_id, "defeat")
+        end
+        minigameMusic:stop()
+        overworldMusic:play()
+        currentMusic = overworldMusic
+        self:popState("Shifumi")
+    end
+
+    Talkies.update(dt)
 end
 
 function MiniGame:nextSelect()
@@ -131,6 +160,7 @@ function MiniGame:prevSelect()
 end
 
 function MiniGame:Select()
+    self.me_select = self.select
     self.ia_select = math.random(1,3)
     self.MI = true
     local outcome = self:outCome()
@@ -139,6 +169,7 @@ function MiniGame:Select()
     elseif outcome < 0 then
         OPPONENT_SCORE = OPPONENT_SCORE + 1
     end
+    self.select = -1
 end
 
 function MiniGame:outCome()
@@ -150,15 +181,21 @@ function MiniGame:draw()
         v:draw(self.select)
     end
 
+    if self.me_select > 0 then
+        self.player:draw(self.me_select)
+    end 
+
     -- draw the MI !
     if self.MI then
-        self.player:draw(self.select)
         self.olga:draw(self.ia_select)
     end
 
     -- Draw Score
     love.graphics.print("Theodule - " .. PLAYER_SCORE, 22, 30)
     love.graphics.print("Olga - " .. OPPONENT_SCORE, WINDOW_WIDTH - 138, 30)
+
+    -- Talkies
+    Talkies.draw()
 end
 
 function MiniGame:keypressed(key, code)
@@ -172,9 +209,9 @@ function MiniGame:keypressed(key, code)
         self:pushState("Pause")
     elseif key == 'r' then
         self:reset()
-    elseif key == 'left' then
+    elseif key == 'left' or key == "q" then
         self:prevSelect()
-    elseif key == 'right' then
+    elseif key == 'right' or key == "d" then
         self:nextSelect()
     elseif key == 'space' and self.select > 0 then
         self:Select()

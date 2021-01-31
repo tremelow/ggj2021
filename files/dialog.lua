@@ -14,7 +14,10 @@ end
 
 function Dialog:sayLine(line)
   if line[1] == "Minigame" then
-    self:gotoState(self.pnj.minigame)
+    if not Hero.advancement[self.pnj.name] == "minigame_won" then
+      Hero.advancement[self.pnj.name] = "minigame_known_never_won"
+    end
+    self:gotoState(self.pnj.minigame, self.id, self.pnj.unlock)
   elseif line[3] then
     local options = {}
     for index, choice in ipairs(line[3]) do
@@ -41,8 +44,14 @@ function Dialog:keypressed(key, code)
   if key == "space" then
     Talkies.onAction()
     if not Talkies.isOpen() then
-      line = self:getLine()
+      local line = self:getLine()
+
       if line then
+        if line[1] == "Continue" then
+          self.key = Hero.advancement[self.id]
+          self.currentLine = 1
+          line = self:getLine()
+        end
         self:sayLine(line)
       else
         self:popState("Dialog")

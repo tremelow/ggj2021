@@ -25,10 +25,10 @@ function Game:initialize()
   -- Background Image
   background = love.graphics.newImage("assets/foot.jpg")
   FIELD_SIZE = background:getWidth()
-  tente = love.graphics.newImage("assets/img/world/tente.png")
-  tableau = love.graphics.newImage("assets/img/world/tableau.png")
-  cage = love.graphics.newImage("assets/img/world/cage.png")
-  punchingball = love.graphics.newImage("assets/img/world/punchingball.png")
+  
+  background_elems = {love.graphics.newImage("assets/img/world/tente.png"), love.graphics.newImage("assets/img/world/tableau.png"),
+	love.graphics.newImage("assets/img/world/cage.png"), love.graphics.newImage("assets/img/world/punchingball.png")}
+  background_elems_pos = {{700,230},{2000, 400}, {50, 280},{1600, 150}}
   
   -- Initialize Camera, left-right scrolling
   camera = Camera()
@@ -53,6 +53,8 @@ function Game:initialize()
   
   for id, kid in pairs(pnjData) do
     PNJs[id] = PNJ(kid)
+    Hero.hasSpoken[id] = false
+    Hero.advancement[id] = "vtff"
   end
   
   content = ""
@@ -94,12 +96,25 @@ function Game:draw()
 
   -- Draw background image
   love.graphics.draw(background, 0, 0, 0, 1, WINDOW_HEIGHT/background:getHeight())
-  love.graphics.draw(tente, 700,230)
-  love.graphics.draw(tableau, 90, 280)
-  love.graphics.draw(cage, 2000, 400)
-  love.graphics.draw(punchingball, 1600, 150)
+  --love.graphics.draw(tente, 700,230)
+  --love.graphics.draw(tableau, 2000, 400)
+  --love.graphics.draw(cage, 50, 280)
+  --love.graphics.draw(punchingball, 1600, 150)
 
   local hero_drawn = false
+  for idx, elem in pairs(background_elems) do
+    if (Hero.y<background_elems_pos[idx][2] and math.abs((Hero.x-background_elems_pos[idx][1]))<100) then
+		if not hero_drawn then
+			Hero:draw()
+			hero_drawn = true
+		end
+		love.graphics.draw(elem, background_elems_pos[idx][1], background_elems_pos[idx][2])
+	else
+		love.graphics.draw(elem, background_elems_pos[idx][1], background_elems_pos[idx][2])
+	end
+  end
+  
+  
   -- Draw NPCs
   for i, v in pairs(PNJs) do
 	if (Hero.y<v.y and math.abs((Hero.x-v.x))<50) then
@@ -135,7 +150,12 @@ function Game:keypressed(key, code)
     for i, kid in pairs(PNJs) do
       if kid:isCharacterClose(Hero) then
         -- TODO: choose flag depending on advancement
-        self:pushState("Dialog", i, "pres_minigame")
+        if Hero.hasSpoken[i] then
+          self:pushState("Dialog", i, Hero.advancement[i])
+        else 
+          Hero.hasSpoken[i] = true
+          self:pushState("Dialog", i, 'first')
+        end 
       end
     end
   end

@@ -100,12 +100,14 @@ function MiniGame:reset()
     GAME_WON   = false
 end
 
-function MiniGame:enteredState()
+function MiniGame:enteredState(name, unlock)
     self:reset() 
      --music 
      currentMusic:stop()
      minigameMusic:play()
      currentMusic = minigameMusic
+     self.pnj_id = name
+     self.unlock = unlock
 end
 
 function MiniGame:update(dt)
@@ -113,19 +115,41 @@ function MiniGame:update(dt)
     if self.GAME_START and self.timer > 0 then
         self.bar:update(dt)
         self.timer = self.timer - dt
-        self.timer = math.max(0, self.timer)
     end
 
-    if self.timer == 0 then
+    if self.timer <= 0 then
+        self.timer = self.timer - dt
         self.punching_ball:BAM()
     end
+
+    if self.timer < - 1 then
+        if math.min(POWER_MAX, self.bar.power) / POWER_MAX > 0.1 then
+            -- If already won
+            if Hero.advancement[self.pnj_id] == "minigame_won" then
+                self:pushState("Dialog", self.pnj_id, "victory_not_first")
+            else
+                -- First win
+                Hero.advancement[self.pnj_id] = "minigame_won"
+                Hero.advancement[self.unlock] = "pres_minigame"
+                self:pushState("Dialog", self.pnj_id, "victory_first")
+            end
+        else
+            self:pushState("Dialog", self.pnj_id, "defeat")
+        end
+        minigameMusic:stop()
+        overworldMusic:play()
+        currentMusic = overworldMusic
+        self:popState("Punch")
+    end
+
+    Talkies.update(dt)
 end
 
 
 function MiniGame:draw()
     self.bar:draw()
     love.graphics.setColor(1, 1, 1)
-    love.graphics.print("TIME LEFT - " .. string.format("%.1f",self.timer), 22, 30)
+    love.graphics.print("TIME LEFT - " .. string.format("%.1f", math.max(0,self.timer)), 22, 30)
 
     self.punching_ball:draw()
     love.graphics.setColor(1, 1, 1)
