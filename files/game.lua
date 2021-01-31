@@ -52,7 +52,8 @@ function Game:initialize()
   for line in love.filesystem.lines("assets/txt/pnjs.json") do
     content = content .. line
   end
-  local pnjData = json.decode(content)
+  
+  pnjData = json.decode(content)
   
   for id, kid in pairs(pnjData) do
     Names[id] = kid.name
@@ -63,9 +64,9 @@ function Game:initialize()
       DialogSprite[id] = love.graphics.newImage("assets/img/talkies/papyrus.png")
     end
     PNJs[id] = PNJ(kid)
-    Hero.hasSpoken[id] = false
-    Hero.advancement[id] = "vtff"
   end
+
+  Hero:resetAdvancement(pnjData)
   
   content = ""
   for line in love.filesystem.lines("assets/txt/dialogs.json") do
