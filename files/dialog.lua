@@ -44,8 +44,14 @@ function Dialog:keypressed(key, code)
   if key == "space" then
     Talkies.onAction()
     if not Talkies.isOpen() then
-      line = self:getLine()
+      local line = self:getLine()
+
       if line then
+        if line[1] == "Continue" then
+          self.key = Hero.advancement[self.id]
+          self.currentLine = 1
+          line = self:getLine()
+        end
         self:sayLine(line)
       else
         self:popState("Dialog")
