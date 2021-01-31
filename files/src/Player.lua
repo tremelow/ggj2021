@@ -85,7 +85,7 @@ function Player:update(dt)
   self.y = self.y + self.direction.y * self.v * dt
 
   -- Bound the player movement
-  self.x = math.max(                  0, self.x)
+  self.x = math.min(math.max(                  0, self.x), FIELD_SIZE - self.WIDTH)
   self.y = math.min(math.max(WINDOW_HEIGHT * 3/5 - self.HEIGHT, self.y),
   WINDOW_HEIGHT - self.HEIGHT)
 
