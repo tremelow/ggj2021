@@ -1,8 +1,8 @@
 {
   "bobby": {
     "name": "Bobby",
-    "xpos": 1900,
-    "ypos": 400,
+    "xpos": 300,
+    "ypos": 300,
     "sprite": "bobby.png",
 	  "shadow": "bobby_s.png",
     "game": "Soccer",
@@ -23,8 +23,8 @@
 
   "leon": {
     "name": "Léon",
-    "xpos": 300,
-    "ypos": 300,
+    "xpos": 1900,
+    "ypos": 400,
     "sprite": "leon.png",
 	  "shadow": "leon_s.png",
     "game": "Dessin",
