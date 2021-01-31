@@ -81,6 +81,8 @@ function Game:initialize()
   minigameMusic:setLooping(true)
   prologueMusic = love.audio.newSource("assets/audio/prologue.mp3", "stream")
   prologueMusic:setVolume(0.7)
+  epilogueMusic = love.audio.newSource("assets/audio/prologue.mp3", "stream")
+  epilogueMusic:setVolume(0.7)
 end
 
 function Game:exit()

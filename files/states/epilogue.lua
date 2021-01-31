@@ -21,9 +21,10 @@ function Epilogue:enteredState()
   end
   epilogue_text = json.decode(content)
 
-  --music
-  --epilogueMusic:play()
-  --currentMusic = epilogueMusic
+  --music 
+  currentMusic:stop()
+  epilogueMusic:play()
+  currentMusic = epilogueMusic
 end
 
 function Epilogue:update(dt)
