@@ -112,7 +112,7 @@ end
 function JeuDessin:loadJeuDessin()
   self.timer = 0
   self.scoreComputed = false
-  self.seuilScore = 11000
+  self.seuilScore = 11500
 
   self.width, self.height, flags = love.window.getMode( ) --Taille de la fenetre
   --Taille de l'image background craie
