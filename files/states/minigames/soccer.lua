@@ -218,7 +218,7 @@ end
 ---------------------
 -- GAME MANAGEMENT
 ---------------------
-TARGET_SCORE = 12
+TARGET_SCORE = 1
 
 function MiniGame:enteredState()
     self.background_img = love.graphics.newImage("assets/img/football/foot.png")
@@ -228,8 +228,6 @@ function MiniGame:enteredState()
      currentMusic = minigameMusic
 
     self:reset()
-
-    self:pushState("Dialog", "bobby", "first")
 end
 
 function MiniGame:reset()
@@ -250,7 +248,17 @@ function MiniGame:update(dt)
     -- Update ball if not game over
     if not GAME_OVER then
         self.ball:update(dt, self.player)
+    elseif not self.stopped then
+        self.stopped = true
+        if SCORE > TARGET_SCORE then
+            self:pushState("Dialog", "bobby", "victory_not_first")
+        else
+            self:pushState("Dialog", "bobby", "defeat")
+        end
+        self:popState("Soccer")
     end
+
+    Talkies.update(dt)
 end
 
 function MiniGame:draw()
