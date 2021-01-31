@@ -181,7 +181,7 @@
         ["kevin", "..."],
         ["kevin", "Je te dirai où elle est si tu bats mon score au punching ball."],
         ["kevin", "Personne n'est venu depuis le début de la récré..."],
-        ["kevin", "La maîtresse va croire que je vous ai défendus de jouer."],
+        ["kevin", "La maîtresse va croire que je vous ai empêché de jouer."],
         ["kevin", "Alors, tu veux taper ?", ["D'accord", "Pas tout de suite"], ["minigame", "no_minigame"]]
     ],
     "minigame":[
@@ -330,7 +330,7 @@
         ["emilie", "..."],
         ["emilie", "Dans ce cas, je vais la garder un peu plus longtemps, si tu veux bien, Théodule."],
         ["theo", "Quoi ? Mais j'en ai besoin maintenant !"],
-        ["emilie", "Je te la rends à la fin de la récré, promis."],
+        ["emilie", "Je te la rends à la fin de la kermesse, promis."],
         ["theo", "S'il-te-plaît, Émilie !"],
         ["emilie", "Voilà ce que je te propose. Jouons aux billes."],
         ["emilie", "Si tu parviens à toucher ma bille favorite, Bételgeuse, tu peux reprendre Altaïr tout de suite."],

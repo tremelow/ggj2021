@@ -33,7 +33,7 @@ end
 function Tile:draw(select)   
     -- Scaling parameters to fit image in a TILE_HEIGHT x TILE_HEIGHT box
     scale = TILE_HEIGHT / self.img:getHeight()
-
+    
     if select == self.pos then
         love.graphics.rectangle("fill",
             WINDOW_WIDTH/N_TILES * self.pos - WINDOW_WIDTH/N_TILES/2 - TILE_HEIGHT/2 - 10,
@@ -156,7 +156,23 @@ function MiniGame:update(dt)
     if PLAYER_SCORE > 2 or OPPONENT_SCORE > 2 then
         GAME_OVER = true
     end
+    self.select = MiniGame:mouseSelect()
     Talkies.update(dt)
+end
+
+function MiniGame:mouseSelect()
+    local mSelect
+    for i = 1,3 do
+        local x1 = WINDOW_WIDTH/N_TILES * i - WINDOW_WIDTH/N_TILES/2 - TILE_HEIGHT/2 - 10
+        local x2 = x1 + TILE_HEIGHT + 20
+        local y1 = WINDOW_HEIGHT - TILE_HEIGHT - 20
+        local y2 = y1 + WINDOW_HEIGHT - TILE_HEIGHT - 20 + TILE_HEIGHT + 40
+        local mx, my = love.mouse.getPosition()
+        if mx > x1 and mx < x2 and my > y1 and my < y2 then
+            mSelect = i
+        end
+    end
+    return mSelect
 end
 
 function MiniGame:nextSelect()
@@ -202,6 +218,7 @@ function MiniGame:draw()
         self.olga:draw(self.ia_select)
     end
 
+    
     -- Draw Score
     love.graphics.print("Theodule - " .. PLAYER_SCORE, 22, 30)
     love.graphics.print("Olga - " .. OPPONENT_SCORE, WINDOW_WIDTH - 138, 30)
@@ -213,6 +230,20 @@ function MiniGame:draw()
     -- Talkies
     Talkies.draw()
 end
+
+function MiniGame:mousepressed(x, y, button, istouch)
+    for i = 1,3 do
+        local x1 = WINDOW_WIDTH/N_TILES * i - WINDOW_WIDTH/N_TILES/2 - TILE_HEIGHT/2 - 10
+        local x2 = x1 + TILE_HEIGHT + 20
+        local y1 = WINDOW_HEIGHT - TILE_HEIGHT - 20
+        local y2 = y1 + WINDOW_HEIGHT - TILE_HEIGHT - 20 + TILE_HEIGHT + 40
+        local mx, my = love.mouse.getPosition()
+        if mx > x1 and mx < x2 and my > y1 and my < y2 then
+            self:Select()
+        end
+    end
+end
+
 
 function MiniGame:keypressed(key, code)
     if key == 'escape' then
