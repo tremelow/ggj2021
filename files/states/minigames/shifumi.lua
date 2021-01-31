@@ -117,6 +117,21 @@ function MiniGame:enteredState()
 end
 
 function MiniGame:update(dt)
+    if PLAYER_SCORE > 2 or OPPONENT_SCORE > 2 then
+        GAME_OVER = true
+    end
+
+
+    if GAME_OVER then
+        if PLAYER_SCORE > OPPONENT_SCORE then
+            self:pushState("Dialog", "olga", "victory_not_first")
+        else
+            self:pushState("Dialog", "olga", "defeat")
+        end
+        self:popState("Shifumi")
+    end
+
+    Talkies.update(dt)
 end
 
 function MiniGame:nextSelect()
@@ -159,6 +174,9 @@ function MiniGame:draw()
     -- Draw Score
     love.graphics.print("Theodule - " .. PLAYER_SCORE, 22, 30)
     love.graphics.print("Olga - " .. OPPONENT_SCORE, WINDOW_WIDTH - 138, 30)
+
+    -- Talkies
+    Talkies.draw()
 end
 
 function MiniGame:keypressed(key, code)
