@@ -4,6 +4,7 @@ Game = class("Game"):include(Stateful)
 
 require "states/menu"
 require "states/prologue"
+require "states/epilogue"
 require "states/pause"
 
 require "dialog"
