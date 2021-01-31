@@ -2,9 +2,10 @@
 #Main folder must contain a working game build
 
 MAIN_FOLDER="."
-FILES_FOLDER="$MAIN_FOLDER/files/"
+FILES_FOLDER="files"
 TITLE="Kermesse"
 
 cd $FILES_FOLDER
 zip -9 -r $TITLE.love .
-cp $TITLE.love "../$MAIN_FOLDER"
+mv $TITLE.love ../
+love "../$TITLE.love"
