@@ -163,7 +163,7 @@ function Game:keypressed(key, code)
           self:pushState("Dialog", i, Hero.advancement[i])
         else 
           Hero.hasSpoken[i] = true
-          self:pushState("Dialog", i, 'minigame')
+          self:pushState("Dialog", i, 'first')
         end
       end
     end
