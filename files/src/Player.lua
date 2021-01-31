@@ -18,7 +18,7 @@ function Player:new(x,y)
   self.advancement = {}
 
   self.direction = {x = 0, y = 0}
-  self.orientation = {x = 0, y = -1} -- start facing down
+  self.orientation = {x = 1, y = 0} -- start facing down
 
   -- Player Sprite
   local spritePath = "assets/img/characters/theodule.png"
