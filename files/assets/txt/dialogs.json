@@ -380,6 +380,10 @@
     ]
 },
 "mr-tombola":{
+    "first":[
+        ["Théodule", "C'est le stand de tombola..."],
+        ["Théodule", "Il faut vite que je retrouve Doudou pour participer !"]
+    ],
     "vtff":[
         ["Théodule", "C'est le stand de tombola..."],
         ["Théodule", "Il faut vite que je retrouve Doudou pour participer !"]
