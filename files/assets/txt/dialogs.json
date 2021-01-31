@@ -380,11 +380,11 @@
     ]
 },
 "mr-tombola":{
-    "no_doudou":[
+    "vtff":[
         ["Théodule", "C'est le stand de tombola..."],
         ["Théodule", "Il faut vite que je retrouve Doudou pour participer !"]
     ],
-    "has_doudou":[
+    "pres_minigame":[
         ["Théodule", "Bonjour ! Est-ce que je pourrais avoir un ticket pour la tombola ?"],
         ["Monsieur Tombola", "Pas de problème, fiston !"],
         ["Monsieur Tombola", "Le premier prix est un téléscope junior"],
