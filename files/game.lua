@@ -135,7 +135,7 @@ function Game:keypressed(key, code)
     for i, kid in pairs(PNJs) do
       if kid:isCharacterClose(Hero) then
         -- TODO: choose flag depending on advancement
-        self:pushState("Dialog", i, "pres_minigame")
+        self:pushState("Dialog", i, "minigame_known_never_won")
       end
     end
   end

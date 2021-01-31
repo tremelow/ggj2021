@@ -190,15 +190,17 @@ end
 ---------------------
 local background_img = love.graphics.newImage("assets/img/billes/asphalt.jpg")
 
+local GAME_OVER = false
+local GAME_WON = false
+
 function MiniGame:reset()
     self.target = Bille(WINDOW_WIDTH/2, WINDOW_HEIGHT / 6)
     self.player = PlayerBille(WINDOW_WIDTH/5 + 3/5 * WINDOW_WIDTH * math.random(),
                         WINDOW_HEIGHT * 5/6
                     )
     self.arrow = Arrow(self.player.x, self.player.y)
-
-    self.GAME_OVER = false
-    self.GAME_WON = false
+    GAME_OVER = false
+    GAME_WON = false
     self.phase = 'aim'
 end
 
@@ -210,20 +212,28 @@ function MiniGame:enteredState()
     currentMusic = minigameMusic
 end
 
-
 function MiniGame:update(dt)
     if self.player:isOut() then
-        self.GAME_OVER = true
+        GAME_OVER = true
     end
     if self.target:isOut() then
-        self.GAME_WON = true
+        GAME_WON = true
+    end
+
+    if GAME_OVER then
+        if GAME_WON then
+            self:pushState("Dialog", "emilie", "victory_not_first")
+        else
+            self:pushState("Dialog", "emilie", "defeat")
+        end
+        self:popState("Billes")
     end
 
     if self.phase == 'aim' then
         self.arrow:update(dt, self.phase)
     elseif self.phase == 'charge' then
         self.arrow:update(dt, self.phase, self.player)
-    elseif not self.GAME_OVER or not self.GAME_WON then
+    elseif not GAME_OVER or not GAME_WON then
         -- print(self.player.vx, self.player.vy)
         self.player:update(dt, self.target)
         self.target:update(dt)
@@ -252,9 +262,9 @@ function MiniGame:draw()
         self.arrow:draw()
     end
 
-    if self.GAME_OVER then
+    if GAME_OVER then
         love.graphics.print("GAME OVER", 20, 20)
-        if self.GAME_WON then
+        if GAME_WON then
             love.graphics.print("YOU WIN", 20, 40)
         else
             love.graphics.print("YOU LOSE", 20, 40)
