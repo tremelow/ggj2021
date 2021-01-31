@@ -113,19 +113,30 @@ function MiniGame:update(dt)
     if self.GAME_START and self.timer > 0 then
         self.bar:update(dt)
         self.timer = self.timer - dt
-        self.timer = math.max(0, self.timer)
     end
 
-    if self.timer == 0 then
+    if self.timer <= 0 then
+        self.timer = self.timer - dt
         self.punching_ball:BAM()
     end
+
+    if self.timer < - 1 then
+        if math.min(POWER_MAX, self.bar.power) / POWER_MAX > 0.1 then
+            self:pushState("Dialog", "kevin", "victory_not_first")
+        else
+            self:pushState("Dialog", "kevin", "defeat")
+        end
+        self:popState("Punch")
+    end
+
+    Talkies.update(dt)
 end
 
 
 function MiniGame:draw()
     self.bar:draw()
     love.graphics.setColor(1, 1, 1)
-    love.graphics.print("TIME LEFT - " .. string.format("%.1f",self.timer), 22, 30)
+    love.graphics.print("TIME LEFT - " .. string.format("%.1f", math.max(0,self.timer)), 22, 30)
 
     self.punching_ball:draw()
     love.graphics.setColor(1, 1, 1)
