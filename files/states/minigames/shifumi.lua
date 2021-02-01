@@ -89,6 +89,8 @@ OUTCOMES = {{ 0, -1,  1},
             { 1,  0, -1},
             {-1,  1,  0}}
 
+local background_img = love.graphics.newImage(TILE_FOLDER .. "shifumi_back.png")
+
 function MiniGame:reset()
     self.tiles = {
         Tile('rps_rock.png', 1),
@@ -212,7 +214,7 @@ function MiniGame:outCome()
 end
 
 function MiniGame:draw()
-	love.graphics.draw(love.graphics.newImage(TILE_FOLDER .. "shifumi_back.png"), 160, 0)
+	love.graphics.draw(background_img, 160, 0)
     for i,v in ipairs(self.tiles) do
         v:draw(self.select)
     end
