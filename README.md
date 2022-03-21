@@ -31,5 +31,5 @@ intéragir avec l'environnement.
 
 
 ## Authors
-Pauline Brunet (writing and art), Théo Golvet (music and code),
+Pauline Brunet (writing and art), Aliénor Golvet (music and code),
 Aurore Mattio (art and code), Youssef Miftah (code), Léopold Trémant (code).
